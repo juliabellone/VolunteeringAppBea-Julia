@@ -18,12 +18,8 @@
     "serve-favicon": "~2.4.5"
   },
   "devDependencies": {
-<<<<<<< HEAD
-    "nodemon": "^1.14.12"
-=======
     "eslint": "^4.17.0",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0"
->>>>>>> 08d9c0754e63fba74fae7cdfa12121534c9e0695
   }
 }
