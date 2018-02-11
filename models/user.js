@@ -6,12 +6,21 @@ const userSchema = new Schema(
   {
     username: { type: String },
     password: { type: String },
-    picture: { type: String },
+    picture: {
+      pic_path: { type: String },
+      pic_name: { type: String },
+    },
     birthdate: { type: Date },
     email: { type: String },
     name: {
       first: { type: String },
       last: { type: String },
+    },
+    address: {
+      street: { type: String },
+      city: { type: String },
+      state: { type: String },
+      zip: { type: String },
     },
     zip: { type: String },
     telephone: { type: String },
