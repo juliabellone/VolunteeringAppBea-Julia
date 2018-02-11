@@ -10,8 +10,17 @@ const users = require('./routes/users');
 const expressLayouts = require('express-ejs-layouts');
 
 const mongoose = require('mongoose');
-const { url, db, port } = require('./config');
-mongoose.connect(`mongodb://${url}:${port}/${db}`, { useMongoClient: true });
+mongoose.Promise = Promise;
+mongoose.connect('process.env.MONGODB_URI', {
+  keepAlive: true,
+  reconnectTries: Number.MAX_VALUE,
+}, (error) => {
+  if (!error) { 
+    console.log(`connected to ${process.env.MONGODB_URI}`);
+  }
+  console.error(`💣 ${err.name}: ${err.message}`);
+  process.exit(-1);
+});
 
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
@@ -23,9 +32,9 @@ app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
 app.set('view engine', 'ejs');
 
-app.set('layout extractScripts', true) // see Documentation
-app.set('layout extractStyles', true) // see Documentation
-app.set('layout extractMetas', true) // see Documentation
+app.set('layout extractScripts', true); // see Documentation
+app.set('layout extractStyles', true); // see Documentation
+app.set('layout extractMetas', true); // see Documentation
 app.set('layout', 'layouts/main'); // custom layout
 
 // uncomment after placing your favicon in /public
@@ -57,6 +66,6 @@ app.use(((err, req, res, next) => {
   // render the error page
   res.status(err.status || 500);
   res.render('error');
-});
+}));
 
 module.exports = app;
