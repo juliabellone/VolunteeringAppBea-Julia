@@ -27,7 +27,7 @@ const ongSchema = new Schema(
       createdAt: 'created_at',
       updatedAt: 'updated_at',
     },
-  },
+  }
 );
 
 const Ong = mongoose.model('Ong', ongSchema);

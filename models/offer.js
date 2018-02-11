@@ -21,7 +21,7 @@ const offerSchema = new Schema(
       createdAt: 'created_at',
       updatedAt: 'updated_at',
     },
-  },
+  }
 );
 
 const Offer = mongoose.model('Offer', offerSchema);
