@@ -24,7 +24,6 @@ const userSchema = new Schema(
     },
     zip: { type: String },
     telephone: { type: String },
-    skills: { type: [] },
     interests: { type: [] },
     availability: {
       fulltime: { type: Boolean },

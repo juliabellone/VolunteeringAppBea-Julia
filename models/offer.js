@@ -13,7 +13,6 @@ const offerSchema = new Schema(
     title: { type: String },
     description: { type: String },
     category: { type: String },
-    skillsRequired: { type: [] },
     _usersRegistered: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   },
   {
