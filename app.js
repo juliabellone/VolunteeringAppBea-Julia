@@ -7,6 +7,7 @@ const bodyParser = require('body-parser');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
+const auth = require('./routes/auth');
 const expressLayouts = require('express-ejs-layouts');
 
 require('dotenv').config();
@@ -58,6 +59,7 @@ app.use(expressLayouts);
 
 app.use('/', index);
 app.use('/users', users);
+app.use('/', auth);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

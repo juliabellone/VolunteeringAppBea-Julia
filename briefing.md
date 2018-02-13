@@ -219,7 +219,7 @@ GET | /login | login get | x
 POST | /login | login post | y
 GET | /logout | destroy user session | y
 GET | /offers | user sees offers | y
-GET | /profile:username | profile of the user | y
+GET | /profile/:username | profile of the user | y
 GET | offers/:offerid | specific offer page |y|
 POST | offers/:offerid | user signups in offer |y|
 
