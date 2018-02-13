@@ -12,8 +12,10 @@ const expressLayouts = require('express-ejs-layouts');
 
 require('dotenv').config();
 
+const flash = require('connect-flash');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+
 
 const mongoose = require('mongoose');
 mongoose.Promise = Promise;
@@ -55,6 +57,17 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
+app.use(session({
+  secret: 'some-string',
+  resave: true,
+  saveUninitialized: true,
+  cookie: { maxAge: 24 * 60 * 60 * 1000 },
+  store: new MongoStore({
+    mongooseConnection: mongoose.connection,
+    ttl: 24 * 60 * 60 // 1 day
+  })
+}));
+app.use(flash());
 
 app.use('/', index);
 app.use('/users', users);

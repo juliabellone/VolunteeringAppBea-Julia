@@ -7,4 +7,9 @@
     <label for="password">Password</label>
     <input type='text' name="password">
     <button>Submit</button>
+    <% if (typeof message !== "undefined") { %>
+        <div class="error-message">
+            <%= message %>
+        </div>
+    <% } %>
 </form>
