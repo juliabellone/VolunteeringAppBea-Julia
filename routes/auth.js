@@ -55,7 +55,7 @@ router.get('/login', (req, res, next) => {
 });
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/',
+  successRedirect: '/profile',
   failureRedirect: '/login',
   failureFlash: true,
   passReqToCallback: true,
@@ -63,9 +63,9 @@ router.post('/login', passport.authenticate('local', {
 // coomprabr que el user existe y el pass es correcto, reenviar a su /offers
 
 router.get('/logout', (req, res, next) => {
-//eliminar sesion y enviar a '/'
+// eliminar sesion y enviar a '/'
   req.logout();
-  res.redirect('/login') 
+  res.redirect('/login');
 });
 
 
