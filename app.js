@@ -11,6 +11,7 @@ const bodyParser = require('body-parser');
 const index = require('./routes/index');
 const users = require('./routes/users');
 const auth = require('./routes/auth');
+const ong = require('./routes/ong');
 const offers = require('./routes/offers');
 const expressLayouts = require('express-ejs-layouts');
 const passport = require('passport');
@@ -88,7 +89,7 @@ app.use((req, res, next)=>{
 app.use('/', index);
 app.use('/user', users);
 app.use('/', auth);
-//app.use('/', offers);
+app.use('/ong', ong);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

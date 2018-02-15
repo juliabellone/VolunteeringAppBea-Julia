@@ -1,0 +1,41 @@
+<p>Signup de la ong</p>
+
+<form action='ong/signup' method='POST' id='form-container'>
+    <label for="username">Username</label>
+    <input type='text' name="username">
+    <br>
+    <label for="password">Password</label>
+    <input type='password' name="password">
+    <br>
+    <label for="birthdate">Birthdate</label>
+    <input type='date' name="birthdate">
+    <br>
+    <label for="email">Email</label>
+    <input type='email' name="email">
+    <br>
+    <label for="name">ONG Name</label>
+    <input type='text' name="firstname">
+    <br>
+    <label for="telephone">Telephone</label>
+    <input type='text' name="telephone">
+    <br>
+    <label for="category">Category</label>
+    <select>
+    <option value="Animals">Animals</option>
+    <option value="Children">Children</option>
+    <option value="Homeless">Homeless</option>
+    <option value="Development">Development</option>
+    </select>
+    <p>Address</p>
+    <label for="address">Street</label>
+    <input type='text' name="street">
+    <label for="address">City</label>
+    <input type='text' name="city">
+    <label for="address">State</label>
+    <input type='text' name="state">
+    <label for="address">Zip</label>
+    <input type='text' name="zip">
+    <br>
+    <button>Submit</button>
+    <%- include('../partials/notifications') %>
+</form>
