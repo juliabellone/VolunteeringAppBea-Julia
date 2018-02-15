@@ -1,5 +1,6 @@
 const express = require('express');
 const router = express.Router();
+const passport = require("passport");
 
 
 // User model
@@ -45,16 +46,20 @@ router.post('/signup', (req, res, next) => {
       }
     });
   });
-// dar de alta un usuario en la base de datos. Reenviar a perfil(?)
+// dar de alta un usuario en la base de datos. Reenviar a /profile/:username/modify
 });
 
 router.get('/login', (req, res, next) => {
   res.render('auth/login');
 });
 
-// router.post('/login', (req, res, next) => {
-//     //coomprabr que el user existe y el pass es correcto, reenviar a su 'home' de ofertas
-// });
+router.post('/login', passport.authenticate('local', {
+  successRedirect: '/',
+  failureRedirect: '/login',
+  failureFlash: true,
+  passReqToCallback: true,
+}));
+// coomprabr que el user existe y el pass es correcto, reenviar a su /offers
 
 // router.get('/signout', (req, res, next) => {
 //     //eliminar sesion y enviar a '/'

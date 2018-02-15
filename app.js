@@ -1,3 +1,6 @@
+
+require('dotenv').config();
+
 const path = require('path');
 const express = require('express');
 const favicon = require('serve-favicon');
@@ -10,9 +13,8 @@ const users = require('./routes/users');
 const auth = require('./routes/auth');
 const offers = require('./routes/offers');
 const expressLayouts = require('express-ejs-layouts');
-
-require('dotenv').config();
-
+const passport = require('passport');
+const configurePassport = require('./helpers/passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
@@ -30,8 +32,6 @@ mongoose.connect(process.env.MONGODB_URI, {
   console.error(`💣 ${err.name}: ${err.message}`);
   process.exit(-1);
 });
-
-
 
 const app = express();
 
@@ -58,8 +58,9 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(expressLayouts);
+
 app.use(session({
-  secret: 'some-string',
+  secret: 'volunteering',
   resave: true,
   saveUninitialized: true,
   cookie: { maxAge: 24 * 60 * 60 * 1000 },
@@ -68,7 +69,12 @@ app.use(session({
     ttl: 24 * 60 * 60 // 1 day
   })
 }));
+
+configurePassport();
+
 app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
 
 app.use('/', index);
 app.use('/users', users);

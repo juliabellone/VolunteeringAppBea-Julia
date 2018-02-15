@@ -1,1 +1,16 @@
 <p>esto es el login</p>
+
+<form action='/login' method='POST' id='form-container'>
+    <label for="username">Username</label>
+    <input type='text' name="username">
+    <br>
+    <label for="password">Password</label>
+    <input type='password' name="password">
+    <br>
+    <button>Submit</button>
+    <% if (typeof message !== "undefined") { %>
+        <div class="error-message">
+            <%= message %>
+        </div>
+    <% } %>
+</form>
