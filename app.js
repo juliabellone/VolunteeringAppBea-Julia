@@ -76,6 +76,15 @@ app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 
+app.use((req, res, next)=>{
+  res.locals.errorMessages = req.flash('error');
+  res.locals.infoMessages = req.flash('info');
+  res.locals.dangerMessages = req.flash('danger');
+  res.locals.successMessages = req.flash('success');
+  res.locals.warningMessages = req.flash('warning');
+  next();
+})
+
 app.use('/', index);
 app.use('/user', users);
 app.use('/', auth);

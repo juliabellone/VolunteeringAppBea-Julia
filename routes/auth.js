@@ -21,13 +21,15 @@ router.post('/signup', (req, res, next) => {
   const password = req.body.password;
   if (username === '' || password === '') {
     //   req.flash('Flash is back');
-    res.render('auth/signup', { message: req.flash('info', 'Indicate username and password') });
+    req.flash('info', 'Indicate username and password')
+    res.redirect('/signup');
     return;
   }
 
   User.findOne({ username }, 'username', (err, user) => {
     if (user !== null) {
-      res.render('auth/signup', { message: req.flash('alert', 'The username already exists') });
+      req.flash('info', 'The username already exists')
+      res.redirect('/signup');  
       return;
     }
 
@@ -55,11 +57,13 @@ router.get('/login', (req, res, next) => {
 });
 
 router.post('/login', passport.authenticate('local', {
-  successRedirect: '/profile',
+  successRedirect: ('/profile'),
   failureRedirect: '/login',
   failureFlash: true,
   passReqToCallback: true,
 }));
+//no se ven los menssajes
+
 // coomprabr que el user existe y el pass es correcto, reenviar a su /offers
 
 router.get('/logout', (req, res, next) => {
