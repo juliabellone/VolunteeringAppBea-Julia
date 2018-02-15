@@ -14,42 +14,42 @@ router.get('/signup', (req, res, next) => {
 });
 
 router.post('/signup', (req, res, next) => {
-  console.log(req.body);
+  //console.log(req.body);
   const username = req.body.username;
   const password = req.body.password;
-  if (username === "" || password === "") {
+  if (username === '' || password === '') {
     //   req.flash('info', 'Flash is back');
-      res.render("auth/signup", { message: "Indicate username and password" });
-      return;
+    res.render('auth/signup', { message: 'Indicate username and password' });
+    return;
   }
 
-  User.findOne({ username }, "username", (err, user) => {
+  User.findOne({ username }, 'username', (err, user) => {
     if (user !== null) {
-        res.render("auth/signup", { message: "The username already exists" });
-        return;
+      res.render('auth/signup', { message: 'The username already exists' });
+      return;
     }
 
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
 
     const newUser = new User({
-        username,
-        password: hashPass
+      username,
+      password: hashPass,
     });
 
     newUser.save((err) => {
-        if (err) {
-            res.render("auth/signup", { message: "Something went wrong" });
-        } else {
-            res.redirect("/");
-        }
+      if (err) {
+        res.render('auth/signup', { message: 'Something went wrong' });
+      } else {
+        res.redirect('/');
+      }
     });
-});
-  //dar de alta un usuario en la base de datos. Reenviar a perfil(?)
+  });
+// dar de alta un usuario en la base de datos. Reenviar a perfil(?)
 });
 
 router.get('/login', (req, res, next) => {
-    res.render('auth/login');
+  res.render('auth/login');
 });
 
 // router.post('/login', (req, res, next) => {
