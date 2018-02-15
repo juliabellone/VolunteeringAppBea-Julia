@@ -61,9 +61,11 @@ router.post('/login', passport.authenticate('local', {
 }));
 // coomprabr que el user existe y el pass es correcto, reenviar a su /offers
 
-// router.get('/signout', (req, res, next) => {
-//     //eliminar sesion y enviar a '/'
-// });
+router.get('/logout', (req, res, next) => {
+//eliminar sesion y enviar a '/'
+  req.logout();
+  res.redirect('/login')  
+});
 
 
 module.exports = router;
