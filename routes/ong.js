@@ -6,8 +6,8 @@ router.get('/signup', (req, res, next) => {
 });
 
 router.post('/signup', (req, res, next) => {
-  console.log(req.user);
-  res.send('guardar ong en base de datos');
+  console.log('hola'+req.body);
+  res.redirect('index');
 });
   
 module.exports = router;
