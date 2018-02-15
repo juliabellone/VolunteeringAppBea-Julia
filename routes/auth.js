@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
-const passport = require("passport");
+const passport = require('passport');
+const flash = require('connect-flash');
 
 
 // User model
@@ -19,14 +20,14 @@ router.post('/signup', (req, res, next) => {
   const username = req.body.username;
   const password = req.body.password;
   if (username === '' || password === '') {
-    //   req.flash('info', 'Flash is back');
-    res.render('auth/signup', { message: 'Indicate username and password' });
+    //   req.flash('Flash is back');
+    res.render('auth/signup', { message: req.flash('info', 'Indicate username and password') });
     return;
   }
 
   User.findOne({ username }, 'username', (err, user) => {
     if (user !== null) {
-      res.render('auth/signup', { message: 'The username already exists' });
+      res.render('auth/signup', { message: req.flash('alert', 'The username already exists') });
       return;
     }
 
@@ -40,7 +41,7 @@ router.post('/signup', (req, res, next) => {
 
     newUser.save((err) => {
       if (err) {
-        res.render('auth/signup', { message: 'Something went wrong' });
+        res.render('auth/signup', { message: req.flash('alert', 'Something went wrong') });
       } else {
         res.redirect('/');
       }
@@ -50,7 +51,7 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.get('/login', (req, res, next) => {
-  res.render('auth/login');
+  res.render('auth/login', { message: req.flash('error') });
 });
 
 router.post('/login', passport.authenticate('local', {
@@ -64,7 +65,7 @@ router.post('/login', passport.authenticate('local', {
 router.get('/logout', (req, res, next) => {
 //eliminar sesion y enviar a '/'
   req.logout();
-  res.redirect('/login')  
+  res.redirect('/login') 
 });
 
 
