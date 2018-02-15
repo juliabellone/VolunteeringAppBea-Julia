@@ -45,7 +45,7 @@ router.post('/signup', (req, res, next) => {
       if (err) {
         res.render('auth/signup', { message: req.flash('alert', 'Something went wrong') });
       } else {
-        res.redirect('/');
+        res.redirect('/preferences');
       }
     });
   });

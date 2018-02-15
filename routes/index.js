@@ -7,7 +7,7 @@ router.get('/', (req, res, next) => {
   res.render('index', { title: 'Express' });
 });
 
-router.get('/profile/', (req, res, next) => {
+router.get('/profile', (req, res, next) => {
   const userId = req.user.id;
   User.findById(userId)
     .then((user) => {
@@ -17,5 +17,10 @@ router.get('/profile/', (req, res, next) => {
       next(err);
     });
 });
+
+router.get('/preferences', (req, res, next) => {
+  res.render('auth/preferences');
+});
+
 
 module.exports = router;
