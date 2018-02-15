@@ -220,6 +220,8 @@ POST | /login | login post | y
 GET | /logout | destroy user session | y
 GET | /offers | user sees offers | y
 GET | /profile/:username | profile of the user | y
+GET | /profile/:username/modify | fill the preferences
+POST | /profile/:username/modify | add changes of profile to dbs
 GET | offers/:offerid | specific offer page |y|
 POST | offers/:offerid | user signups in offer |y|
 

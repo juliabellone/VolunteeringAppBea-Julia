@@ -7,7 +7,16 @@
     <label for="password">Password</label>
     <input type='password' name="password">
     <br>
-    <label for="birthdate">Birthdate</label>
+    <button>Submit</button>
+    <% if (typeof message !== "undefined") { %>
+        <div class="error-message">
+            <%= message %>
+        </div>
+    <% } %>
+</form>
+
+<!-- 
+<label for="birthdate">Birthdate</label>
     <input type='date' name="birthdate">
     <br>
     <label for="email">Email</label>
@@ -27,11 +36,4 @@
     <label for="address">State</label>
     <input type='text' name="state">
     <label for="address">Zip</label>
-    <input type='text' name="zip">
-    <button>Submit</button>
-    <% if (typeof message !== "undefined") { %>
-        <div class="error-message">
-            <%= message %>
-        </div>
-    <% } %>
-</form>
+    <input type='text' name="zip"> -->

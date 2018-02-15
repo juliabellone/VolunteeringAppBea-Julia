@@ -4,14 +4,14 @@ const Offer = require('./offer');
 
 const userSchema = new Schema(
   {
-    username: { type: String },
-    password: { type: String },
+    username: { type: String, required: true },
+    password: { type: String, required: true },
+    email: { type: String },
     picture: {
       pic_path: { type: String },
       pic_name: { type: String },
     },
     birthdate: { type: Date },
-    email: { type: String },
     name: {
       first: { type: String },
       last: { type: String },
