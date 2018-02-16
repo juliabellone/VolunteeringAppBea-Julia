@@ -13,7 +13,7 @@ const ongSchema = new Schema(
     email: { type: String },
     name: { type: String },
     telephone: { type: String },
-    interests: { type: [] },
+    category: { type: String },
     address: {
       street: { type: String },
       city: { type: String },

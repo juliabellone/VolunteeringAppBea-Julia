@@ -172,6 +172,7 @@ Opciones predeterminadas en diferente áreas: social, mediambiental, médico-san
 ###ONG
 ```text
 {
+
   - id
   - login: {
     -user: String
@@ -214,6 +215,8 @@ Metodo | Action | Description | Login
 --- | --- | --- | --- 
 GET | /signup | signup get | x
 POST | /signup | signup post | x
+GET | /preferences | usuario indica preferecnias | x
+POST | /preferences | update del user | x
 GET | / | index | x
 GET | /login | login get | x
 POST | /login | login post | y
