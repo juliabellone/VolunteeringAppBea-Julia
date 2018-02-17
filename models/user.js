@@ -7,30 +7,22 @@ const userSchema = new Schema(
     username: { type: String, required: true },
     password: { type: String, required: true },
     email: { type: String },
-    picture: {
-      pic_path: { type: String },
-      pic_name: { type: String },
-    },
+    // picture: {
+    //   pic_path: { type: String },
+    //   pic_name: { type: String },
+    // },
     birthdate: { type: Date },
-    name: {
-      first: { type: String },
-      last: { type: String },
-    },
+    name: { type: String },
+    surname: { type: String },
     address: {
       street: { type: String },
       city: { type: String },
       state: { type: String },
       zip: { type: String },
     },
-    zip: { type: String },
     telephone: { type: String },
     interests: { type: [] },
-    availability: {
-      fulltime: { type: Boolean },
-      weekend: { type: Boolean },
-      summer: { type: Boolean },
-      travel: { type: Boolean },
-    },
+    availability: { type: [] },
     _offersRegistered: [{ type: Schema.Types.ObjectId, ref: 'Offer' }],
   },
   {

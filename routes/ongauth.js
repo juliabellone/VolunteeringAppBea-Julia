@@ -58,7 +58,7 @@ router.post('/signup', (req, res, next) => {
       }
     }); 
   });
-S});
+});
 
 router.post('/login', passport.authenticate('local1', {
   successRedirect: ('/ong/profile'),

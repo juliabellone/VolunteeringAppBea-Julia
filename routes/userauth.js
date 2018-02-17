@@ -16,10 +16,9 @@ router.get('/signup', (req, res, next) => {
 });
 
 router.post('/signup', (req, res, next) => {
-  console.log(req.body);
   // recoger mas datos
-  const { username, password, name, surname, email, profilePic, birthdate, gender, street, city, state, zip, animals, environment, children, disabilities, healthcare, social, fulltime, weekend, summer, travel } = req.body;
-  
+  const { username, password, name, surname, email, birthdate, street, city, state, zip, interests, availability } = req.body;
+  console.log(req.body);
   // comprobar que los campos obligatorios no esten vacios
   if (username === '' || password === '') {
     //   req.flash('Flash is back');
@@ -45,23 +44,15 @@ router.post('/signup', (req, res, next) => {
       name,
       surname,
       email,
-      profilePic,
       birthdate,
-      gender,
-      street,
-      city,
-      state,
-      zip,
-      animals,
-      environment,
-      children,
-      disabilities,
-      healthcare,
-      social,
-      fulltime,
-      weekend,
-      summer,
-      travel,
+      address: {
+        street,
+        city,
+        state,
+        zip,
+      },
+      interests,
+      availability,
     });
 
     newUser.save((err) => {
@@ -69,11 +60,11 @@ router.post('/signup', (req, res, next) => {
         res.render('userauth/signup', { message: req.flash('alert', 'Something went wrong') });
       } else {
         // reenviar a profile
-        res.redirect('/profile');
+        res.redirect('/login');
       }
     });
   });
-// dar de alta un usuario en la base de datos. Reenviar a /profile/:username/modify
+// // dar de alta un usuario en la base de datos. Reenviar a /profile/:username/modify
 });
 
 router.get('/login', (req, res, next) => {
