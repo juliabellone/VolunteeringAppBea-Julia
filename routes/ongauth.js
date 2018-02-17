@@ -10,14 +10,14 @@ const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 
 router.get('/signup', (req, res, next) => {
-  res.render('ong/signup');
+  res.render('ongauth/signup');
 });
+
 
 router.post('/signup', (req, res, next) => {
   //datos
   console.log(req.body)
   const { username, password, birthdate, name, telephone, category, street, city, state, zip } = req.body;
-
 
   //comprobar que los campos obligatorios no esten vacios
   if (username === '' || password === '') {
@@ -28,14 +28,11 @@ router.post('/signup', (req, res, next) => {
   //comprobar que no exista el username
   Ong.findOne({ username }, 'username', (err, ong) => {
     if (ong !== null) {
-      req.flash('info', 'The username already exists')
-      res.redirect('/');  
-      return;
-    };
-    
-
+    req.flash('info', 'The username already exists')
+    res.redirect('/ong/signup');  
+    return;
+  }  
   //introducir datos en la bd
-  
   const salt = bcrypt.genSaltSync(bcryptSalt);
   const hashPass = bcrypt.hashSync(password, salt);
 
@@ -54,13 +51,13 @@ router.post('/signup', (req, res, next) => {
 
   newOng.save((err) => {
     if (err) {
-      res.render('ong/signup', { message: req.flash('alert', 'Something went wrong') });
+      res.render('ongauth/signup', { message: req.flash('alert', 'Something went wrong') });
     } else {
       res.redirect('/');
     }
   });  
+  });
 });
-
 router.get('/profile', (req, res, next) => {
   res.render('ong/profile');
 });
