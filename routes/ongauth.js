@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const flash = require('connect-flash');
+const passport = require('passport');
 
 
 const Ong = require('../models/ong');
@@ -16,7 +17,7 @@ router.get('/signup', (req, res, next) => {
 
 router.post('/signup', (req, res, next) => {
   // datos
-  console.log(req.body);
+  console.log(req.body)
   const { username, password, birthdate, name, telephone, category, street, city, state, zip } = req.body;
 
   // comprobar que los campos obligatorios no esten vacios
@@ -31,7 +32,7 @@ router.post('/signup', (req, res, next) => {
       req.flash('info', 'The username already exists')
       res.redirect('/ong/signup');  
       return;
-    }
+    }  
     // introducir datos en la bd
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
@@ -43,9 +44,9 @@ router.post('/signup', (req, res, next) => {
       name,
       telephone,
       category,
-      street, 
-      city, 
-      state, 
+      street,
+      city,
+      state,
       zip,
     });
 
@@ -55,12 +56,16 @@ router.post('/signup', (req, res, next) => {
       } else {
         res.redirect('/');
       }
-    });
+    }); 
   });
-});
-router.get('/profile', (req, res, next) => {
-  res.render('ong/profile');
-});
+S});
+
+router.post('/login', passport.authenticate('local1', {
+  successRedirect: ('/ong/profile'),
+  failureRedirect: '/login',
+  failureFlash: true,
+  passReqToCallback: true,
+}));
 
 module.exports = router;
 
