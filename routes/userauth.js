@@ -12,13 +12,13 @@ const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 
 router.get('/signup', (req, res, next) => {
-  res.render('auth/signup');
+  res.render('userauth/signup');
 });
 
 router.post('/signup', (req, res, next) => {
   console.log(req.body);
-  const username = req.body.username;
-  const password = req.body.password;
+  const { username, password } = req.body;
+  
   if (username === '' || password === '') {
     //   req.flash('Flash is back');
     req.flash('info', 'Indicate username and password')
@@ -43,7 +43,7 @@ router.post('/signup', (req, res, next) => {
 
     newUser.save((err) => {
       if (err) {
-        res.render('auth/signup', { message: req.flash('alert', 'Something went wrong') });
+        res.render('userauth/signup', { message: req.flash('alert', 'Something went wrong') });
       } else {
         res.redirect('/preferences');
       }
@@ -53,7 +53,7 @@ router.post('/signup', (req, res, next) => {
 });
 
 router.get('/login', (req, res, next) => {
-  res.render('auth/login', { message: req.flash('error') });
+  res.render('userauth/login', { message: req.flash('error') });
 });
 
 router.post('/login', passport.authenticate('local', {
@@ -62,9 +62,16 @@ router.post('/login', passport.authenticate('local', {
   failureFlash: true,
   passReqToCallback: true,
 }));
-//no se ven los menssajes
 
-// coomprabr que el user existe y el pass es correcto, reenviar a su /offers
+router.get('/preferences', (req, res, next) => {
+  res.render('userauth/preferences');
+});
+
+router.post('/preferences', (req, res, next) => {
+  const name = req.params.id;
+  res.redirect('/profile');
+});
+//falta hacer el post 
 
 router.get('/logout', (req, res, next) => {
 // eliminar sesion y enviar a '/'

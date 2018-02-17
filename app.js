@@ -10,9 +10,10 @@ const bodyParser = require('body-parser');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
-const auth = require('./routes/auth');
+const userauth = require('./routes/userauth');
 const ongauth = require('./routes/ongauth');
 const offers = require('./routes/offers');
+const ong = require('./routes/ong');
 const expressLayouts = require('express-ejs-layouts');
 const passport = require('passport');
 const configurePassport = require('./helpers/passport');
@@ -86,10 +87,12 @@ app.use((req, res, next)=>{
   next();
 })
 
+app.use('/', userauth);
 app.use('/', index);
-app.use('/user', users);
-app.use('/', auth);
+app.use('/', offers)
+app.use('/', users);
 app.use('/ong', ongauth);
+app.use('/ong', ong)
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
