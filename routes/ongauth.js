@@ -27,16 +27,13 @@ router.post('/signup', (req, res, next) => {
   }
   //comprobar que no exista el username
   Ong.findOne({ username }, 'username', (err, ong) => {
-    
-    console.log(ong)
-    // )if (ong !== null) {
-    //   req.flash('info', 'The username already exists')
-    //   res.redirect('/ong/signup');  
+    if (ong !== null) {
+      req.flash('info', 'The username already exists')
+      res.redirect('/');  
       return;
-
-
+    };
     
-  });  
+
   //introducir datos en la bd
   
   const salt = bcrypt.genSaltSync(bcryptSalt);
