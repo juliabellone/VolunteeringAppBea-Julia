@@ -17,8 +17,10 @@ router.get('/signup', (req, res, next) => {
 
 router.post('/signup', (req, res, next) => {
   console.log(req.body);
-  const { username, password } = req.body;
+  // recoger mas datos
+  const { username, password, name, surname, email, profilePic, birthdate, gender, street, city, state, zip, animals, environment, children, disabilities, healthcare, social, fulltime, weekend, summer, travel } = req.body;
   
+  // comprobar que los campos obligatorios no esten vacios
   if (username === '' || password === '') {
     //   req.flash('Flash is back');
     req.flash('info', 'Indicate username and password')
@@ -32,20 +34,42 @@ router.post('/signup', (req, res, next) => {
       res.redirect('/signup');  
       return;
     }
-
+    // introducir datos en la bd
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
 
+    // modificar con mas datos
     const newUser = new User({
       username,
       password: hashPass,
+      name,
+      surname,
+      email,
+      profilePic,
+      birthdate,
+      gender,
+      street,
+      city,
+      state,
+      zip,
+      animals,
+      environment,
+      children,
+      disabilities,
+      healthcare,
+      social,
+      fulltime,
+      weekend,
+      summer,
+      travel,
     });
 
     newUser.save((err) => {
       if (err) {
         res.render('userauth/signup', { message: req.flash('alert', 'Something went wrong') });
       } else {
-        res.redirect('/preferences');
+        // reenviar a profile
+        res.redirect('/profile');
       }
     });
   });
@@ -63,15 +87,15 @@ router.post('/login', passport.authenticate('local', {
   passReqToCallback: true,
 }));
 
-router.get('/preferences', (req, res, next) => {
-  res.render('userauth/preferences');
-});
+// router.get('/preferences', (req, res, next) => {
+//   res.render('userauth/preferences');
+// });
 
-router.post('/preferences', (req, res, next) => {
-  const name = req.params.id;
-  res.redirect('/profile');
-});
-//falta hacer el post 
+// router.post('/preferences', (req, res, next) => {
+//   const user = req.query.id;
+//   console.log(user);
+//   //res.redirect('/profile');
+// });
 
 router.get('/logout', (req, res, next) => {
 // eliminar sesion y enviar a '/'

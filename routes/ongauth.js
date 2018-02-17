@@ -15,47 +15,47 @@ router.get('/signup', (req, res, next) => {
 
 
 router.post('/signup', (req, res, next) => {
-  //datos
-  console.log(req.body)
+  // datos
+  console.log(req.body);
   const { username, password, birthdate, name, telephone, category, street, city, state, zip } = req.body;
 
-  //comprobar que los campos obligatorios no esten vacios
+  // comprobar que los campos obligatorios no esten vacios
   if (username === '' || password === '') {
     req.flash('info', 'Indicate username and password')
     res.redirect('/ong/signup');
     return;
   }
-  //comprobar que no exista el username
+  // comprobar que no exista el username
   Ong.findOne({ username }, 'username', (err, ong) => {
     if (ong !== null) {
-    req.flash('info', 'The username already exists')
-    res.redirect('/ong/signup');  
-    return;
-  }  
-  //introducir datos en la bd
-  const salt = bcrypt.genSaltSync(bcryptSalt);
-  const hashPass = bcrypt.hashSync(password, salt);
-
-  const newOng = new Ong({
-    username,
-    password: hashPass,
-    birthdate,
-    name,
-    telephone,
-    category,
-    street, 
-    city, 
-    state, 
-    zip,
-  });
-
-  newOng.save((err) => {
-    if (err) {
-      res.render('ongauth/signup', { message: req.flash('alert', 'Something went wrong') });
-    } else {
-      res.redirect('/');
+      req.flash('info', 'The username already exists')
+      res.redirect('/ong/signup');  
+      return;
     }
-  });  
+    // introducir datos en la bd
+    const salt = bcrypt.genSaltSync(bcryptSalt);
+    const hashPass = bcrypt.hashSync(password, salt);
+
+    const newOng = new Ong({
+      username,
+      password: hashPass,
+      birthdate,
+      name,
+      telephone,
+      category,
+      street, 
+      city, 
+      state, 
+      zip,
+    });
+
+    newOng.save((err) => {
+      if (err) {
+        res.render('ongauth/signup', { message: req.flash('alert', 'Something went wrong') });
+      } else {
+        res.redirect('/');
+      }
+    });
   });
 });
 router.get('/profile', (req, res, next) => {
