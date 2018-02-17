@@ -40,13 +40,11 @@ const app = express();
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
-app.set('view engine', 'ejs');
 
 app.set('layout extractScripts', true); // see Documentation
 app.set('layout extractStyles', true); // see Documentation
 app.set('layout extractMetas', true); // see Documentation
 app.set('layout', 'layouts/main'); // custom layout
-
 
 const User = require('./models/user');
 const Ong = require('./models/ong');
