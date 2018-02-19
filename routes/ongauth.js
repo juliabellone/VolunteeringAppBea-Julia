@@ -2,6 +2,8 @@ const express = require('express');
 const router = express.Router();
 const flash = require('connect-flash');
 const passport = require('passport');
+const multer = require('multer');
+const upload = multer({ dest: './public/uploads/profile_pics' });
 
 
 const Ong = require('../models/ong');
@@ -15,9 +17,10 @@ router.get('/signup', (req, res, next) => {
 });
 
 
-router.post('/signup', (req, res, next) => {
+router.post('/signup', upload.single('profilepic'), (req, res, next) => {
   // datos
   console.log(req.body)
+  console.log(req.file)
   const { username, password, birthdate, name, telephone, category, street, city, state, zip } = req.body;
 
   // comprobar que los campos obligatorios no esten vacios
@@ -44,6 +47,10 @@ router.post('/signup', (req, res, next) => {
       name,
       telephone,
       category,
+      picture: {
+        pic_path: `uploads/profile_pics/${req.file.filename}`,
+        pic_name: `${req.file.originalname}.jpg`,
+      },
       address: {
         street,
         city,
