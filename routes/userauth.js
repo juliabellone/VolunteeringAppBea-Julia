@@ -3,7 +3,7 @@ const router = express.Router();
 const passport = require('passport');
 const flash = require('connect-flash');
 const multer = require('multer');
-const upload = multer({ dest: './public/uploads/profile_pics/' });
+const upload = multer({ dest: 'public/uploads/profile_pics' });
 
 // User model
 const User = require('../models/user');
@@ -47,8 +47,8 @@ router.post('/signup', upload.single('profilepic'), (req, res, next) => {
       email,
       birthdate,
       picture: {
-        pic_path: `public/uploads/profile_pics/${req.file.filename}`,
-        pic_name: req.file.originalname,
+        pic_path: `uploads/profile_pics/${req.file.filename}`,
+        pic_name: `${req.file.originalname}.jpg`,
       },
       address: {
         street,
