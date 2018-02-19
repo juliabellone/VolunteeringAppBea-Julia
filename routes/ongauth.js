@@ -44,17 +44,19 @@ router.post('/signup', (req, res, next) => {
       name,
       telephone,
       category,
-      street,
-      city,
-      state,
-      zip,
+      address: {
+        street,
+        city,
+        state,
+        zip,
+      },
     });
 
     newOng.save((err) => {
       if (err) {
         res.render('ongauth/signup', { message: req.flash('alert', 'Something went wrong') });
       } else {
-        res.redirect('/');
+        res.redirect('/login');
       }
     }); 
   });

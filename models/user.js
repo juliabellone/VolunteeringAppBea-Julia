@@ -7,10 +7,10 @@ const userSchema = new Schema(
     username: { type: String, required: true },
     password: { type: String, required: true },
     email: { type: String },
-    // picture: {
-    //   pic_path: { type: String },
-    //   pic_name: { type: String },
-    // },
+    picture: {
+      pic_path: { type: String },
+      pic_name: { type: String },
+    },
     birthdate: { type: Date },
     name: { type: String },
     surname: { type: String },
