@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const passport = require('passport');
 const flash = require('connect-flash');
-
+const multer = require('multer');
+const upload = multer({ dest: './public/uploads/profile_pics/' });
 
 // User model
 const User = require('../models/user');
@@ -15,7 +16,7 @@ router.get('/signup', (req, res, next) => {
   res.render('userauth/signup');
 });
 
-router.post('/signup', (req, res, next) => {
+router.post('/signup', upload.single('profilepic'), (req, res, next) => {
   // recoger mas datos
   const { username, password, name, surname, email, birthdate, street, city, state, zip, interests, availability } = req.body;
   console.log(req.body);
@@ -46,7 +47,7 @@ router.post('/signup', (req, res, next) => {
       email,
       birthdate,
       picture: {
-        pic_path: `/uploads/profile_pics/${req.file.filename}`,
+        pic_path: `public/uploads/profile_pics/${req.file.filename}`,
         pic_name: req.file.originalname,
       },
       address: {

@@ -1,6 +1,6 @@
 <p>Esto es el signup</p>
 
-<form action='/signup' method='POST' id='form-container'>
+<form enctype='multipart/form-data' action='/signup' method='POST' id='form-container'>
     <label for="username">Username</label>
     <input type='text' name="username">
     <br>
@@ -21,7 +21,7 @@
     <input type='date' name="birthdate">
     <br>
     <label>Select a profile picture</label>
-    <input type="file" name="profile-pic">
+    <input type="file" name="profilepic">
     <p>Address</p>
     <label for="address">Street</label>
     <input type='text' name="street">
