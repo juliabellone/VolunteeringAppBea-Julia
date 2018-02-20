@@ -91,7 +91,7 @@ app.use('/', index);
 app.use('/', offers)
 app.use('/', users);
 app.use('/ong', ongauth);
-app.use('/ong', ong)
+app.use('/ong', ong);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
