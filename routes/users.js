@@ -13,7 +13,7 @@ router.get('/profile', (req, res, next) => {
   const userId = req.user.id;
   User.findById(userId)
     .then((user) => {
-      res.render('user/profile', { username: user.username });
+      res.render('user/profile', { user });
     })
     .catch((err) => {
       next(err);

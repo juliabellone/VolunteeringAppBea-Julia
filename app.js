@@ -20,6 +20,7 @@ const configurePassport = require('./helpers/passport');
 const flash = require('connect-flash');
 const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
+const multer = require('multer');
 
 
 const mongoose = require('mongoose');

@@ -1,24 +1,8 @@
-<p>this is the ong profile</p>
+<h1>Profile ong</h1>
 
-<p>Hola <%= username %> </p>
+<h2><%= ong.username %> </h2>
 
-<!-- <p>Offers <%= offers %> </p> -->
+<img src="/<%= ong.picture.pic_path %>"/>
 
-<div>
-  <p>Offer 1</p>
-  <p>Image</p>
-  <p>Title</p>
-  <p>NGO's name <%= name %> </p>
-  <p>Cause</p>
-  <p>People attending</p>
-</div>
+<button>Create a new offer</button>
 
-<form action='/profile' method='POST' id='form-container'>
-  <button>Create a new offer</button>
-  <%- include('../partials/notifications') %>
-</form>
-
-<form action='/profile' method='POST' id='form-container'>
-  <button>Know more</button> 
-  <%- include('../partials/notifications') %>
-</form>
