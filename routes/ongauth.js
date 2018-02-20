@@ -17,7 +17,7 @@ router.get('/signup', (req, res, next) => {
 
 router.post('/signup', (req, res, next) => {
   // datos
-  console.log(req.body)
+  console.log(req.body);
   const { username, password, birthdate, name, telephone, category, street, city, state, zip } = req.body;
 
   // comprobar que los campos obligatorios no esten vacios
@@ -29,10 +29,10 @@ router.post('/signup', (req, res, next) => {
   // comprobar que no exista el username
   Ong.findOne({ username }, 'username', (err, ong) => {
     if (ong !== null) {
-      req.flash('info', 'The username already exists')
-      res.redirect('/ong/signup');  
+      req.flash('info', 'The username already exists');
+      res.redirect('/ong/signup');
       return;
-    }  
+    }
     // introducir datos en la bd
     const salt = bcrypt.genSaltSync(bcryptSalt);
     const hashPass = bcrypt.hashSync(password, salt);
@@ -54,9 +54,9 @@ router.post('/signup', (req, res, next) => {
       if (err) {
         res.render('ongauth/signup', { message: req.flash('alert', 'Something went wrong') });
       } else {
-        res.redirect('/');
+        res.redirect('/login');
       }
-    }); 
+    });
   });
 });
 

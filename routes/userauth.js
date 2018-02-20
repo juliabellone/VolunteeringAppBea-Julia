@@ -3,7 +3,6 @@ const router = express.Router();
 const passport = require('passport');
 const flash = require('connect-flash');
 
-
 // User model
 const User = require('../models/user');
 

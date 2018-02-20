@@ -83,14 +83,14 @@ app.use((req, res, next)=>{
   res.locals.successMessages = req.flash('success');
   res.locals.warningMessages = req.flash('warning');
   next();
-})
+});
 
 app.use('/', userauth);
 app.use('/', index);
-app.use('/', offers)
+app.use('/', offers);
 app.use('/', users);
 app.use('/ong', ongauth);
-app.use('/ong', ong)
+app.use('/ong', ong);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {

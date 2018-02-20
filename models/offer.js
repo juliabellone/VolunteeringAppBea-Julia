@@ -11,8 +11,11 @@ const offerSchema = new Schema(
       pic_name: { type: String },
     },
     title: { type: String },
-    description: { type: String },
     category: { type: String },
+    about: { type: String },
+    when: { type: Date },
+    where: { type: String },
+    requirements: { type: String },
     _usersRegistered: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   },
   {

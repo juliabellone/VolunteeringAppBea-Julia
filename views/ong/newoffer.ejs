@@ -1,0 +1,44 @@
+<h1>Create new offer</h1>
+
+<form enctype='multipart/form-data' action = '/ong/newoffer' method = 'POST' id = 'form-container'>
+  <label for ="title">Cause's name</label>
+  <input type='text' name="title">
+  <br>
+  <label>Select a picture</label>
+  <input type="file" name="profilepic">
+  <br>
+  <label for="category">Cause's category</label>
+  <select name="category" required>
+    <option value = "">Select one category</option>
+    <option value="rights">Advocacy and Human Rights</option>
+    <option value="animals">Animals</option>
+    <option value="arts">Arts and Culture</option>
+    <option value="children">Children and Youth</option>
+    <option value="community">Community</option>
+    <option value="technology">Technology</option>
+    <option value="education">Education</option>
+    <option value="health">Health and Medicine</option>
+    <option value="crisis">Global crisis</option>
+    <option value="environment">Environment</option>
+    <option value="disabilities">People with disabilities</option>
+    <option value="homeless">Homeless and Housing</option>
+    <option value="inmigrants">Inmigrants and Refugees</option>
+    <option value="sports">Sports and Recreation</option>
+    <option value="legal">Justice and Legal</option>
+  </select>
+  <br>
+  <label for="about">About</label>
+  <input type='text' name="about">
+  <br>
+  <label for="when">When</label>
+  <input type='date' name="when">
+  <br>
+  <label for="where">Where</label>
+  <input type='text' name="where">
+  <br>
+  <label for="requirements">Requirements</label>
+  <input type='text' name="requirements">
+  <br>
+  <button>Submit</button>
+  <label></label>
+</form>

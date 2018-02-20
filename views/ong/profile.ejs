@@ -1,3 +1,24 @@
 <p>this is the ong profile</p>
 
 <p>Hola <%= username %> </p>
+
+<!-- <p>Offers <%= offers %> </p> -->
+
+<div>
+  <p>Offer 1</p>
+  <p>Image</p>
+  <p>Title</p>
+  <p>NGO's name <%= name %> </p>
+  <p>Cause</p>
+  <p>People attending</p>
+</div>
+
+<form action='/profile' method='POST' id='form-container'>
+  <button>Create a new offer</button>
+  <%- include('../partials/notifications') %>
+</form>
+
+<form action='/profile' method='POST' id='form-container'>
+  <button>Know more</button> 
+  <%- include('../partials/notifications') %>
+</form>
