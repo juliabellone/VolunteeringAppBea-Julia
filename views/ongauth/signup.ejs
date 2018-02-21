@@ -1,6 +1,93 @@
 <p>Signup de la ong</p>
+<form enctype='multipart/form-data' action='/signup' method='POST' id='form-container'>
 
-<form enctype='multipart/form-data' action='/ong/signup' method='POST' id='form-container'>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" id="inputEmail4" placeholder="username" name="username">
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="inputPassword4">Password</label>
+            <input type="password" class="form-control" id="inputPassword4" placeholder="password" name="password">
+        </div>
+    </div>
+    <br><div class="form-group">
+        <label for="birthdate" class="label-control">Birthdate</label>
+        <input type="text" class="form-control datetimepicker" value="10/05/2016" />
+    </div>
+    <div class="form-row">
+        <div class="col">
+            <label for="name">NGO's Name</label>
+            <input type="text" class="form-control" placeholder="First name" name="name">
+        </div>
+    
+        <div class="col">
+            <label for="email">Email address</label>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email" name="email">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="col">
+            <label for="name">Telefone</label>
+            <input type="text" class="form-control" placeholder="telephone" name="telephone">
+        </div>
+        <div class="col">
+            <label for="category">Category</label>
+            <select id="category" class="form-control" name="category">
+                <option selected>Choose...</option>
+                <option value="">Select one category</option>
+                <option value="Rights">Advocacy and Human Rights</option>
+                <option value="Animals">Animals</option>
+                <option value="Children">Community</option>
+                <option value="Community">Arts and Culture</option>
+                <option value="Technology">Technology</option>
+                <option value="Education">Education</option>
+                <option value="Health">Health and Medicine</option>
+                <option value="Crisis">Global crisis</option>
+                <option value="Environment">Environment</option>
+                <option value="Disabilities">People with disabilities</option>
+                <option value="Homeless">Homeless and Housing</option>
+                <option value="Inmigrants">Inmigrants and Refugees</option>
+                <option value="Sports">Sports and Recreation</option>
+                <option value="Legal">Justice and Legal</option>
+            </select>
+        </div>
+    </div>
+
+    <label for="picture">Select a profile picture</label>
+    <input type="file" name="profilepic">
+
+    <div class="form-group">
+        <label for="inputAddress">Address</label>
+        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+    </div>
+    
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="address">City</label>
+            <input type="text" class="form-control" id="inputCity" name="city">
+        </div>
+    
+        <div class="form-group col-md-4">
+            <label for="address">State</label>
+            <select id="inputState" class="form-control" name="state">
+                <option selected>Choose...</option>
+                <option>...</option>
+            </select>
+        </div>
+    
+        <div class="form-group col-md-2">
+            <label for="address">Zip</label>
+            <input type="text" class="form-control" id="inputZip" name="zip">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Sign in</button>
+    <%- include('../partials/notifications') %>
+
+</form>
+
+<!-- <form enctype='multipart/form-data' action='/ong/signup' method='POST' id='form-container'>
     <label for="username">Username</label>
     <input type='text' name="username">
     <br>
@@ -52,4 +139,4 @@
     <br>
     <button>Submit</button>
     <%- include('../partials/notifications') %>
-</form>
+</form> -->

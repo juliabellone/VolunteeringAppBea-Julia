@@ -21,7 +21,7 @@ router.post('/signup', upload.single('profilepic'), (req, res, next) => {
   // datos
   console.log(req.body)
   console.log(req.file)
-  const { username, password, birthdate, name, telephone, category, street, city, state, zip } = req.body;
+  const { username, password, birthdate, email, name, telephone, category, street, city, state, zip } = req.body;
 
   // comprobar que los campos obligatorios no esten vacios
   if (username === '' || password === '') {
