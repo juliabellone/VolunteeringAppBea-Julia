@@ -2,69 +2,74 @@
 
 <p>Login User</p>
 
-<div class="section section-signup page-header" style="background-image:url:('assets/img/kit/free/city.jpg')">
-    <div class="section text-center">
-        <div class="row">
-            <div class="col-md-8 ml-auto mr-auto">
-                <label for="username">Username</label>
-                <input type='text' name="username">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8 ml-auto mr-auto">
-                <label for="password">Password</label>
-                <input type='password' name="password">
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-8 ml-auto mr-auto">
-                <button type="submit" class="btn btn-primary">Login</button>
+<div class="main main-raised">
+    <div class="section section-signup page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 ml-auto mr-auto">
+                    <div class="card card-sign">
+                        <form class="form" method action>
+                            <div class="card-header card-header-primary text-center">
+                                <h4>Log in as Volunteer</h4>
+                            </div>
+                            <div class="card-body">
+                                <span class="bmd-form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">face</i>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="username">
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="card-body">
+                                <span class="bmd-form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">lock-outline</i>
+                                        </span>
+                                        <input type='password' class="form-control" name="password">
+                                    </div>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4 ml-auto mr-auto">
+                    <div class="card card-sign">
+                        <form class="form" method action>
+                            <div class="card-header card-header-primary text-center">
+                                <h4>Log in as NGO</h4>
+                            </div>
+                            <div class="card-body">
+                                <span class="bmd-form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">face</i>
+                                        </span>
+                                        <input type="text" class="form-control" placeholder="username">
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="card-body">
+                                <span class="bmd-form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">lock-outline</i>
+                                        </span>
+                                        <input type='password' class="form-control" name="password">
+                                    </div>
+                                </span>
+                            </div>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    <%- include('../partials/notifications') %>
 </div>
 
-<!-- <div class="container">
-    <div class="row">
-        <div class="col-md-4 ml-auto mr-auto">
-            <div class="card card-signup">
-                <form class="form" method action">
-                    <h4>Sign Up</h4>
-                    <div class="social-line">
-
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-<p>Login ONG</p>
 
 
-<p>Login User</p>
 
-<form action='/login' method='POST' id='form-container'>
-    <label for="username">Username</label>
-    <input type='text' name="username">
-    <br>
-    <label for="password">Password</label>
-    <input type='password' name="password">
-    <br>
-    <button>Submit</button>
-    <%- include('../partials/notifications') %>
-</form>
 
-<p>Login ONG</p>
-
-<form action='ong/login' method='POST' id='form-container'>
-    <label for="username">Username</label>
-    <input type='text' name="username">
-    <br>
-    <label for="password">Password</label>
-    <input type='password' name="password">
-    <br>
-    <button>Submit</button>
-    <%- include('../partials/notifications') %>
-</form>
