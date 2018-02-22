@@ -7,13 +7,6 @@ const favicon = require('serve-favicon');
 const logger = require('morgan');
 const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
-
-const index = require('./routes/index');
-const users = require('./routes/users');
-const userauth = require('./routes/userauth');
-const ongauth = require('./routes/ongauth');
-const offers = require('./routes/offers');
-const ong = require('./routes/ong');
 const expressLayouts = require('express-ejs-layouts');
 const passport = require('passport');
 const configurePassport = require('./helpers/passport');
@@ -22,6 +15,13 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const multer = require('multer');
 
+
+const index = require('./routes/index');
+const users = require('./routes/users');
+const userauth = require('./routes/userauth');
+const ongauth = require('./routes/ongauth');
+const offers = require('./routes/offers');
+const ong = require('./routes/ong');
 
 const mongoose = require('mongoose');
 mongoose.Promise = Promise;
@@ -88,7 +88,7 @@ app.use((req, res, next)=>{
 
 app.use('/', userauth);
 app.use('/', index);
-app.use('/', offers);
+app.use('/offer', offers);
 app.use('/', users);
 app.use('/ong', ongauth);
 app.use('/ong', ong);

@@ -15,7 +15,6 @@
 
   </div>
 
-</div>
 
 <% if (offers.length > 0) { %>
     <% offers.forEach((offer) => { %>
@@ -24,7 +23,7 @@
         <div class="offer-data">
             <span class="offer-data-title"><%= offer.title %></span>
             <span class="offer-data-category"><%= offer.category %></span>
-            <button class="offer-data-button"><a href="#">Know more</a></button>
+            <button class="offer-data-button"><a href="/offer/<%= offer._id %>">Know more</a></button>
         </div>
       </div>
     <%  }) %>
