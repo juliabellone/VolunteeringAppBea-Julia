@@ -16,7 +16,7 @@ router.get('/signup', (req, res, next) => {
   res.render('ongauth/signup');
 });
 
-// ong/signupt
+// ong/signup
 router.post('/signup', upload.single('profilepic'), (req, res, next) => {
   // datos
   console.log(req.body)
@@ -25,7 +25,7 @@ router.post('/signup', upload.single('profilepic'), (req, res, next) => {
 
   // comprobar que los campos obligatorios no esten vacios
   if (username === '' || password === '') {
-    req.flash('info', 'Indicate username and password')
+    req.flash('info', 'Indicate username and password');
     res.redirect('/ong/signup');
     return;
   }
