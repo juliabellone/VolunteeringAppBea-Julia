@@ -27,11 +27,10 @@ router.get('/opportunities', (req, res, next) => {
   console.log(userInterests);
   const offers = [];
   Offer.find({ category: { $in: userInterests } })
-    
-    // <span><%= offer._ong.name %></span> el populate no funciona
+    .populate('_ong')
     .then((offers) => {
-      .populate('_ong');
       res.render('user/opportunities', { offers });
+      console.log('hola' + offers[0].ong);
     })
     .catch((err) => {
       next(err);
