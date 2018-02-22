@@ -210,23 +210,42 @@ Opciones predeterminadas en diferente áreas: social, mediambiental, médico-san
 }
 ```
 
-##RUTAS POSIBLES 
-Metodo | Action | Description | Login  
---- | --- | --- | --- 
-GET | /signup | signup get | x
-POST | /signup | signup post | x
-GET | /preferences | usuario indica preferecnias | x
-POST | /preferences | update del user | x
-GET | / | index | x
-GET | /login | login get | x
-POST | /login | login post | y
-GET | /logout | destroy user session | y
-GET | /offers | user sees offers | y
-GET | /profile | profile of the user | y
-GET | /profile/preferences | fill the preferences
-POST | /profile/preferences | add changes of profile to dbs
-GET | offers/:offerid | specific offer page |y|
-POST | offers/:offerid | user signups in offer |y|
+##RUTAS USER 
+Metodo | Action | Description | Login | Status
+--- | --- | --- | --- | --- |
+GET | / | index | x | :white_check_mark:
+GET | /signup | signup get | x | :white_check_mark:
+POST | /signup | signup post | x | :white_check_mark:
+GET | /login | login get | x | :white_check_mark:
+POST | /login | login post | y | :white_check_mark:
+GET | /logout | destroy user session | y | :white_check_mark:
+GET | /opportunities | show view | y | :white_check_mark:
+POST | /offer/:offerId/subscribe | subscribe to an offer | y | :x:
+POST | /offer/:offerId/unsubscribe | unsubscribe from an offer | y | :x:
+GET | /profile | shows private user profile to himself | y | :white_check_mark:
+POST | /profile | edit user profile | y | :x:
+GET | /offer/:offerId | shows specific offer | x | :white_check_mark:
+GET | ong/:ongId | shows ONG public profile | x | :x:
+GET | user/:userId | shows user public profile | x | :x:
+
+
+##RUTAS ONG 
+Metodo | Action | Description | Login | Status
+--- | --- | --- | --- | --- |
+GET | /logout | destroy user session | y | :white_check_mark:
+GET | /login | login get ong | x | :white_check_mark:
+POST | ong/login | login post ong | y | :white_check_mark:
+GET | /ong/signup | signup get | x | :white_check_mark:
+POST | /ong/signup | signup post | x | :white_check_mark:
+GET | ong/profile | private shows ong profile | y | :white_check_mark:
+POST | ong/profile | edit user profile | y | :white_check_mark:
+POST | ong/profile | edits user profile | y | :x:
+GET | ong/newoffer | shows form for new offfer | y | :white_check_mark:
+POST | ong/newoffer | creates offer in db | y | :white_check_mark:
+GET | ong/:offerId | shows form form updating offer | y | :x: 
+POST | ong/:offerId | updates selected offer | y | :x:
+POST | ong/:offerId/delete | deletes existing offer | y | :x:
+
 
 
 _____________________________

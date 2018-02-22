@@ -16,7 +16,7 @@ router.get('/signup', (req, res, next) => {
   res.render('ongauth/signup');
 });
 
-
+// ong/signupt
 router.post('/signup', upload.single('profilepic'), (req, res, next) => {
   // datos
   console.log(req.body)
