@@ -15,7 +15,6 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const multer = require('multer');
 
-
 const index = require('./routes/index');
 const users = require('./routes/users');
 const userauth = require('./routes/userauth');
@@ -46,6 +45,7 @@ app.set('layout extractScripts', true); // see Documentation
 app.set('layout extractStyles', true); // see Documentation
 app.set('layout extractMetas', true); // see Documentation
 app.set('layout', 'layouts/main'); // custom layout
+app.set('layout extractScripts', true);
 
 const User = require('./models/user');
 const Ong = require('./models/ong');
