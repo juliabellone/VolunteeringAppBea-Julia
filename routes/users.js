@@ -4,6 +4,8 @@ const flash = require('connect-flash');
 
 const User = require('../models/user');
 const Offer = require('../models/offer');
+const Ong = require('../models/ong');
+
 
 /* GET users listing. */
 // router.get('/:username', (req, res, next) => {
