@@ -1,8 +1,42 @@
 <div class="offer">
     <div class="photo"><img src="<%=offer.picture.pic_path %>"></div>  
     <div class="offer-data">
-        <span class="offer-data-title"><a href=""><%= offer.title %></a></span>
+        <span class="offer-data-title"><%= offer.title %></span>
         <span class="offer-data-category"><%= offer.category %></span>
-        <button class="offer-data-button"><a href="#">Know more</a></button>
+        <span class="offer-data-about"><%= offer.about %></span>
+        <span class="offer-data-when"><%= offer.when %></span>
+        <span class="offer-data-where"><%= offer.where %></span>
+        <span class="offer-data-requirements"><%= offer.requirements %></span>
+        <button id="subscribe" class="offer-data-button">Join the Cause</button>
     </div>
   </div>
+  <%- contentFor('scripts') %>
+  <script>
+  $(document).ready(function(){
+    $('#subscribe').on('click', (event) => {    
+        console.log('hola')    
+        // Make a POST request
+        // $.ajax({
+        //     // Notice that we are using POST
+        //   method:  'POST',
+        //   url:     `/offer/${offer._id}/subscribe`,
+        //     // The data key is for sending data in a POST, PUT or PATCH!
+        //   /// data:    characterInfo,
+        //   success: showFeedback,
+        //   error:   handleError
+        // });
+    });
+    
+    
+    function showFeedback (postResponse) {
+        console.log('post success');
+        console.log(postResponse);
+        alert('te has suscrito correctamente a la oferta')
+    }
+    
+    function handleError (err) {
+        console.log('Oh no! Error:');
+        console.log(err);
+    }
+  });
+</script>
