@@ -27,12 +27,10 @@ router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 
 router.get('/opportunities', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const userInterests = req.user.interests;
-  Offer.find({ category: { $in: userInterests } })
-    //.populate('_ong')
-    .exec(function(err, offers) {
-      if (err) { return next(err) }
-      res.render('user/opportunities', { offers })
-      console.log(offers[0]);
+  Offer.find({ category: { $in: userInterests } }).populate('_ong').exec(function (err, offers) {
+    if (err) { return next(err) }
+    res.render('user/opportunities', { offers })
+    console.log(offers);
     });
 });
 
