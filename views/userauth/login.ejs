@@ -1,29 +1,74 @@
-<p>esto es el login</p>
 
-
-
-<p>Login User</p>
-
-<form action='/login' method='POST' id='form-container'>
-    <label for="username">Username</label>
-    <input type='text' name="username">
-    <br>
-    <label for="password">Password</label>
-    <input type='password' name="password">
-    <br>
-    <button>Submit</button>
+<div class="main main-raised">
+    <div class="section section-signup page-header">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 ml-auto mr-auto">
+                    <div class="card card-sign">
+                        <form action='/login' method='POST' id='form-container'>
+                            <div class="card-header card-header-primary text-center">
+                                <h4>Log in as Volunteer</h4>
+                            </div>
+                            <div class="card-body">
+                                <span class="bmd-form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">face</i>
+                                        </span>
+                                        <input class="form-control" type='text' name="username">
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="card-body">
+                                <span class="bmd-form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">lock</i>
+                                        </span>
+                                        <input class="form-control" type='password' name="password">
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="card-footer justify-content-center">
+                                <button class="btn btn-link btn-primary btn-lg">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-4 ml-auto mr-auto">
+                    <div class="card card-sign">
+                        <form action='ong/login' method='POST' id='form-container'>
+                            <div class="card-header card-header-primary text-center">
+                                <h4>Log in as NGO</h4>
+                            </div>
+                            <div class="card-body">
+                                <span class="bmd-form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">face</i>
+                                        </span>
+                                        <input class="form-control" type='text' name="username">
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="card-body">
+                                <span class="bmd-form-group">
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="material-icons">lock</i>
+                                        </span>
+                                        <input class="form-control" type='password' name="password">
+                                    </div>
+                                </span>
+                            </div>
+                            <div class="card-footer justify-content-center">
+                                <button class="btn btn-link btn-primary btn-lg">Submit</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <%- include('../partials/notifications') %>
-</form>
-
-<p>Login ONG</p>
-
-<form action='ong/login' method='POST' id='form-container'>
-    <label for="username">Username</label>
-    <input type='text' name="username">
-    <br>
-    <label for="password">Password</label>
-    <input type='password' name="password">
-    <br>
-    <button>Submit</button>
-    <%- include('../partials/notifications') %>
-</form>
+</div>

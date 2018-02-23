@@ -1,19 +1,36 @@
 <h1>Find your volunteering opportunity</h1>
-
-
-
+<div class="all-opportunities">
 <% if (offers.length > 0) { %>
     <% offers.forEach((offer) => { %>
-      <div class="offer">
-        <div class="photo"><img src="<%=offer.picture.pic_path %>"></div>  
-        <div class="offer-data">
-            <span class="offer-data-title"><%= offer.title %></span>
-            <br>
-            <span class="offer-data-category"><%= offer.category %></span>
-            <br>
-            <br>
-            <button class="offer-data-button"><a href="/offer/<%= offer._id %>">Know more</a></button>
+      <div class="main main-raised offer-opportunity">
+        <div class="profile-content">
+          <div class="container">
+            <div class="row">
+              <div class="md-auto ml-auto mr-auto">
+                <div class="profile">
+                  <div class="avatar">
+                    <img src="<%=offer.picture.pic_path %>" class="img-raised  img-fluid">
+                  </div>
+                </div>
+              </div>
+              <div class="container">
+                <div class="title">
+                  <h3 class="title"><%= offer.title %></h3>
+                  <h4><a href="#">NGO's name (to be done)</a></h4>
+                  <span class="badge badge-pill badge-primary"><%= offer.category %></span>
+                </div>
+                <div class="section text-center">
+                  <div class="row">
+                    <div class="col-md-8 ml-auto mr-auto">
+                      <h3 class="title"><a href="/offer/<%= offer._id %>">Know more</a></h3>
+                    </div>
+                  </div>
+                </div>  
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     <%  }) %>
 <% } %>
+</div>

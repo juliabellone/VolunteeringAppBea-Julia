@@ -65,7 +65,7 @@ router.post('/signup', upload.single('profilepic'), (req, res, next) => {
       if (err) {
         res.render('userauth/signup', { message: req.flash('alert', 'Something went wrong') });
       } else {
-        // reenviar a profile
+        // reenviar a login
         res.redirect('/login');
       }
     });

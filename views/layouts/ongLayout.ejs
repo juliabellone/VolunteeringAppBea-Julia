@@ -5,17 +5,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>HOLA</title>
-    <link rel="stylesheet" type="text/css" href="../../stylesheets/style.css">
-    <script
-        src="https://code.jquery.com/jquery-3.3.1.js"
-        integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
-        crossorigin="anonymous">
-    </script>
+    <!--     Fonts and icons     -->
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Roboto+Slab:400,700|Material+Icons"/>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" />
+    <!-- Material Kit CSS -->
+    <link rel="stylesheet" type="text/css" href="/stylesheets/material-kit.min.css">
+    <link rel="stylesheet" type="text/css" href="stylesheets/material-kit.min.css">
+    <!-- Nuestra hoja de estilos debe ir última --> 
+    <link rel="stylesheet" type="text/css" href="/stylesheets/style.css">
 </head>
 <body>
     <%- include('../partials/navbarOng')%>
     <%- body -%>
     <%- include('../partials/footer')%>
-
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" crossorigin="anonymous"></script>    
+    <!--   Core JS Files   -->
+    <script src="/js/material-kit.min.js"></script>
+    <script src="/js/core/popper.min.js"></script>
+    <script src="/js/bootstrap-material-design.js"></script>
+    <!-- Plugin for Date Time Picker and Full Calendar Plugin-->
+    <script src="/js/plugins/moment.min.js"></script>
+    <!-- Plugin for the Datepicker, full documentation here: https://github.com/Eonasdan/bootstrap-datetimepicker -->
+    <script src="/js/plugins/bootstrap-datetimepicker.min.js"></script>
+    <!-- Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="/js/plugins/nouislider.min.js"></script>
+    <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
+    <script src="/js/material-kit.js?v=2.0.0"></script>
+    <%- script %>
 </body>
 </html>

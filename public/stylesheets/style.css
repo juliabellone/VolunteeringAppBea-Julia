@@ -1,11 +1,12 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-  color: red;
-  background-color: aquamarine;
+.all-opportunities {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
-
-a {
-  color: #00B7FF;
+.all-opportunities :first-child {
+  margin-top: 50px;
 }
-
+.offer-opportunity {
+  width: 60%;
+  margin-bottom: 100px;  
+}
