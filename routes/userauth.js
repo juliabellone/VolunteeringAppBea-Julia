@@ -13,6 +13,7 @@ const bcrypt = require('bcrypt');
 const bcryptSalt = 10;
 
 router.get('/signup', (req, res, next) => {
+  req.logout();
   res.render('userauth/signup');
 });
 
@@ -73,6 +74,7 @@ router.post('/signup', upload.single('profilepic'), (req, res, next) => {
 });
 
 router.get('/login', (req, res, next) => {
+  req.logout();
   res.render('userauth/login', { message: req.flash('error') });
 });
 
