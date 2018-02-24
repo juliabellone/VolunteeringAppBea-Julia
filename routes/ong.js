@@ -49,17 +49,25 @@ router.post('/newoffer', ensureLogin.ensureLoggedIn(), upload.single('offerpic')
         where,
         requirements,
       });
-      newOffer.save((err) => {
+      newOffer.save((err, offer) => {
         if (err) {
           res.render('ong/newoffer', { message: req.flash('alert', 'Something went wrong') });
         } else {
-          res.redirect('/ong/profile');
+          ong._offersPublished.push(offer._id);
+          ong.save ( (err) => {
+            if (err) {
+              next (err)
+            } else {
+              res.redirect('/ong/profile');
+            }
+          })
         }
       });
     } else {
       req.flash('info', 'You are not an NGO')
       res.redirect('/ong/newoffer');  
     }
+
   });
 });
 
