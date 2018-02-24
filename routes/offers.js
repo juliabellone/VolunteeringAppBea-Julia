@@ -20,7 +20,8 @@ router.get('/:offerId', (req, res, next) => {
      //renderiza pagina
     const userId = req.user.id;
     const offerId = req.params.offerId;
-    let userStatus = undefined;
+    let userStatus = false;
+    
     User.findById(userId, function(err, user){
       if (user !== null) {
         Offer.findById(offerId, (err, offer) => {
@@ -30,6 +31,7 @@ router.get('/:offerId', (req, res, next) => {
                 userStatus = true;
               }
             }
+            console.log(userStatus)
           res.render('offers/offer', { offer, userStatus });
         });
       }
@@ -88,15 +90,14 @@ router.post('/:offerId/subscribe', ensureLogin.ensureLoggedIn(), (req, res, next
 
 
 // user Usubscribes to an offer
-router.post('/:offerId/unsubscribe', ensureLogin.ensureLoggedIn(), (req, res, next) => {
-  console.log('offer unsubscribe peticion')
-  const offerId = req.params.offerId;
-  const userId = req.user.id;
-
-  // User.findOneAndUpdate({_id: userId }, { $push: { offerId } }, (err, next) => {
-  //   if (err) { return next(err); }
-  // })
-
-});
+// router.post('/:offerId/unsubscribe', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+//   console.log('offer unsubscribe peticion')
+//   const offerId = req.params.offerId;
+//   const userId = req.user.id;
+//   User.findOneAndUpdate({_id: userId}, { $pullAll: {_offersRegistered: [offerId] } }, (err, next) => {
+//     if (err) {return next(err)}
+//     res.redirect('/:offerId');
+//   });
+// });
 
 module.exports = router;
