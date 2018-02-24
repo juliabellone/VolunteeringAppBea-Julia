@@ -52,22 +52,47 @@ router.post('/:offerId/subscribe', ensureLogin.ensureLoggedIn(), (req, res, next
   const offerId = req.params.offerId;
   const userId = req.user.id;
   //agrega usuario al array de la oferta
-  Offer.findOneandUpdate( { _id: offerId }, { $push: { _usersRegistered: userId  } }, (err, doc) => {
-    if (err) { return next(err); console.log(err) }
-    console.log(doc)
-   })
-  User.findOneAndUpdate( {_id: userId }, { $push: { _offersRegistered: offerId } }, (err, doc) => {
-    if (err) { return next(err); console.log(err) }
-    console.log(doc)
-   })
-  //agrega oferta al array del usuario
-  // User.findOneAndUpdate({_id: userId }, { $push: { offerId } }, (err, next) => {
-  //   if (err) { return next(err); }
-  // })
-
+  Offer.findById((offerId), (err, offer) => {
+    if (err) {
+      next(err);
+    } else {
+      offer._usersRegistered.push(userId);
+      offer.save( (err) => {
+        if (err) {
+          next(err);
+        } else {
+          User.findById((userId), (err, user) => {
+            if (err) {
+              next(err);
+            } else {
+              user._offersRegistered.push(offerId);
+              user.save( (err) => {
+                if (err) {
+                  next(err);
+                } else {
+                  //redirect
+                }
+              });
+            }
+          });
+        }
+      }); 
+    }
+  });
 });
+  //agrega oferta al array del usuario
 
-// // user Usubscribes to an offer
+  // User.findOneAndUpdate( {_id: userId }, { $push: { _offersRegistered: offerId } }, (err, doc) => {
+  //   if (err) { return next(err); console.log(err) }
+  //   console.log(doc)
+  //  })
+  // // User.findOneAndUpdate({_id: userId }, { $push: { offerId } }, (err, next) => {
+  // //   if (err) { return next(err); }
+  // // })
+
+
+
+// user Usubscribes to an offer
 router.post('/:offerId/unsubscribe', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   console.log('offer unsubscribe peticion')
   const offerId = req.params.offerId;
