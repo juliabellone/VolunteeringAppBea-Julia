@@ -18,27 +18,26 @@ router.get('/:offerId', (req, res, next) => {
     //comprueba si está inscrito a la oferta y da un valor a userstatus
      //busca offer en db y pasa objeto offer
      //renderiza pagina
-
-  //else busca ong en db
-    //busca offer en db
-     //comprueba si ong es owner y da un valor a isOwner
-     //carga la vista y pasa objeto offer y isOwner
     const userId = req.user.id;
     const offerId = req.params.offerId;
-    let userStatus = null;
+    let userStatus = undefined;
     User.findById(userId, function(err, user){
       if (user !== null) {
         Offer.findById(offerId, (err, offer) => {
           if (err) { return next(err); }
-          if (offer._usersRegistered.includes(userId)) {
-            userStatus = true;
-          }
-          else {userStatus = false};
+            for(i=0; i<offer._usersRegistered.length; i++) {
+              if(offer._usersRegistered[i] == userId) {
+                userStatus = true;
+              }
+            }
           res.render('offers/offer', { offer, userStatus });
         });
       }
   });
-
+//else busca ong en db
+    //busca offer en db
+     //comprueba si ong es owner y da un valor a isOwner
+     //carga la vista y pasa objeto offer y isOwner
 
   
 });
@@ -67,11 +66,7 @@ router.post('/:offerId/subscribe', ensureLogin.ensureLoggedIn(), (req, res, next
             } else {
               user._offersRegistered.push(offerId);
               user.save( (err) => {
-                if (err) {
-                  next(err);
-                } else {
-                  //redirect
-                }
+                if (err) { next(err); }
               });
             }
           });

@@ -28,15 +28,13 @@
             $.ajax({
               method:  'POST',
               url:     "/offer/<%= offer._id %>/subscribe",
-              // data:    characterInfo,
-            //   success: showFeedback,
-            //   error:   handleError
+              success: showFeedback,
+              error:   handleError,
             });
         }
         else {
             // hacer peticion post a offerid/unsubscribe
             console.log('click UNsubscribe')
-
             $.ajax({
               method:  'POST',
               url:     "/offer/<%= offer._id %>/unsubscribe",
@@ -44,16 +42,15 @@
             //   error:   handleError
             });
         }
-        // function showFeedback (postResponse) {
-        //     console.log('post success');
-        //     console.log(postResponse);
-        //     alert('te has suscrito correctamente a la oferta')
-        // }
+        function showFeedback () {
+            alert('You have suscribed to this offer. Thank you!')
+        }
         
-        // function handleError (err) {
-        //     console.log('Oh no! Error:');
-        //     console.log(err);
-        // }   
+        function handleError (err) {
+            console.log('Oh no! Error:');
+            console.log(err);
+            alert('We are sorry, there was a mistake')
+        }   
     });
   });
 </script>
