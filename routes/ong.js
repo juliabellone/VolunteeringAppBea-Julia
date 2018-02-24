@@ -52,19 +52,21 @@ router.post('/newoffer', ensureLogin.ensureLoggedIn(), upload.single('offerpic')
         if (err) {
           res.render('ong/newoffer', { message: req.flash('alert', 'Something went wrong') });
         } else {
-          saveOfferId(offer._id);
-          res.redirect('/ong/profile');
+          ong._offersPublished.push(offer._id);
+          ong.save ( (err) => {
+            if (err) {
+              next (err)
+            } else {
+              res.redirect('/ong/profile');
+            }
+          })
         }
       });
     } else {
       req.flash('info', 'You are not an NGO')
       res.redirect('/ong/newoffer');  
     }
-    saveOfferId = function (offerId) {
-      //guardar el id de la newoffer en el array de _offersPublished de la ONG
-      console.log ("este es el id"+offerId+"este es el array"+ong._offersPublished)
-      ong._offersPublished.push(offerId);  
-    }
+
   });
 });
 
