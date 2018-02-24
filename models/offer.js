@@ -23,6 +23,7 @@ const offerSchema = new Schema(
       createdAt: 'created_at',
       updatedAt: 'updated_at',
     },
+    usePushEach: true,
   }
 );
 
