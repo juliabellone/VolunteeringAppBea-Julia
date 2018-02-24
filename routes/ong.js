@@ -23,6 +23,7 @@ router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
     });
 });
 
+
 router.get('/newoffer', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   res.render('ong/newoffer', {layout: 'layouts/ongLayout' });
 });
