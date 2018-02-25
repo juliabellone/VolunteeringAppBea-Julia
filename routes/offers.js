@@ -12,52 +12,42 @@ const ensureLogin = require('connect-ensure-login');
 /* GET offers page */
 
 router.get('/:offerId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
-  // If offer id es un id valido...
-  //  const userId = req.user.id;
-  //bussca id en databadse y comprueba que el usuario es volunteer 
-    //comprueba si está inscrito a la oferta y da un valor a userstatus
-     //busca offer en db y pasa objeto offer
-     //renderiza pagina
-    const userId = req.user.id;
-    const offerId = req.params.offerId;
-    let userStatus = false;
-    let ongOwner = false;
-    let role = null;
-    User.findById(userId, function(err, user){
-      if (user !== null) {
-        role = 'user';
-        Offer.findById(offerId, (err, offer) => {
-          if (err) { return next(err); }
-            for(i=0; i<offer._usersRegistered.length; i++) {
-              if(offer._usersRegistered[i] == userId) {
-                userStatus = true;
-              }
-            }
-            console.log(userStatus)
-          res.render('offers/offer', { offer, role, userStatus, ongOwner });
-        });
-      }
-      else {
-        Ong.findById(userId, function(err, ong){
-          if(ong !== null) {
-            role = 'ong' 
-            Offer.findById(offerId, (err, offer) => {
-              if (err) { return next(err) }
-              if (offer._ong == userId) {
-                ongOwner = true;
-              }
-            })
-            res.render('offers/offer', { offer, role, userStatus, ongOwner });
-          }
-        })
-      }
-  });
-//else busca ong en db
-    //busca offer en db
-     //comprueba si ong es owner y da un valor a isOwner
-     //carga la vista y pasa objeto offer y isOwner
 
-  
+const userId = req.user.id;
+const offerId = req.params.offerId;
+let userStatus = false;
+let ongOwner = false;
+let role = null;
+
+  User.findById(userId, function(err, user){
+    if (user !== null) {
+      role = 'user';
+      Offer.findById(offerId, (err, offer) => {
+        if (err) { return next(err); }
+          for(i=0; i<offer._usersRegistered.length; i++) {
+            if(offer._usersRegistered[i] == userId) {
+              userStatus = true;
+            }
+          }
+          console.log(userStatus)
+        res.render('offers/offer', { offer, role, userStatus, ongOwner });
+        return;
+      });
+    }
+  });
+
+  Ong.findById(userId, function(err, ong){
+    if(ong !== null) {
+      role = 'ong' 
+      Offer.findById(offerId, (err, offer) => {
+        if (err) { return next(err) }
+        if (offer._ong == userId) {
+          ongOwner = true;
+        }
+        res.render('offers/offer', { offer, role, userStatus, ongOwner });
+      })
+    }
+  })  
 });
 
 
