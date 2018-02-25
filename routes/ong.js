@@ -10,8 +10,25 @@ const Offer = require('../models/offer');
 
 const ensureLogin = require('connect-ensure-login');
 
+// Public ONG profile page
+router.get('/:ongId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
+
+  const userId = req.user.id;
+  const ongId = req.params.ongId;
+  let ongOwner = false;
+  
+  Ong.findById(ongId, (err, ong) => {
+    if (err) {return next(err)};
+    if (ong._id == userId) {
+      res.redirect('/ong/profile');
+    } else {
+      res.render('ong/ong', { ong })
+    }
+  });
+});
 
 
+// Private ONG profile Page
 router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const ongId = req.user.id;
   Ong.findById(ongId)
@@ -23,13 +40,13 @@ router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
     });
 });
 
-
+// Private ONG New offer GET
 router.get('/newoffer', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   res.render('ong/newoffer', {layout: 'layouts/ongLayout' });
 });
 
 
-
+// Private ONG New offer POST
 router.post('/newoffer', ensureLogin.ensureLoggedIn(), upload.single('offerpic'), (req, res, next) => {
   const ongId = req.user.id;
   const { title, category, about, when, where, requirements } = req.body;  
