@@ -1,0 +1,32 @@
+<h1>edit your profile</h1>
+
+<form enctype='multipart/form-data' action='/profile/edit' method='POST' id='form-container'>
+    
+    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<%= user.email %>" name="email">
+    <br>
+    <input type="text" class="form-control" value="<%= user.name %>me" name="name">
+    <br>
+    <input type="text" class="form-control" value="<%= user.surname %>" name="surname">
+    <br>
+    <label for="birthdate" class="label-control">Birthdate</label>
+    <input type="text" class="form-control datetimepicker" value="<%= user.birthdate %>" />
+    <br>
+    <label for="picture">Select a profile picture</label>
+    <input type="file" name="profilepic">
+    <br>
+    <p>Address</p>
+    <br>
+    <input type="text" class="form-control" id="inputAddress" value="<%= user.address.street %>">
+    <br>
+    <input type="text" class="form-control" id="inputCity" name="city" value="<%= user.address.city %>">
+    <br>
+    <input type="text" class="form-control" id="inputState" name="state" value="<%= user.address.state %>">
+    <br>
+    <input type="text" class="form-control" id="inputZip" name="zip" value="<%= user.address.zip %>">
+    <button type="submit" class="btn btn-primary">Sign in</button>
+    <%- include('../partials/notifications') %>
+</form>
+
+    
+    
+

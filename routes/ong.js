@@ -17,6 +17,10 @@ const ensureLogin = require('connect-ensure-login');
 // Private ONG profile Page
 router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const ongId = req.user.id;
+  if (req.user.role == 'user') {
+    res.redirect('/profile');
+    return;
+  }
   Ong.findById(ongId)
   .then((ong) => {
     res.render('ong/profile', { ong, layout: 'layouts/ongLayout' });

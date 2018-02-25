@@ -29,6 +29,26 @@ router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
     });
 });
 
+router.get('/profile/edit', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  const userId = req.user.id;
+  if (req.user.role == 'ong') {
+    res.redirect('/ong/profile/edit');
+    return;
+  }
+  User.findById(userId)
+    .then((user) => {
+      res.render('user/editprofile', { user });
+    })
+    .catch((err) => {
+      next(err);
+    });
+});
+
+router.get('/profile/edit', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+
+//find one and update de los campos que no estén vacios
+
+});
 
 
 router.get('/opportunities', ensureLogin.ensureLoggedIn(), (req, res, next) => {
