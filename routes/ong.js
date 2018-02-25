@@ -10,18 +10,26 @@ const Offer = require('../models/offer');
 
 const ensureLogin = require('connect-ensure-login');
 
-
-
+// NEW
 router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const ongId = req.user.id;
-  Ong.findById(ongId)
-    .then((ong) => {
-      res.render('ong/profile', { ong, layout: 'layouts/ongLayout' });
-    })
-    .catch((err) => {
-      next(err);
-    });
+  Ong.findById(ongId).populate('_offersPublished').exec((err, ong) => {
+    console.log(ong._offersPublished[0].title);
+    if (err) { return next(err); }
+    res.render('ong/profile', { ong, layout: 'layouts/ongLayout' });
+  });
 });
+// OLD
+// router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+//   const ongId = req.user.id;
+//   Ong.findById(ongId)
+//     .then((ong) => {
+//       res.render('ong/profile', { ong, layout: 'layouts/ongLayout' });
+//     })
+//     .catch((err) => {
+//       next(err);
+//     });
+// });
 
 router.get('/newoffer', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   res.render('ong/newoffer', {layout: 'layouts/ongLayout' });
