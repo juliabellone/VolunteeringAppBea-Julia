@@ -1,233 +1,235 @@
-<p>Esto es el signup del user </p>
-
 <form enctype='multipart/form-data' action='/signup' method='POST' id='form-container'>
-    
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <input type="text" class="form-control" id="inputEmail4" placeholder="Username" name="username">
+    <div class="container">
+        <h3 class="title">Provide us some info and sign up!</h3>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <input type="text" class="form-control" id="inputEmail4" placeholder="Username" name="username">
+            </div>
+            
+            <div class="form-group col-md-6">
+                <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password">
+            </div>
         </div>
-        
-        <div class="form-group col-md-6">
-            <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password">
-        </div>
-    </div>
-    <br>
-    <p>Personal data</p>
-    
-    <div class="form-group">
-        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address" name="email">
-        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-    </div>
-    <div class="form-row">
-        <div class="col">
-            <input type="text" class="form-control" placeholder="First name" name="name">
-        </div>
-        <div class="col">
-            <input type="text" class="form-control" placeholder="Surname" name="last">
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="birthdate" class="label-control">Birthdate</label>
-        <input type="text" class="form-control datetimepicker" value="10/05/2016" />
-    </div>
-    <label for="picture">Select a profile picture</label>
-    <input type="file" name="profilepic">
-    <br>
-    <div class="form-group">
-        <input type="text" class="form-control" id="inputAddress" placeholder="Address">
-    </div>
-    <div class="form-row">
-        <div class="form-group col-md-6">
-            <input type="text" class="form-control" id="inputCity" name="city" placeholder="City">
-        </div>
-        
-        <div class="form-group col-md-4">
-            <input type="text" class="form-control" id="inputState" name="state" placeholder="State">
-        </div>
-        <div class="form-group col-md-2">
-            <input type="text" class="form-control" id="inputZip" name="zip" placeholder="Zip number">
-        </div>
-    </div>
-    
-    <p>Select your main interests</p>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name='interests' value="rights"> Advocacy and Human Rights
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2"name='interests' value="animals"> Animals
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name='interests' value="arts"> Arts and Culture
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name='interests' value="children"> Children and Youth
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox5" name='interests' value="community"> Community
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox6" name='interests' value="technology"> Technology
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox7" name='interests' value="education"> Education
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox8" name='interests' value="health"> Health and Medicine
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    
-    
-    
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox9" name='interests' value="crisis"> Global crisis
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox10" name='interests' value="health"> Health and Medicine
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox11" name='interests' value="crisis"> Global crisis
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox12" name='interests' value="environment"> Environment
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox13" name='interests' value="disabilities"> People with disabilities
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox14" name='interests' value="homeless"> Homeless and Housing
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox12" name='interests' value="inmigrants"> Inmigrants and Refugees
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox13" name='interests' value="sports"> Sports and Recreation
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox14" name='interests' value="legal"> Justice and Legal
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <br>
-    <p>Please mark your availability for volunteering</p>
-    
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="fulltime"> Fulltime
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="weekend"> Weekend
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="summer"> Summer
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <div class="form-check form-check-inline">
-        <label class="form-check-label">
-            <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="travel"> I have availability to travel
-            <span class="form-check-sign">
-                <span class="check"></span>
-            </span>
-        </label>
-    </div>
-    <br>
-    <br>
 
-    <button type="submit" class="btn btn-primary">Sign in</button>
-    <%- include('../partials/notifications') %>
+        <div class="form-group">
+            <h4 class="title">Personal data</h4>
+            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address" name="email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+
+        <div class="form-row">
+            <div class="col">
+                <input type="text" class="form-control" placeholder="First name" name="name">
+            </div>
+            <div class="col">
+                <input type="text" class="form-control" placeholder="Surname" name="last">
+            </div>
+        </div>
+
+        <br>
+
+        <div class="form-group">
+            <label for="birthdate" class="label-control">Birthdate</label>
+            <input type="text" class="form-control datetimepicker" value="10/05/2016" />
+        </div>
+
+        <label for="picture">Select a profile picture</label>
+        <input type="file" name="profilepic">
+        <br>
+        
+        <div class="form-group">
+            <h4 class="title">Address</h4>
+            <input type="text" class="form-control" id="inputAddress" placeholder="Address">
+            <div class="form-row">
+                <div class="form-group col-md-6">
+                    <input type="text" class="form-control" id="inputCity" name="city" placeholder="City">
+                </div>
+                
+                <div class="form-group col-md-4">
+                    <input type="text" class="form-control" id="inputState" name="state" placeholder="State">
+                </div>
+                <div class="form-group col-md-2">
+                    <input type="text" class="form-control" id="inputZip" name="zip" placeholder="Zip number">
+                </div>
+            </div>
+        </div>
+        
+        <h4 class="title">Select your main interests</h4>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name='interests' value="rights"> Advocacy and Human Rights
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2"name='interests' value="animals"> Animals
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name='interests' value="arts"> Arts and Culture
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox4" name='interests' value="children"> Children and Youth
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox5" name='interests' value="community"> Community
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox6" name='interests' value="technology"> Technology
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox7" name='interests' value="education"> Education
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox8" name='interests' value="health"> Health and Medicine
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox9" name='interests' value="crisis"> Global crisis
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox10" name='interests' value="health"> Health and Medicine
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox11" name='interests' value="crisis"> Global crisis
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox12" name='interests' value="environment"> Environment
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox13" name='interests' value="disabilities"> People with disabilities
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox14" name='interests' value="homeless"> Homeless and Housing
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox12" name='interests' value="inmigrants"> Inmigrants and Refugees
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox13" name='interests' value="sports"> Sports and Recreation
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox14" name='interests' value="legal"> Justice and Legal
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <br>
+        <br>
+        <h4 class="title">Please mark your availability for volunteering</h4>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="fulltime"> Fulltime
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="weekend"> Weekend
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="summer"> Summer
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <div class="form-check form-check-inline">
+            <label class="form-check-label">
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="travel"> I have availability to travel
+                <span class="form-check-sign">
+                    <span class="check"></span>
+                </span>
+            </label>
+        </div>
+        <br>
+        <br>
+    
+        <button type="submit" class="btn btn-primary">Sign in</button>
+        <%- include('../partials/notifications') %>
+    </div>   
 </form>
