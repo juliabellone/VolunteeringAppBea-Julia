@@ -10,39 +10,23 @@ const Offer = require('../models/offer');
 
 const ensureLogin = require('connect-ensure-login');
 
-// Public ONG profile page
-router.get('/:ongId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
-
-  const userId = req.user.id;
-  const ongId = req.params.ongId;
-  let ongOwner = false;
-  
-  Ong.findById(ongId, (err, ong) => {
-    if (err) {return next(err)};
-    if (ong._id == userId) {
-      res.redirect('/ong/profile');
-    } else {
-      res.render('ong/ong', { ong })
-    }
-  });
-});
 
 
 // Private ONG profile Page
 router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const ongId = req.user.id;
   Ong.findById(ongId)
-    .then((ong) => {
-      res.render('ong/profile', { ong, layout: 'layouts/ongLayout' });
-    })
-    .catch((err) => {
+  .then((ong) => {
+    res.render('ong/profile', { ong, layout: 'layouts/ongLayout' });
+  })
+  .catch((err) => {
       next(err);
     });
-});
-
-// Private ONG New offer GET
-router.get('/newoffer', ensureLogin.ensureLoggedIn(), (req, res, next) => {
-  res.render('ong/newoffer', {layout: 'layouts/ongLayout' });
+  });
+  
+  // Private ONG New offer GET
+  router.get('/newoffer', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+    res.render('ong/newoffer', {layout: 'layouts/ongLayout' });
 });
 
 
@@ -84,7 +68,27 @@ router.post('/newoffer', ensureLogin.ensureLoggedIn(), upload.single('offerpic')
       req.flash('info', 'You are not an NGO')
       res.redirect('/ong/newoffer');  
     }
+    
+  });
+});
 
+// Public ONG profile page
+router.get('/:ongId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
+
+  const userId = req.user.id;
+  const ongId = req.params.ongId;
+  let ongOwner = false;
+  
+  Ong.findById(ongId)
+  .then((ong) => {
+    if (ong._id == userId) {
+    res.redirect('/ong/profile');
+    return;
+    }
+    res.render('ong/ong', { ong });
+  })
+  .catch((err) => {
+    next(err);
   });
 });
 
