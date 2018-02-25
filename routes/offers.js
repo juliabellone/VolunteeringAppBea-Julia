@@ -11,7 +11,7 @@ const ensureLogin = require('connect-ensure-login');
 
 /* GET offers page */
 
-router.get('/:offerId', (req, res, next) => {
+router.get('/:offerId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
   // If offer id es un id valido...
   //  const userId = req.user.id;
   //bussca id en databadse y comprueba que el usuario es volunteer 
@@ -21,9 +21,11 @@ router.get('/:offerId', (req, res, next) => {
     const userId = req.user.id;
     const offerId = req.params.offerId;
     let userStatus = false;
-    
+    let ongOwner = false;
+    let role = null;
     User.findById(userId, function(err, user){
       if (user !== null) {
+        role = 'user';
         Offer.findById(offerId, (err, offer) => {
           if (err) { return next(err); }
             for(i=0; i<offer._usersRegistered.length; i++) {
@@ -32,8 +34,22 @@ router.get('/:offerId', (req, res, next) => {
               }
             }
             console.log(userStatus)
-          res.render('offers/offer', { offer, userStatus });
+          res.render('offers/offer', { offer, role, userStatus, ongOwner });
         });
+      }
+      else {
+        Ong.findById(userId, function(err, ong){
+          if(ong !== null) {
+            role = 'ong' 
+            Offer.findById(offerId, (err, offer) => {
+              if (err) { return next(err) }
+              if (offer._ong == userId) {
+                ongOwner = true;
+              }
+            })
+            res.render('offers/offer', { offer, role, userStatus, ongOwner });
+          }
+        })
       }
   });
 //else busca ong en db
