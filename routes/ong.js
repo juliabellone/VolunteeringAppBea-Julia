@@ -7,8 +7,11 @@ const upload = multer({ dest: 'public/uploads/offers_pics' });
 
 const Ong = require('../models/ong');
 const Offer = require('../models/offer');
+const User = require('../models/user');
+
 
 const ensureLogin = require('connect-ensure-login');
+
 
 // NEW
 router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
@@ -19,6 +22,7 @@ router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
     res.render('ong/profile', { ong, layout: 'layouts/ongLayout' });
   });
 });
+
 // OLD
 // router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 //   const ongId = req.user.id;
@@ -31,12 +35,14 @@ router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 //     });
 // });
 
+
+// Private ONG New offer GET
 router.get('/newoffer', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   res.render('ong/newoffer', {layout: 'layouts/ongLayout' });
 });
 
 
-
+// Private ONG New offer POST
 router.post('/newoffer', ensureLogin.ensureLoggedIn(), upload.single('offerpic'), (req, res, next) => {
   const ongId = req.user.id;
   const { title, category, about, when, where, requirements } = req.body;  
@@ -74,8 +80,39 @@ router.post('/newoffer', ensureLogin.ensureLoggedIn(), upload.single('offerpic')
       req.flash('info', 'You are not an NGO')
       res.redirect('/ong/newoffer');  
     }
-
+    });  
   });
+  
+  // Public ONG profile page
+  router.get('/:ongId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  
+    const userId = req.user.id;
+    const ongId = req.params.ongId;
+
+    User.findById(userId, function (err, user) {
+      if (err){ return next(err) }
+      if(user !== null) {
+        Ong.findById(ongId, function (err, ong) {
+          if (err){ return next(err) }
+          res.render('ong/ong', { ong });
+          return;          
+        }); 
+      }
+    });
+
+    Ong.findById(userId, function (err, user) {
+      if (err){ return next(err) }
+      if(user !== null) {
+        Ong.findById(ongId, function(err, ong) {
+          if (err){ return next(err) }
+          if (ong._id == userId) {
+            res.redirect('/ong/profile');
+            return;
+          }
+            res.render('ong/ong', {ong, layout: 'layouts/ongLayout'} );
+        })
+      }  
+    })
 });
 
 module.exports = router;

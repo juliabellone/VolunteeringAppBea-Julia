@@ -7,35 +7,55 @@
         <span class="offer-data-when"><%= offer.when %></span>
         <span class="offer-data-where"><%= offer.where %></span>
         <span class="offer-data-requirements"><%= offer.requirements %></span>
-        <button id="subscribe" class="offer-data-button">Join the Cause</button>
+        <% if (role == 'user') { %>
+            <% if (userStatus === true) { %>
+                <button class="offer-data-button offerbutton unsubscribe">Unsusbcribe from this offer</button>
+            <% } else { %>
+                <button class="offer-data-button offerbutton subscribe">Join the Cause</button>
+            <% } %>    
+        <% } %>
+        <% if (role == 'ong') { %>
+            <% if (ongOwner === true) { %>
+                <button class="offer-data-button offerbutton edit">Edit this offer</button>
+            <% } %>    
+        <% } %>
+        
+        <span><%= userStatus %></span>
     </div>
   </div>
   <script>
-  $(document).ready(function(){
-    $('#subscribe').on('click', (event) => {    
-        console.log('hola')    
-        // Make a POST request
-        // $.ajax({
-        //     // Notice that we are using POST
-        //   method:  'POST',
-        //   url:     `/offer/${offer._id}/subscribe`,
-        //     // The data key is for sending data in a POST, PUT or PATCH!
-        //   /// data:    characterInfo,
-        //   success: showFeedback,
-        //   error:   handleError
-        // });
+
+    $(document).ready(function(){
+    $('.offerbutton').on('click', (event) => {
+        if ($('.offerbutton').hasClass('subscribe')) {
+            // hacer peticion POST a 'offerid/subscribe'
+            console.log('click subscribe')
+            $.ajax({
+              method:  'POST',
+              url:     "/offer/<%= offer._id %>/subscribe",
+              success: showFeedback,
+              error:   handleError,
+            });
+        }
+        else {
+            // hacer peticion post a offerid/unsubscribe
+            console.log('click UNsubscribe')
+            $.ajax({
+              method:  'POST',
+              url:     "/offer/<%= offer._id %>/unsubscribe",
+            //   success: showFeedback,
+            //   error:   handleError
+            });
+        }
+        function showFeedback () {
+            alert('You have suscribed to this offer. Thank you!')
+        }
+        
+        function handleError (err) {
+            console.log('Oh no! Error:');
+            console.log(err);
+            alert('We are sorry, there was a mistake')
+        }   
     });
-    
-    
-    function showFeedback (postResponse) {
-        console.log('post success');
-        console.log(postResponse);
-        alert('te has suscrito correctamente a la oferta')
-    }
-    
-    function handleError (err) {
-        console.log('Oh no! Error:');
-        console.log(err);
-    }
   });
 </script>

@@ -10,3 +10,11 @@
   width: 60%;
   margin-bottom: 100px;  
 }
+
+button.subscribe {
+  color: green;
+}
+
+button.unsubscribe {
+  color: red;
+}
