@@ -16,6 +16,10 @@ const ensureLogin = require('connect-ensure-login');
 
 router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const userId = req.user.id;
+  if (req.user.role == 'ong') {
+    res.redirect('/ong/profile');
+    return;
+  }
   User.findById(userId)
     .then((user) => {
       res.render('user/profile', { user });
@@ -24,6 +28,8 @@ router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
       next(err);
     });
 });
+
+
 
 router.get('/opportunities', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const userInterests = req.user.interests;

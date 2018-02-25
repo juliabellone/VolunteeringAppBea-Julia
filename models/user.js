@@ -24,6 +24,7 @@ const userSchema = new Schema(
     interests: { type: [] },
     availability: { type: [] },
     _offersRegistered: [{ type: Schema.Types.ObjectId, ref: 'Offer' }],
+    role: { type: String },
   },
   {
     timestamps: {

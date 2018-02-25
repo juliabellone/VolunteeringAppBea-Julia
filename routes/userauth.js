@@ -59,6 +59,7 @@ router.post('/signup', upload.single('profilepic'), (req, res, next) => {
       },
       interests,
       availability,
+      role: 'user',
     });
 
     newUser.save((err) => {
