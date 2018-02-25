@@ -101,7 +101,7 @@ let role = null;
         if (offer._ong == userId) {
           ongOwner = true;
         }
-        res.render('offers/offer', { offer, role, userStatus, ongOwner });
+        res.render('offers/offer', { offer, role, userStatus, ongOwner, layout: 'layouts/ongLayout' });
       })
     }
   })  
