@@ -1,8 +1,54 @@
-<h1>Profile ong</h1>
+<div class="profile-page">
+  <h2>
+    Profile ong:
+    <%= ong.username %>
+  </h2>
+  <div class="page-header header-filter" data-parallax="true" style="background-image: url(<%= ong.picture.pic_path %>);"></div>
+</div>
+
+<% ong._offersPublished.forEach((offer) => { %>
+  <div class="main main-raised">
+    <div class="row">
+      <div class="col-md-6 ml-auto mr-auto">
+        <div class="profile">
+          <div class="avatar">
+            <!-- <p><%= ong._offersPublished[0].title %></p> -->
+            <img src="<%= offer.picture.pic_path %>" alt="Circle Image" class="img-raised rounded-circle img-fluid">
+          </div>
+          <div class="name">
+            <h3 class="title">
+              <%= offer.title %>
+            </h3>
+            <span class="badge badge-pill badge-info">
+              <%= offer.category %>
+            </span>
+          </div>
+          <br>
+        </div>
+      </div>
+    </div>
+  </div>
+  <br>
+  <% }) %>
+
+
+    <img src="<%= ong.picture.pic_path %>" />
+
+    <button type="submit" class="btn btn-primary">
+      <a href="newoffer">Create a New Offer</a>
+    </button>
+
+
+
+
+
+
+
+<!-- <h1>Profile ong</h1>
 
 <h2><%= ong.username %> </h2>
 
 <img src="<%= ong.picture.pic_path %>"/>
 
 <button><a href="newoffer">Create a New Offer</a></button>
-
+ -->
