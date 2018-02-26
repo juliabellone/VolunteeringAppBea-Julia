@@ -26,7 +26,7 @@
     $('.offerbutton').on('click', (event) => {
         if ($('.offerbutton').hasClass('subscribed')) {
             //hacer peticion POST a 'offerid/unsubscribe'
-            console.log('click subscribe')
+            console.log('click unsubscribe')
             $.ajax({
                 method:  'POST',
                 url:     "/offer/<%= offer._id %>/unsubscribe",
