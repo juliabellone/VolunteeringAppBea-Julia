@@ -11,10 +11,10 @@
   margin-bottom: 100px;  
 }
 
-button.subscribe {
+.offerbutton {
   color: green;
 }
 
-button.unsubscribe {
+.offerbutton.subscribed {
   color: red;
 }

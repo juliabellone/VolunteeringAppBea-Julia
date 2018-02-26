@@ -45,6 +45,18 @@ router.post('/:offerId/subscribe', ensureLogin.ensureLoggedIn(), (req, res, next
     }
   });
 });
+
+// User unsubscribes from an offer
+
+// router.post('/:offerId/unsubscribe', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+//   User.findOneAndUpdate( {_id: userId }, { $push: { _offersRegistered: offerId } }, (err, doc) => {
+//     if (err) { return next(err); console.log(err) }
+//     console.log(doc)
+//    })
+  // User.findOneAndUpdate({_id: userId }, { $push: { offerId } }, (err, next) => {
+    //   if (err) { return next(err); }
+  // })
+//}
 //agrega oferta al array del usuario
 
 // User.findOneAndUpdate( {_id: userId }, { $push: { _offersRegistered: offerId } }, (err, doc) => {
