@@ -74,39 +74,29 @@ router.post('/newoffer', ensureLogin.ensureLoggedIn(), upload.single('offerpic')
       req.flash('info', 'You are not an NGO')
       res.redirect('/ong/newoffer');  
     }
-    });  
-  });
-  
-  // Public ONG profile page
-  router.get('/:ongId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
-  
-    const userId = req.user.id;
-    const ongId = req.params.ongId;
+  });  
+});
 
-    User.findById(userId, function (err, user) {
-      if (err){ return next(err) }
-      if(user !== null) {
-        Ong.findById(ongId, function (err, ong) {
-          if (err){ return next(err) }
-          res.render('ong/ong', { ong });
-          return;          
-        }); 
-      }
-    });
-
-    Ong.findById(userId, function (err, user) {
-      if (err){ return next(err) }
-      if(user !== null) {
-        Ong.findById(ongId, function(err, ong) {
-          if (err){ return next(err) }
-          if (ong._id == userId) {
-            res.redirect('/ong/profile');
-            return;
-          }
-            res.render('ong/ong', {ong, layout: 'layouts/ongLayout'} );
-        })
-      }  
-    })
+// Public ONG profile page
+router.get('/:ongId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
+    
+  
+  const ongId = req.params.ongId;
+  role = req.user.role;
+  
+  Ong.findById(ongId, (err, ong) => {
+    if (err) { return next(err); }
+    if (role == 'user') {
+      res.render('ong/ong', { ong });
+    }  
+    if (role == 'ong') {
+        if (ong._id == req.user.id) {
+          res.redirect('/ong/profile');
+          return;
+        }
+        res.render('ong/ong', {ong, layout: 'layouts/ongLayout'} );
+    }
+  }); 
 });
 
 module.exports = router;
