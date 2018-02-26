@@ -32,18 +32,7 @@
     <!-- Material Kit Core initialisations of plugins and Bootstrap Material Design Library -->
     <script src="/js/material-kit.js?v=2.0.0"></script>
     <%- script %>
-    <script>
-            //script que activa el selected del navbar
-            $(document).ready(function(){
-                switch (window.location.pathname) {
-                    case '/ong/newoffer':
-                    $('.newoffer').addClass('active');
-                    break;
-                    case '/ong/profile':
-                    $('.profile').addClass('active');
-                    break;
-                }
-            });
-            </script>
+    <script src="/js/navbar.js"></script>
+    <script src="/js/manageoffers.js"></script>
 </body>
 </html>

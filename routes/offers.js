@@ -70,42 +70,32 @@ router.post('/:offerId/subscribe', ensureLogin.ensureLoggedIn(), (req, res, next
       
 router.get('/:offerId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
 
-const userId = req.user.id;
-const offerId = req.params.offerId;
-let userStatus = false;
-let ongOwner = false;
-let role = null;
+  const userId = req.user.id;
+  const offerId = req.params.offerId;
+  let userStatus = false;
+  let ongOwner = false;
+  role = req.user.role;
 
-  User.findById(userId, function(err, user){
-    if (user !== null) {
-      role = 'user';
-      Offer.findById(offerId, (err, offer) => {
-        if (err) { return next(err); }
-          for(i=0; i<offer._usersRegistered.length; i++) {
-            if(offer._usersRegistered[i] == userId) {
-              userStatus = true;
-            }
-          }
-          console.log(userStatus)
-        res.render('offers/offer', { offer, role, userStatus, ongOwner });
-        return;
-      });
-    }
-  });
-
-  Ong.findById(userId, function(err, ong){
-    if(ong !== null) {
-      role = 'ong' 
-      Offer.findById(offerId, (err, offer) => {
-        if (err) { return next(err) }
-        if (offer._ong == userId) {
-          ongOwner = true;
+  Offer.findById(offerId, (err, offer) => {
+    console.log(req.user.role)
+    if (err) { return next(err); }
+    if (role == 'user') {
+      for(i=0; i<offer._usersRegistered.length; i++) {
+        if(offer._usersRegistered[i] == userId) {
+          userStatus = true;
         }
-        res.render('offers/offer', { offer, role, userStatus, ongOwner, layout: 'layouts/ongLayout' });
-      })
+      }
+      res.render('offers/offer', { offer, role, userStatus, ongOwner });
+      return;
+    }  
+    if (role == 'ong') {
+      if (offer._ong == userId) {
+        ongOwner = true;
+      }
+      res.render('offers/offer', { offer, role, userStatus, ongOwner, layout: 'layouts/ongLayout' });
+      return;
     }
-  })  
+  }); 
 });
       
 module.exports = router;
-      
