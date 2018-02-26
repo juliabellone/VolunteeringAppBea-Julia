@@ -25,14 +25,15 @@
   $(document).ready(function(){
     $('.offerbutton').on('click', (event) => {
         if ($('.offerbutton').hasClass('subscribed')) {
-            // hacer peticion POST a 'offerid/unsubscribe'
-            // console.log('click subscribe')
-            // $.ajax({
-            //     method:  'POST',
-            //     url:     "/offer/<%= offer._id %>/subscribe",
-            //     success: showFeedback,
-            //     error:   handleError,
-            // });
+            //hacer peticion POST a 'offerid/unsubscribe'
+            console.log('click subscribe')
+            $.ajax({
+                method:  'POST',
+                url:     "/offer/<%= offer._id %>/unsubscribe",
+                success: showFeedback,
+                error:   handleError,
+            });
+        $('.offerbutton').removeClass('subscribed').text('Join the Cause');    
         }
         else {
             // hacer peticion post a offerid/subscribe
@@ -43,6 +44,7 @@
             //   success: showFeedback,
             //   error:   handleError
             });
+        $('.offerbutton').addClass('subscribed').text('Unsusbcribe from this offer');    
         }
         function showFeedback () {
             alert('You have suscribed to this offer. Thank you!')
