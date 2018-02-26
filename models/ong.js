@@ -20,8 +20,10 @@ const ongSchema = new Schema(
       state: { type: String },
       zip: { type: String },
     },
+    role: { type: String },
     _offersPublished: [{ type: Schema.Types.ObjectId, ref: 'Offer' }],
   },
+  
   {
     timestamps: {
       createdAt: 'created_at',

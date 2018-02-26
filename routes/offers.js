@@ -21,30 +21,34 @@ router.post('/:offerId/subscribe', ensureLogin.ensureLoggedIn(), (req, res, next
   const offerId = req.params.offerId;
   const userId = req.user.id;
   //agrega usuario al array de la oferta
-  Offer.findById((offerId), (err, offer) => {
-    if (err) {
-      next(err);
-    } else {
-      offer._usersRegistered.push(userId);
-      offer.save( (err) => {
-        if (err) {
-          next(err);
-        } else {
-          User.findById((userId), (err, user) => {
-            if (err) {
-              next(err);
-            } else {
-              user._offersRegistered.push(offerId);
-              user.save( (err) => {
-                if (err) { next(err); }
-              });
-            }
-          });
-        }
-      }); 
-    }
+  User.findOneAndUpdate({ _id: userId }, { $push: { _offersRegistered: offerId } }, (err, next) => {
+    if (err) { return next(err); }
   });
 });
+
+// User unsubscribes from an offer
+router.post('/:offerId/unsubscribe', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  console.log('offer unsubscribe peticion')
+  const offerId = req.params.offerId;
+  const userId = req.user.id; 
+  User.findOneAndUpdate({ _id: userId }, { $pullAll: { _offersRegistered: [offerId] } }, (err, next) => {
+      if (err) { return next(err); }
+  });
+});
+  
+
+
+
+// router.post('/:offerId/unsubscribe', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+//   User.findOneAndUpdate( {_id: userId }, { $push: { _offersRegistered: offerId } }, (err, doc) => {
+//     if (err) { return next(err); console.log(err) }
+//     console.log(doc)
+//    })
+//   User.findOneAndUpdate({_id: userId }, { $push: { offerId } }, (err, next) => {
+//       if (err) { return next(err); }
+//   })
+// }
+
 //agrega oferta al array del usuario
 
 // User.findOneAndUpdate( {_id: userId }, { $push: { _offersRegistered: offerId } }, (err, doc) => {
@@ -57,55 +61,45 @@ router.post('/:offerId/subscribe', ensureLogin.ensureLoggedIn(), (req, res, next
   
   
   
-  // user Usubscribes to an offer
+  // // user Usubscribes to an offer
   // router.post('/:offerId/unsubscribe', ensureLogin.ensureLoggedIn(), (req, res, next) => {
-    //   console.log('offer unsubscribe peticion')
-    //   const offerId = req.params.offerId;
-    //   const userId = req.user.id;
-    //   User.findOneAndUpdate({_id: userId}, { $pullAll: {_offersRegistered: [offerId] } }, (err, next) => {
-      //     if (err) {return next(err)}
-      //     res.redirect('/:offerId');
-      //   });
-      // });
+  //     console.log('offer unsubscribe peticion')
+  //     const offerId = req.params.offerId;
+  //     const userId = req.user.id;
+  //     User.findOneAndUpdate({_id: userId}, { $pullAll: {_offersRegistered: [offerId] } }, (err, next) => {
+  //         if (err) {return next(err)}
+  //         res.redirect('/:offerId');
+  //       });
+  //     });
       
 router.get('/:offerId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
 
-const userId = req.user.id;
-const offerId = req.params.offerId;
-let userStatus = false;
-let ongOwner = false;
-let role = null;
+  const userId = req.user.id;
+  const offerId = req.params.offerId;
+  let userStatus = false;
+  let ongOwner = false;
+  role = req.user.role;
 
-  User.findById(userId, function(err, user){
-    if (user !== null) {
-      role = 'user';
-      Offer.findById(offerId, (err, offer) => {
-        if (err) { return next(err); }
-          for(i=0; i<offer._usersRegistered.length; i++) {
-            if(offer._usersRegistered[i] == userId) {
-              userStatus = true;
-            }
-          }
-          console.log(userStatus)
-        res.render('offers/offer', { offer, role, userStatus, ongOwner });
-        return;
-      });
-    }
-  });
-
-  Ong.findById(userId, function(err, ong){
-    if(ong !== null) {
-      role = 'ong' 
-      Offer.findById(offerId, (err, offer) => {
-        if (err) { return next(err) }
-        if (offer._ong == userId) {
-          ongOwner = true;
+  Offer.findById(offerId, (err, offer) => {
+    console.log(req.user.role)
+    if (err) { return next(err); }
+    if (role == 'user') {
+      for(i=0; i < req.user._offersRegistered.length; i++) {
+        if(req.user._offersRegistered[i] == offerId) {
+          userStatus = true;
         }
-        res.render('offers/offer', { offer, role, userStatus, ongOwner, layout: 'layouts/ongLayout' });
-      })
+      }
+      res.render('offers/offer', { offer, role, userStatus, ongOwner });
+      return;
+    }  
+    if (role == 'ong') {
+      if (offer._ong == userId) {
+        ongOwner = true;
+      }
+      res.render('offers/offer', { offer, role, userStatus, ongOwner, layout: 'layouts/ongLayout' });
+      return;
     }
-  })  
+  }); 
 });
       
 module.exports = router;
-      

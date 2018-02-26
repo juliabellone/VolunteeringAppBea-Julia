@@ -16,7 +16,6 @@ const offerSchema = new Schema(
     when: { type: Date },
     where: { type: String },
     requirements: { type: String },
-    _usersRegistered: [{ type: Schema.Types.ObjectId, ref: 'User' }],
   },
   {
     timestamps: {

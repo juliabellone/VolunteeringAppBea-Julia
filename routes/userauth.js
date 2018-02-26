@@ -48,8 +48,8 @@ router.post('/signup', upload.single('profilepic'), (req, res, next) => {
       email,
       birthdate,
       picture: {
-        pic_path: `../uploads/profile_pics/${req.file.filename}`,
-        pic_name: `${req.file.originalname}.jpg`,
+        pic_path: `/uploads/profile_pics/${req.file.filename}`,
+        pic_name: `${req.file.originalname}`,
       },
       address: {
         street,
@@ -59,6 +59,7 @@ router.post('/signup', upload.single('profilepic'), (req, res, next) => {
       },
       interests,
       availability,
+      role: 'user',
     });
 
     newUser.save((err) => {

@@ -9,43 +9,42 @@
         <span class="offer-data-requirements"><%= offer.requirements %></span>
         <% if (role == 'user') { %>
             <% if (userStatus === true) { %>
-                <button class="offer-data-button offerbutton unsubscribe">Unsusbcribe from this offer</button>
+                <button class="offer-data-button offerbutton subscribed">Unsusbcribe from this offer</button>
             <% } else { %>
-                <button class="offer-data-button offerbutton subscribe">Join the Cause</button>
+                <button class="offer-data-button offerbutton">Join the Cause</button>
             <% } %>    
         <% } %>
-        <% if (role == 'ong') { %>
-            <% if (ongOwner === true) { %>
+        <% if (role == 'ong' && ongOwner === true) { %>
                 <button class="offer-data-button offerbutton edit">Edit this offer</button>
-            <% } %>    
         <% } %>
         
         <span><%= userStatus %></span>
     </div>
   </div>
   <script>
-
-    $(document).ready(function(){
+  $(document).ready(function(){
     $('.offerbutton').on('click', (event) => {
-        if ($('.offerbutton').hasClass('subscribe')) {
-            // hacer peticion POST a 'offerid/subscribe'
-            console.log('click subscribe')
+        if ($('.offerbutton').hasClass('subscribed')) {
+            //hacer peticion POST a 'offerid/unsubscribe'
+            console.log('click unsubscribe')
             $.ajax({
-              method:  'POST',
-              url:     "/offer/<%= offer._id %>/subscribe",
-              success: showFeedback,
-              error:   handleError,
+                method:  'POST',
+                url:     "/offer/<%= offer._id %>/unsubscribe",
+                success: showFeedback,
+                error:   handleError,
             });
+        $('.offerbutton').removeClass('subscribed').text('Join the Cause');    
         }
         else {
-            // hacer peticion post a offerid/unsubscribe
-            console.log('click UNsubscribe')
+            // hacer peticion post a offerid/subscribe
+            console.log('click to subscribe')
             $.ajax({
-              method:  'POST',
-              url:     "/offer/<%= offer._id %>/unsubscribe",
+                method:  'POST',
+                url:     "/offer/<%= offer._id%>/subscribe",
             //   success: showFeedback,
             //   error:   handleError
             });
+        $('.offerbutton').addClass('subscribed').text('Unsusbcribe from this offer');    
         }
         function showFeedback () {
             alert('You have suscribed to this offer. Thank you!')
@@ -57,5 +56,5 @@
             alert('We are sorry, there was a mistake')
         }   
     });
-  });
+});
 </script>

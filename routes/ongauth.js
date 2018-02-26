@@ -58,6 +58,7 @@ router.post('/signup', upload.single('profilepic'), (req, res, next) => {
         state,
         zip,
       },
+      role: 'ong',
     });
 
     newOng.save((err) => {
