@@ -1,25 +1,72 @@
-<h1>PUBLIC ONG PAGE</h1>
 <div>
-    <div class="photo"><img src="<%=ong.picture.pic_path %>"></div>  
-    <div>
-        <span></span><%= ong.name %></span>
-        <br>
-        <span><%= ong.category %></span>
-        <br>
-        <span>Contact Data:</span>
-        <br>
-        <span><%= ong.email %></span>
-        <br>
-        <span><%= ong.telephone %></span>
-        <br>
-        <span>Address:</span>
-        <br>
-        <span><%= ong.address.street %></span>
-        <br>
-        <span><%= ong.address.city %></span>
-        <br>
-        <span><%= ong.address.state %></span>
-        <br>
-        <span><%= ong.address.zip %></span>
+    <div class="page-header header-filter" data-parallax="true" style="background-image: url('<%=ong.picture.pic_path %>');">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 ml-auto mr-auto">
+                    <!-- OTHER OPTION FOR TO DISPLAY THE INFO -->
+                    <!-- <div class="info info-horizontal">
+                        <div class="icon icon-rose">
+                            <i class="material-icons">group_work</i>
+                        </div>
+                        <div class="description">
+                            <h4 class="info-title">Collaborate</h4>
+                            <p>The moment you use Material Kit, you know you’ve never felt anything like it. With a single use, this powerfull UI
+                                Kit lets you do more than ever before. </p>
+                            <a href="#pablo">Find more...</a>
+                        </div>
+                    </div> -->
+                    <div class="brand">
+                        <h1 style="font-weight: bold"> 
+                            <%= ong.name %>
+                        </h1>
+                        <span class="badge badge-pill badge-primary">
+                            <span>
+                                <%= ong.category %>
+                            </span>
+                        </span>
+                        <br>
+                        <h3>Contact Data:</h3>
+                        <span>
+                            <i class="material-icons">email</i>
+                            <%= ong.email %>
+                        </span>
+                        <br>
+                        <span>
+                            <i class="material-icons">phone</i>
+                            <%= ong.telephone %>
+                        </span>
+                        <br>
+                        <h3>Address:</h3>
+                        <span>
+                            <i class="material-icons">location_on</i>
+                            We are in <%= ong.address.street %> <%= ong.address.city %> , <%= ong.address.state %> ZIP: <%= ong.address.zip %>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-  </div>
+</div>
+
+<% ong._offersPublished.forEach((offer) => { %>
+    <div class="col-md-6 ml-auto mr-auto">
+        <div class="card" style="width: 50rem;">
+            <img class="card-img-top" src="<%= offer.picture.pic_path %>" alt="Card image">
+            <div class="card-body">
+                <h3 class="title">
+                    <%= offer.title %>
+                </h3>
+                <span class="badge badge-pill badge-primary">
+                    <%= offer.category %>
+                </span>
+                <h4>
+                    <%= offer.when %>
+                </h4>
+                <h5 style="font-weight: bold">
+                    <%= offer.where %>
+                </h5>
+            </div>
+        </div>
+    </div>
+<% }) %>
+
