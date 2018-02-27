@@ -68,11 +68,11 @@ router.get('/:userId', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   User.findById(userId, (err, user) => {
     if (err) return next(err);
     if (role == 'user') {
-      res.render('user/userpublicprofile', { user, role });
+      res.render('user/user_public', { user, role });
       return;
     }
     if (role == 'ong') {
-      res.render('user/userpublicprofile', { ong, role, layout: 'layouts/ongLayout' })
+      res.render('user/user_public', { user, role, layout: 'layouts/ongLayout' })
     }
   });
 });
