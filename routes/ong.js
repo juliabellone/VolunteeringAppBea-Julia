@@ -88,8 +88,7 @@ router.post('/newoffer', ensureLogin.ensureLoggedIn(), upload.single('offerpic')
 });
 
 // Public ONG profile page
-router.get('/:ongId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
-    
+router.get('/:ongId', ensureLogin.ensureLoggedIn(), (req, res, next) => {   
   
   const ongId = req.params.ongId;
   role = req.user.role;

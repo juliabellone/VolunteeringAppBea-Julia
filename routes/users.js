@@ -61,5 +61,21 @@ router.get('/opportunities', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 });
 
 
+router.get('/:userId', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  const userId = req.params.userId;
+  role = req.user.role;
+
+  User.findById(userId, (err, user) => {
+    if (err) return next(err);
+    if (role == 'user') {
+      res.render('user/userpublicprofile', { user, role });
+      return;
+    }
+    if (role == 'ong') {
+      res.render('user/userpublicprofile', { ong, role, layout: 'layouts/ongLayout' })
+    }
+  });
+});
+
 module.exports = router;
 
