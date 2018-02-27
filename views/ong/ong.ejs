@@ -1,47 +1,40 @@
 <div>
     <div class="page-header header-filter" data-parallax="true" style="background-image: url('<%=ong.picture.pic_path %>');">
         <div class="container">
+            <div class="info info-horizontal">
+                <div class="brand">
+                    <h1 style="font-weight: bold"> 
+                        <%= ong.name %>
+                    </h1>
+                    <span class="badge badge-pill badge-primary">
+                        <span>
+                            <%= ong.category %>
+                        </span>
+                    </span>
+                    <br>
+                    <h3>Contact Data:</h3>
+                    <div class="container">
+                        <i class="material-icons">email</i>
+                        <%= ong.email %>
+                    </div>
+                    <br>
+                    <div class="container">
+                        <i class="material-icons">phone</i>
+                        <%= ong.telephone %>
+                    </div>
+                    <br>
+                    <h3>Address:</h3>
+                    <div class="container">
+                        <div clas="alert-icon">
+                            <i class="material-icons">location_on</i>
+                            We are in <%= ong.address.street %> <%= ong.address.city %> , <%= ong.address.state %> ZIP: <%= ong.address.zip %>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-md-8 ml-auto mr-auto">
                     <!-- OTHER OPTION FOR TO DISPLAY THE INFO -->
-                    <!-- <div class="info info-horizontal">
-                        <div class="icon icon-rose">
-                            <i class="material-icons">group_work</i>
-                        </div>
-                        <div class="description">
-                            <h4 class="info-title">Collaborate</h4>
-                            <p>The moment you use Material Kit, you know you’ve never felt anything like it. With a single use, this powerfull UI
-                                Kit lets you do more than ever before. </p>
-                            <a href="#pablo">Find more...</a>
-                        </div>
-                    </div> -->
-                    <div class="brand">
-                        <h1 style="font-weight: bold"> 
-                            <%= ong.name %>
-                        </h1>
-                        <span class="badge badge-pill badge-primary">
-                            <span>
-                                <%= ong.category %>
-                            </span>
-                        </span>
-                        <br>
-                        <h3>Contact Data:</h3>
-                        <span>
-                            <i class="material-icons">email</i>
-                            <%= ong.email %>
-                        </span>
-                        <br>
-                        <span>
-                            <i class="material-icons">phone</i>
-                            <%= ong.telephone %>
-                        </span>
-                        <br>
-                        <h3>Address:</h3>
-                        <span>
-                            <i class="material-icons">location_on</i>
-                            We are in <%= ong.address.street %> <%= ong.address.city %> , <%= ong.address.state %> ZIP: <%= ong.address.zip %>
-                        </span>
-                    </div>
                 </div>
             </div>
         </div>

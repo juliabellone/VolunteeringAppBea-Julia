@@ -17,7 +17,6 @@ const ensureLogin = require('connect-ensure-login');
 router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const ongId = req.user.id;
   Ong.findById(ongId).populate('_offersPublished').exec((err, ong) => {
-    console.log(ong._offersPublished[0].title);
     if (err) { return next(err); }
     res.render('ong/profile', { ong, layout: 'layouts/ongLayout' });
   });
