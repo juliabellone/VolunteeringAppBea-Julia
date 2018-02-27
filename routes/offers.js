@@ -83,22 +83,30 @@ router.get('/:offerId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
   Offer.findById(offerId, (err, offer) => {
     console.log(req.user.role)
     if (err) { return next(err); }
-    if (role == 'user') {
-      for(i=0; i < req.user._offersRegistered.length; i++) {
-        if(req.user._offersRegistered[i] == offerId) {
-          userStatus = true;
+    else {
+      User.find({ _offersRegistered: offerId }).exec(function (err, usersSubscribed) {
+        if (err) { return next(err) }
+        else {
+          if (role == 'user') {
+            for(i=0; i < req.user._offersRegistered.length; i++) {
+              if(req.user._offersRegistered[i] == offerId) {
+                userStatus = true;
+              }
+            }
+            res.render('offers/offer', { offer, role, userStatus, ongOwner, usersSubscribed });
+            return;
+          }  
+          if (role == 'ong') {
+            if (offer._ong == userId) {
+              ongOwner = true;
+            }
+            res.render('offers/offer', { offer, role, userStatus, ongOwner, usersSubscribed, layout: 'layouts/ongLayout' });
+            console.log(usersSubscribed)
+            return;
+          }
         }
-      }
-      res.render('offers/offer', { offer, role, userStatus, ongOwner });
-      return;
+      });    
     }  
-    if (role == 'ong') {
-      if (offer._ong == userId) {
-        ongOwner = true;
-      }
-      res.render('offers/offer', { offer, role, userStatus, ongOwner, layout: 'layouts/ongLayout' });
-      return;
-    }
   }); 
 });
       

@@ -14,11 +14,30 @@
                 <button class="offer-data-button offerbutton">Join the Cause</button>
             <% } %>    
         <% } %>
-        <% if (role == 'ong' && ongOwner === true) { %>
+        <% if (ongOwner === true) { %>
                 <button class="offer-data-button offerbutton edit">Edit this offer</button>
         <% } %>
         
         <span><%= userStatus %></span>
+        
+    </div>
+    <div class="all-users-subscribed">
+    <% if (ongOwner === true) { %>
+        <% if (usersSubscribed.length > 0) { %>
+            <% usersSubscribed.forEach((user) => { %>
+                    <div style="border: 1px solid red; width: 80%; height: auto; margin: auto" class="user-subscribed">
+                            <span><%= user.name %></span>
+                            <span><%= user.surname %></span>
+                            <span><%= user.email %></span>
+                            <span>Address:</span>
+                            <span><%= user.address.street %></span>
+                            <span><%= user.address.city %></span>
+                            <span><%= user.address.state %></span>
+                            <span><%= user.address.zip %></span>
+                    </div>
+            <% }); %>
+        <% } %>
+    <% } %>    
     </div>
   </div>
   <script>
