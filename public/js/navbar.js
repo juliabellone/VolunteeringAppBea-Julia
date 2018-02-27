@@ -8,5 +8,12 @@ $(document).ready(function(){
         case '/profile':
         $('.profile').addClass('active');
         break;
+        //ong navbar
+        case '/ong/newoffer':
+        $('.newoffer').addClass('active');
+        break;       
+        case '/ong/profile':
+        $('.profile').addClass('active');
+        break;
 }
 });
