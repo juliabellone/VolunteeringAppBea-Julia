@@ -44,9 +44,11 @@ router.get('/profile/edit', ensureLogin.ensureLoggedIn(), (req, res, next) => {
     });
 });
 
-router.get('/profile/edit', ensureLogin.ensureLoggedIn(), (req, res, next) => {
+router.post('/profile/edit', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 
-//find one and update de los campos que no estén vacios
+//find one and update
+//redirigir al perfil
+
 
 });
 
