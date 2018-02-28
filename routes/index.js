@@ -4,7 +4,7 @@ const User = require('../models/user');
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
-  res.render('index', { title: 'Volunteer app', layout: 'layouts/homeLayout'});
+  res.render('index', { layout: 'layouts/homeLayout'});
 });
 
 router.get('/login', (req, res, next) => {
