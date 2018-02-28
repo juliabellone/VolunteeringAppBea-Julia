@@ -32,6 +32,21 @@
             <label for="birthdate" class="label-control">Birthdate</label>
             <input type="text" class="form-control datetimepicker" value="10/05/2016" />
         </div>
+        <script type="text/javascript">
+            $('.datetimepicker').datetimepicker({
+                icons: {
+                    time: "fa fa-clock-o",
+                    date: "fa fa-calendar",
+                    up: "fa fa-chevron-up",
+                    down: "fa fa-chevron-down",
+                    previous: 'fa fa-chevron-left',
+                    next: 'fa fa-chevron-right',
+                    today: 'fa fa-screenshot',
+                    clear: 'fa fa-trash',
+                    close: 'fa fa-remove'
+                }
+            });
+        </script>
 
         <label for="picture">Select a profile picture</label>
         <input type="file" name="profilepic">

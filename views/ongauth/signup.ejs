@@ -50,8 +50,23 @@
 
         <div class="form-group">
             <label for="birthdate" class="label-control">NGO founded</label>
-            <input type="text" class="form-control datepicker" value="10/05/2016" />
+            <input type="text" class="form-control datepicker" value="01/02/2018" />
         </div>
+        <script type="text/javascript">
+        $('.datepicker').datetimepicker({
+                icons: {
+                    time: "fa fa-clock-o",
+                    date: "fa fa-calendar",
+                    up: "fa fa-chevron-up",
+                    down: "fa fa-chevron-down",
+                    previous: 'fa fa-chevron-left',
+                    next: 'fa fa-chevron-right',
+                    today: 'fa fa-screenshot',
+                    clear: 'fa fa-trash',
+                    close: 'fa fa-remove'
+                }
+            });
+        </script>
 
         <label for="picture">Select a profile picture</label>
         <input type="file" name="profilepic">
