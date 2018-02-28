@@ -15,5 +15,12 @@ $(document).ready(function(){
         case '/ong/profile':
         $('.profile').addClass('active');
         break;
+        case '/signup': 
+        $('.signup').addClass('active');
+        case '/ong/signup':
+        $('.ong-signup').addClass('active');
+        case '.login': 
+        $('.login').addClass('active');
+
 }
 });

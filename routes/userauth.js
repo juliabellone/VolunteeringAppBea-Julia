@@ -74,11 +74,6 @@ router.post('/signup', upload.single('profilepic'), (req, res, next) => {
 // // dar de alta un usuario en la base de datos. Reenviar a /profile/:username/modify
 });
 
-router.get('/login', (req, res, next) => {
-  req.logout();
-  res.render('userauth/login', { message: req.flash('error') });
-});
-
 router.post('/login', passport.authenticate('local', {
   successRedirect: ('/opportunities'),
   failureRedirect: '/login',
@@ -96,11 +91,6 @@ router.post('/login', passport.authenticate('local', {
 //   //res.redirect('/profile');
 // });
 
-router.get('/logout', (req, res, next) => {
-// eliminar sesion y enviar a '/'
-  req.logout();
-  res.redirect('/login');
-});
 
 
 module.exports = router;
