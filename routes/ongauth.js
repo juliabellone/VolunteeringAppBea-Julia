@@ -14,7 +14,7 @@ const bcryptSalt = 10;
 
 router.get('/signup', (req, res, next) => {
   req.logout();
-  res.render('ongauth/signup');
+  res.render('ongauth/signup', { layout: 'layouts/homeLayout' });
 });
 
 // ong/signup

@@ -2,6 +2,7 @@
 //script que activa el selected del navbar
 $(document).ready(function(){
     switch (window.location.pathname) {
+        //user navbar 
         case '/opportunities':
         $('.opportunities').addClass('active');
         break;
@@ -15,12 +16,15 @@ $(document).ready(function(){
         case '/ong/profile':
         $('.profile').addClass('active');
         break;
+        // home navbar 
         case '/signup': 
         $('.signup').addClass('active');
+        break;
         case '/ong/signup':
         $('.ong-signup').addClass('active');
-        case '.login': 
+        break;
+        case '/login': 
         $('.login').addClass('active');
-
+        break;
 }
 });

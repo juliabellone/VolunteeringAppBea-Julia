@@ -14,7 +14,7 @@ const bcryptSalt = 10;
 
 router.get('/signup', (req, res, next) => {
   req.logout();
-  res.render('userauth/signup');
+  res.render('userauth/signup', { layout: 'layouts/homeLayout' });
 });
 
 router.post('/signup', upload.single('profilepic'), (req, res, next) => {

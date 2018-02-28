@@ -8,7 +8,7 @@ router.get('/', (req, res, next) => {
 });
 
 router.get('/login', (req, res, next) => {
-  console.log('login-prueba')
+  req.logout();
   res.render('userauth/login', { layout: 'layouts/homeLayout' });
 });
 
