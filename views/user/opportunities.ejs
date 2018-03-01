@@ -1,34 +1,17 @@
-<h1>Find your volunteering opportunity</h1>
+<h1 class="opportunities-title">Find your volunteering opportunity</h1>
 <div class="all-opportunities">
 <% if (offers.length > 0) { %>
     <% offers.forEach((offer) => { %>
-      <div class="main main-raised offer-opportunity">
-        <div class="profile-content">
-          <div class="container">
-            <div class="row">
-              <div class="md-auto ml-auto mr-auto">
-                <div class="profile">
-                  <div class="avatar">
-                    <img src="<%=offer.picture.pic_path %>" class="img-raised  img-fluid">
-                  </div>
-                </div>
-              </div>
-              <div class="container">
-                <div class="title">
-                  <h3 class="title"><%= offer.title %></h3>
-                  <h4><a href="/ong/<%= offer._ong._id %>"><%= offer._ong.name %></a></h4>
-                  <span class="badge badge-pill badge-primary"><%= offer.category %></span>
-                </div>
-                <div class="section text-center">
-                  <div class="row">
-                    <div class="col-md-8 ml-auto mr-auto">
-                      <h3 class="title"><a href="/offer/<%= offer._id %>">Know more</a></h3>
-                    </div>
-                  </div>
-                </div>  
-              </div>
-            </div>
+      <div class="card card-opportunity" style="width: 60%;">
+        <img class="card-img-top" src="<%=offer.picture.pic_path %>" alt="offer profile picture">
+        <div class="card-body">
+          <div class="card-body-info"> 
+          <h3 class="card-title"><%= offer.title %></h3>
+          <span class="badge badge-pill badge-primary"><%= offer.category %></span>
+          <h4><%= offer._ong.name %></h4>
+
           </div>
+          <a href="/offer/<%= offer._id %>" class="btn btn-primary">Learn more</a>
         </div>
       </div>
     <%  }) %>

@@ -1,16 +1,45 @@
+h1 {
+text-align: center;
+}
+/* Opportunities */
+
 .all-opportunities {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-.all-opportunities :first-child {
-  margin-top: 50px;
+
+.card-opportunity {
+  max-width: 900px;
+  min-width: 500px;
 }
-.offer-opportunity {
-  width: 60%;
-  margin-bottom: 100px;  
+.card-opportunity .card-img-top {
+  margin: 0;
 }
 
+.card-opportunity .card-body {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center; 
+  padding: 10px 35px;;
+}
+
+.card-opportunity .card-body .card-body-info {
+  margin:0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start; 
+  width: 50%;
+}
+
+.card-opportunity h3 {
+  margin-top: 0px;
+}
+
+
+/* Por ahora */ 
 .offerbutton {
   color: green;
 }
