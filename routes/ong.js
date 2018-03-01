@@ -78,14 +78,14 @@ router.get('/:ongId', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   Ong.findById(ongId).populate('_offersPublished').exec((err, ong) => {
     if (err) { return next(err); }
     if (role == 'user') {
-      res.render('ong/ong', { ong });
-    }
+      res.render('ong/ong_public', { ong });
+    }  
     if (role == 'ong') {
-      if (ong._id == req.user.id) {
-        res.redirect('/ong/profile');
-        return;
-      }
-      res.render('ong/ong', { ong, layout: 'layouts/ongLayout' });
+        if (ong._id == req.user.id) {
+          res.redirect('/ong/profile');
+          return;
+        }
+        res.render('ong/ong_public', {ong, layout: 'layouts/ongLayout'} );
     }
   });
 });

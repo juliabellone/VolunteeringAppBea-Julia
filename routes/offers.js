@@ -53,14 +53,14 @@ router.get('/:offerId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
                 userStatus = true;
               }
             }
-            res.render('offers/offer', { offer, role, userStatus, ongOwner, usersSubscribed });
+            res.render('offers/offer_public', { offer, role, userStatus, ongOwner, usersSubscribed });
             return;
           }  
           if (role == 'ong') {
             if (offer._ong == userId) {
               ongOwner = true;
             }
-            res.render('offers/offer', { offer, role, userStatus, ongOwner, usersSubscribed, layout: 'layouts/ongLayout' });
+            res.render('offers/offer_public', { offer, role, userStatus, ongOwner, usersSubscribed, layout: 'layouts/ongLayout' });
             console.log(usersSubscribed)
             return;
           }

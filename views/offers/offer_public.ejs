@@ -26,7 +26,7 @@
         <% if (usersSubscribed.length > 0) { %>
             <% usersSubscribed.forEach((user) => { %>
                     <div style="border: 1px solid red; width: 80%; height: auto; margin: auto" class="user-subscribed">
-                            <span><%= user.name %></span>
+                            <span><a href="/<%=user._id%>"><%= user.name %></a></span>
                             <span><%= user.surname %></span>
                             <span><%= user.email %></span>
                             <span>Address:</span>
