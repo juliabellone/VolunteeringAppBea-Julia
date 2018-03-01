@@ -1,5 +1,6 @@
-<h1 class="opportunities-title">Find your volunteering opportunity</h1>
 <div class="all-opportunities">
+<h1 class="opportunities-title">Find your volunteering opportunity</h1>
+<h3 id="opportunities-warning" >This offers have been filtered based on your interests</h3>
 <% if (offers.length > 0) { %>
     <% offers.forEach((offer) => { %>
       <div class="card card-opportunity" style="width: 60%;">
@@ -8,8 +9,7 @@
           <div class="card-body-info"> 
           <h3 class="card-title"><%= offer.title %></h3>
           <span class="badge badge-pill badge-primary"><%= offer.category %></span>
-          <h4><%= offer._ong.name %></h4>
-
+          <h4><a href="/ong/<%=offer._ong.id%>"><%= offer._ong.name %></a></h4>
           </div>
           <a href="/offer/<%= offer._id %>" class="btn btn-primary">Learn more</a>
         </div>

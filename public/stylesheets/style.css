@@ -1,7 +1,9 @@
-h1 {
-text-align: center;
-}
+
 /* Opportunities */
+
+.all-opportunities h1 {
+  text-align: center;
+}
 
 .all-opportunities {
   display: flex;
@@ -9,6 +11,9 @@ text-align: center;
   align-items: center;
 }
 
+#opportunities-warning {
+  text-align: center;
+}
 .card-opportunity {
   max-width: 900px;
   min-width: 500px;
@@ -38,6 +43,42 @@ text-align: center;
   margin-top: 0px;
 }
 
+/* User Private Profile*/
+.user-profile h1 {
+  text-align: left;
+  /* no funciona */
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap
+}
+
+.user-profile .profile-pic {
+  width: 200px;
+  height: 200px;
+}
+
+.user-profile .profile-pic img {
+  height: 100%;
+}
+
+.user-profile .main-info {
+  display: flex;
+  justify-content: space-between;
+
+}
+
+.user-profile .main-info .main-info-data {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.user-profile
 
 /* Por ahora */ 
 .offerbutton {
