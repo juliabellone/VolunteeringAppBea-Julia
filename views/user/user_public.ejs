@@ -1,0 +1,15 @@
+<h1>PUBLIC USER PAGE</h1>
+<div>
+    <div class="photo"><img src="<%=user.picture.pic_path %>"></div>  
+    <div>
+        <span></span><%= user.name %><%= user.surname %></span>
+        <br>
+        <div>
+                <% user.interests.forEach((interest) =>{ %> 
+                    <span class="badge badge-pill badge-primary"><%=interest %></span>
+                <% }) %>
+        </div>
+        <br>
+        <span><%= user.city %></span>
+    </div>
+  </div>
