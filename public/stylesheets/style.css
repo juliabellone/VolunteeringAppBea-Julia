@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+.all-opportunities img {
+  object-fit: cover;
+}
+
 .all-opportunities {
   display: flex;
   flex-direction: column;
@@ -56,13 +60,8 @@
   flex-wrap: wrap
 }
 
-.user-profile .profile-pic {
-  width: 200px;
-  height: 200px;
-}
-
-.user-profile .profile-pic img {
-  height: 100%;
+.user-profile img {
+  object-fit: cover;
 }
 
 .user-profile .main-info {
