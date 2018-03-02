@@ -7,12 +7,14 @@
 
 .all-opportunities img {
   object-fit: cover;
+  max-height: 350px;
 }
 
 .all-opportunities {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
 }
 
 #opportunities-warning {
@@ -43,11 +45,17 @@
   width: 50%;
 }
 
-.card-opportunity h3 {
-  margin-top: 0px;
+.card-body-info * {
+  margin: 5px 0px;
 }
 
 /* User Private Profile*/
+
+.main-info, .contact-info {
+  max-width: 900px;
+  min-width: 500px;
+}
+
 .user-profile h1 {
   text-align: left;
   /* no funciona */
@@ -60,25 +68,37 @@
   flex-wrap: wrap
 }
 
-.user-profile img {
+.user-profile .profile-img {
   object-fit: cover;
 }
 
 .user-profile .main-info {
   display: flex;
-  justify-content: space-between;
-
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 20px;
 }
 
 .user-profile .main-info .main-info-data {
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 30px 30px 30px 50px;  
 }
 
-.user-profile
+.user-profile .contact-info {
+  padding: 30px 30px 30px 30px;
+}
+.user-profile .contact-info .warning {
+  display: flex;
+  justify-content: flex-start;
+}
 
+.user-profile .contact-info i {
+  margin-right: 20px;
+}
 /* Por ahora */ 
 .offerbutton {
   color: green;

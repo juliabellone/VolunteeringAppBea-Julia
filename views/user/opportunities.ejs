@@ -4,7 +4,7 @@
 <% if (offers.length > 0) { %>
     <% offers.forEach((offer) => { %>
       <div class="card card-opportunity" style="width: 60%;">
-        <img height="480" class="card-img-top" src="<%=offer.picture.pic_path %>" alt="offer profile picture">
+        <img class="card-img-top" src="<%=offer.picture.pic_path %>" alt="offer profile picture">
         <div class="card-body">
           <div class="card-body-info"> 
           <h3 class="card-title"><%= offer.title %></h3>

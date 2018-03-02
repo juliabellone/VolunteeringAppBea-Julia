@@ -1,22 +1,44 @@
 <div class=user-profile>
 	<h1 class="user-profile">Your Profile</h1>
-	<div class="user-info">
-		<div class="main-info">
-				<img height="200" width="200" src="<%= user.picture.pic_path %>" alt="user profile picture" class="img-raised rounded">
+
+		<div class="main-info card">
+			<div class="profile-img">
+				<img height="400" width="400" src="<%= user.picture.pic_path %>" alt="user profile picture" class="img-raised rounded">
+			</div>
 			<div class="main-info-data">
-			<h3><%=user.username %></h3>
-			<h4>Your Interests:</h4>
-				<div><% user.interests.forEach((interest) =>{ %> 
-						<span class="badge badge-pill badge-primary"><%=interest %></span>
-					<% }) %>
-				</div>		
+				<h3><%=user.username %></h3>
+				<div>
+					<h4>Your Interests:</h4>
+					<div><% user.interests.forEach((interest) =>{ %> 
+							<span class="badge badge-pill badge-primary"><%=interest %></span>
+						<% }) %>
+					</div>
+				</div>			
 			</div>
 		</div>
-		<div class="contact-info">	
-				<h4>Your Contact info:</h4>
+		<div class="contact-info card">	
+			<div class="warning">
+				<div class="alert-icon">
+					<i class="material-icons">info_outline</i>
+				</div>
+				<p>NGO's will be able to see this info when you apply for an opportunity</p>
+			</div>	
+			<h4>Your Contact info:</h4>
+				<p>Full name: </p><p><%=user.name %> <%= user.surname %></p>
+				<p>Telephone: </p><p><%=user.telephone %></p>
+				<p>Email: </p><p><%=user.email %></p>
+
+				<h5>Address:</h5>
+					<p><%=user.address.street %></p>
+					<p><%=user.address.city %></p>
+					<p><%=user.address.state %></p>
+					<p><%=user.address.zip %></p>
+				<h5>Availability:</h5>
+				<div><% user.availability.forEach((availability) =>{ %> 
+					<span class="badge badge-pill badge-primary"><%=availability %></span>
+				<% }) %>
+			</div>	
 		</div>
-	</div>
-	
 	<% if (user._offersRegistered.length > 0) { %>
 	<div class="all-opportunities">
 		<h2>Manage your opportunities</h2>
