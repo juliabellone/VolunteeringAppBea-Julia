@@ -15,6 +15,7 @@
             <h4 class="title">Personal data</h4>
             <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email address" name="email">
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <input type="text" class="form-control" placeholder="Telephone number" name="telephone">
         </div>
 
         <div class="form-row">
@@ -54,7 +55,7 @@
         
         <div class="form-group">
             <h4 class="title">Address</h4>
-            <input type="text" class="form-control" id="inputAddress" placeholder="Address">
+            <input type="text" class="form-control" id="inputAddress" placeholder="Street" name="street">
             <div class="form-row">
                 <div class="form-group col-md-6">
                     <input type="text" class="form-control" id="inputCity" name="city" placeholder="City">
@@ -211,7 +212,7 @@
         <h4 class="title">Please mark your availability for volunteering</h4>
         <div class="form-check form-check-inline">
             <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="fulltime"> Fulltime
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" name='availability' value="fulltime"> Fulltime
                 <span class="form-check-sign">
                     <span class="check"></span>
                 </span>
@@ -219,7 +220,7 @@
         </div>
         <div class="form-check form-check-inline">
             <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="weekend"> Weekend
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" name='availability' value="weekend"> Weekend
                 <span class="form-check-sign">
                     <span class="check"></span>
                 </span>
@@ -227,7 +228,7 @@
         </div>
         <div class="form-check form-check-inline">
             <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="summer"> Summer
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" name='availability' value="summer"> Summer
                 <span class="form-check-sign">
                     <span class="check"></span>
                 </span>
@@ -235,7 +236,7 @@
         </div>
         <div class="form-check form-check-inline">
             <label class="form-check-label">
-                <input class="form-check-input" type="checkbox" id="inlineCheckbox3" value="travel"> I have availability to travel
+                <input class="form-check-input" type="checkbox" id="inlineCheckbox3"  name='availability'value="travel"> I have availability to travel
                 <span class="form-check-sign">
                     <span class="check"></span>
                 </span>
