@@ -117,19 +117,37 @@
 .user-profile .contact-info i {
   margin-right: 20px;
 }
-/* Por ahora */ 
-.offerbutton {
-  color: green;
-}
 
-.offerbutton.subscribed {
-  color: red;
-}
 
 /* Offer Page */
 
 .offer {
-  width: 80%;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 60px;
+}
+.offer-data {
+  display: flex;
+  flex-direction: column;
+}
+
+.offer img {
+  width: 100%;
+}
+
+.offer .offer-title {
   display: flex;
   flex-direction: row;
+  align-items: center;
+  justify-content: space-between
+}
+
+.offer-data h3 {
+  margin: 10px 0px;
+}
+
+.offer .button {
+display: flex;
+align-items: center;
+justify-content: center;
 }

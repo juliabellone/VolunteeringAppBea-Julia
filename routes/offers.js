@@ -41,12 +41,13 @@ router.get('/:offerId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
   role = req.user.role;
 
   Offer.findById(offerId, (err, offer) => {
-    console.log(req.user.role)
+    
     if (err) { return next(err); }
     else {
-      User.find({ _offersRegistered: offerId }).exec(function (err, usersSubscribed) {
+      User.find({ _offersRegistered: offerId }).populate('_ong', 'name').exec(function (err, usersSubscribed) {
         if (err) { return next(err) }
         else {
+          console.log(user._ong)
           if (role == 'user') {
             for(i=0; i < req.user._offersRegistered.length; i++) {
               if(req.user._offersRegistered[i] == offerId) {
