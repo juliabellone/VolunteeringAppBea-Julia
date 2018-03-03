@@ -41,6 +41,7 @@ router.get('/:offerId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
   let userStatus = false;
   let ongOwner = false;
   role = req.user.role;
+  console.log(`rol: ${role}, userid, ${userId}`)
 
   Offer.findById(offerId).populate('_ong', 'name').exec(function (err, offer) {
     if (err) { return next(err); }
@@ -58,7 +59,7 @@ router.get('/:offerId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
             return;
           }  
           if (role == 'ong') {
-            if (offer._ong == userId) {
+            if (offer._ong._id == userId) {
               ongOwner = true;
             }
             res.render('offers/offer_public', { offer, role, userStatus, ongOwner, usersSubscribed, layout: 'layouts/ongLayout' });

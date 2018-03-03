@@ -150,13 +150,31 @@
   justify-content: space-between
 }
 
-.offer-data h3 {
-  margin: 10px 0px;
-}
-
 .offer .button {
   padding: 0px 60px 40px 60px;
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+.all-users-subscribed .card-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 20px 40px;
+}
+
+.card-body * {
+  flex-basis:25%;
+}
+.all-users-subscribed .card-body h3 {
+  margin: 10px 0px 7px 0px;
+}
+
+.volunteer-photo {
+  max-width: 150px;
+  min-width: 100px;  
+  align-self: center;
+  margin-right: 45px;
 }

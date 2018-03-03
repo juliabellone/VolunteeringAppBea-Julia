@@ -1,7 +1,7 @@
 <div class="container">
 
 <div class="offer card">
-    <div class="photo"><img src="<%=offer.picture.pic_path %>"></div>  
+    <div class="photo"><img class="car-img-top"src="<%=offer.picture.pic_path %>"></div>  
     <div class="offer-title">
         <div>
             <h2 class="card-title"><%= offer.title %></h2>
@@ -32,34 +32,50 @@
                 <button class="offerbutton edit btn btn-primary btn-lg">Edit this offer</button>
         <% } %>
         </div>
+    </div>
 
     <% if (ongOwner === true) { %>
         <div class="all-users-subscribed">
+            <h2>Volunteers subscribed to this offer:</h2>
         <% if (usersSubscribed.length > 0) { %>
             <% usersSubscribed.forEach((user) => { %>
-                    <div style="border: 1px solid red; width: 80%; height: auto; margin: auto" class="user-subscribed">
-                            <span><a href="/<%=user._id%>"><%= user.name %></a></span>
-                            <span><%= user.surname %></span>
-                            <span><%= user.email %></span>
-                            <span>Address:</span>
-                            <span><%= user.address.street %></span>
-                            <span><%= user.address.city %></span>
-                            <span><%= user.address.state %></span>
-                            <span><%= user.address.zip %></span>
+                    <div class="card">
+                        <div class="card-body">
+                            <img class="volunteer-photo rounded-circle img-fluid" src="<%=user.picture.pic_path %>">
+                            <div class="volunteer-info-1">
+                                <h3><a href="/<%=user._id%>"><%= user.username %></a></h3>
+                                <p>Full Name: <%= user.name %> <%= user.surname %></p>
+                                <p>Email: <%= user.email %></p>
+                                <p>Telephone: <%= user.telephone %></p>
+                            </div>
+                            <div class="volunteer-info-2">
+                                <h5>Address:</h5>
+                                <p><%= user.address.street %></p>
+                                <p><%= user.address.city %></p>
+                                <p><%= user.address.state %></p>
+                                <p><%= user.address.zip %></p>
+                            </div>
+                            <div>
+                                <h5>Availability: </h5>
+                                <div><% user.availability.forEach((availability) =>{ %> 
+                                    <span class="badge badge-pill badge-primary"><%=availability %></span>
+                                <% }) %>
+                                </div>
+                            </div>
+                        </div>    
                     </div>
             <% }); %>
         <% } %>
-        </div>
+        </div>  
     <% } %>    
-  </div>
-</div>  
+
   
   
   <script>
   $(document).ready(function(){
-    $('.btn').on('click', (event) => {
+    $('.offerbutton').on('click', (event) => {
         console.log('click')
-        if ($('.btn').hasClass('btn-danger')) {
+        if ($('.offerbutton').hasClass('btn-danger')) {
             //hacer peticion POST a 'offerid/unsubscribe'
             $.ajax({
                 method:  'POST',
@@ -67,7 +83,7 @@
                 success: showFeedback,
                 error:   handleError,
             });
-        $('.btn').removeClass('btn-danger').addClass('btn-primary').text('Join the Cause');    
+        $('.offerbutton').removeClass('btn-danger').addClass('btn-primary').text('Join the Cause');    
         }
         else {
             // hacer peticion post a offerid/subscribe
@@ -77,7 +93,7 @@
             //   success: showFeedback,
             //   error:   handleError
             });
-        $('.btn').removeClass('btn-primary').addClass('btn-danger').text('Unsusbcribe from this offer');    
+        $('.offerbutton').removeClass('btn-primary').addClass('btn-danger').text('Unsusbcribe from this offer');    
         }
         function showFeedback () {
             alert('You have suscribed to this offer. Thank you!')
