@@ -3,44 +3,48 @@
 
 		<div class="main-info card">
 			<div class="profile-img">
-				<img height="400" width="400" src="<%= user.picture.pic_path %>" alt="user profile picture" class="img-raised rounded">
+				<img src="<%= user.picture.pic_path %>" alt="user profile picture" class="img-raised rounded">
 			</div>
-			<div class="main-info-data">
-				<h3><%=user.username %></h3>
-				<div>
-					<h4>Your Interests:</h4>
-					<div><% user.interests.forEach((interest) =>{ %> 
-							<span class="badge badge-pill badge-primary"><%=interest %></span>
-						<% }) %>
-					</div>
-				</div>			
-			</div>
+			<div class="card-body">
+				<div class="main-info-data">
+					<h3><%=user.username %></h3>
+					<div>
+						<h4>Your Interests:</h4>
+						<div><% user.interests.forEach((interest) =>{ %> 
+								<span class="badge badge-pill badge-primary"><%=interest %></span>
+							<% }) %>
+						</div>
+					</div>			
+				</div>
+			</div>	
 		</div>
 		<div class="contact-info card">	
-			<div class="warning">
-				<div class="alert-icon">
-					<i class="material-icons">info_outline</i>
-				</div>
-				<p>NGO's will be able to see this info when you apply for an opportunity</p>
-			</div>	
-			<div class="contact-info-2">
-				<div>
-					<h5>Contact info:</h5>
-						<p>Full name: <%=user.name %> <%= user.surname %></p>
-						<p>Telephone: <%=user.telephone %></p>
-						<p>Email: <%=user.email %></p>
-				</div>
-				<div>
-					<h5>Address:</h5>
-						<p><%=user.address.street %></p>
-						<p><%=user.address.state %></p>
-						<p><%=user.address.city %> <%=user.address.zip %></p>
-				</div>		
-			</div>	
-				<h5>Availability:</h5>
-				<div><% user.availability.forEach((availability) =>{ %> 
-					<span class="badge badge-pill badge-primary"><%=availability %></span>
-				<% }) %>
+			<div class="card-body">
+				<div class="warning">
+					<div class="alert-icon">
+						<i class="material-icons">info_outline</i>
+					</div>
+					<p>NGO's will be able to see this info when you apply for an opportunity</p>
+				</div>	
+				<div class="contact-info-2">
+					<div>
+						<h5>Contact info:</h5>
+							<p>Full name: <%=user.name %> <%= user.surname %></p>
+							<p>Telephone: <%=user.telephone %></p>
+							<p>Email: <%=user.email %></p>
+					</div>
+					<div>
+						<h5>Address:</h5>
+							<p><%=user.address.street %></p>
+							<p><%=user.address.state %></p>
+							<p><%=user.address.city %> <%=user.address.zip %></p>
+					</div>		
+				</div>	
+					<h5>Availability:</h5>
+					<div><% user.availability.forEach((availability) =>{ %> 
+						<span class="badge badge-pill badge-primary"><%=availability %></span>
+					<% }) %>
+				</div>	
 			</div>	
 		</div>
 	<% if (user._offersRegistered.length > 0) { %>
