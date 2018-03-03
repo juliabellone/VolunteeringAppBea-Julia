@@ -1,6 +1,5 @@
 <div class="profile-page">
   <h2>
-    Profile ong:
     <%= ong.username %>
   </h2>
   <div class="page-header header-filter" data-parallax="true" style="background-image: url('<%=ong.picture.pic_path %>');"></div>
@@ -9,17 +8,26 @@
 </div>
 
 <% ong._offersPublished.forEach((offer) => { %>
-<div class="col-md-6 ml-auto mr-auto">
-<div class="card" style="width: 50rem;">
+<div class="all-opportunities">
+<div class="card card-opportunity" style="width: 60%;">
   <img class="card-img-top" src="<%= offer.picture.pic_path %>" alt="Card image">
   <div class="card-body">
-    <h3 class="title"><a href="/offer/<%= offer._id%>"><%= offer.title %></a></h3>
-    <span class="badge badge-pill badge-info">
-      <%= offer.category %>
-    </span>
-    <h4 class="text"><%= offer.when %></h4>
-    <h5 class="text"><%= offer.where %></h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <div class="card-body-info">
+      <h3 class="card-title"><%= offer.title %></h3>
+      <span class="badge badge-pill badge-primary">
+        <%= offer.category %>
+      </span>
+      <h4><%= offer._ong.name %></h4>
+    </div>
+    <div>
+      <i class="material-icons">today</i>
+      <h4 class="text"><%= offer.when %></h4>
+    </div>
+    <div>
+      <i class="material-icons">location_on</i>
+      <h5 class="text"><%= offer.where %></h5>
+    </div>
+      <br>
   </div>
 </div>
 </div>
@@ -28,18 +36,3 @@
 <button type="submit" class="btn btn-primary">
   <a href="newoffer">Create a New Offer</a>
 </button>
-
-
-
-
-
-
-
-<!-- <h1>Profile ong</h1>
-
-<h2><%= ong.username %> </h2>
-
-<img src="<%= ong.picture.pic_path %>"/>
-
-<button><a href="newoffer">Create a New Offer</a></button>
- -->
