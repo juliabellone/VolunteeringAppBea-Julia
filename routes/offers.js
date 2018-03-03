@@ -1,3 +1,4 @@
+
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
@@ -32,6 +33,7 @@ router.post('/:offerId/unsubscribe', ensureLogin.ensureLoggedIn(), (req, res, ne
   });
 });
       
+
 router.get('/:offerId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
 
   const userId = req.user.id;
@@ -40,14 +42,12 @@ router.get('/:offerId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
   let ongOwner = false;
   role = req.user.role;
 
-  Offer.findById(offerId, (err, offer) => {
-    
+  Offer.findById(offerId).populate('_ong', 'name').exec(function (err, offer) {
     if (err) { return next(err); }
     else {
-      User.find({ _offersRegistered: offerId }).populate('_ong', 'name').exec(function (err, usersSubscribed) {
+      User.find({ _offersRegistered: offerId }).exec(function (err, usersSubscribed) {
         if (err) { return next(err) }
         else {
-          console.log(user._ong)
           if (role == 'user') {
             for(i=0; i < req.user._offersRegistered.length; i++) {
               if(req.user._offersRegistered[i] == offerId) {
@@ -68,7 +68,7 @@ router.get('/:offerId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
         }
       });    
     }  
-  }); 
+  })
 });
       
 module.exports = router;
