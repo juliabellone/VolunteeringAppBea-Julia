@@ -1,85 +1,77 @@
 <div class="main main-raised signup">
-    <div class="container">
-    <form enctype='multipart/form-data' action='/ong/signup' method='POST' id='form-container'>
-        <h1>Sign up to start looking for velunteers</h1>
-        <h4 class="title">Login info</h4>
-        <div class="form-row">
-            <div class="form-group col-md-6">
+        <div class="container">
+          <form enctype='multipart/form-data' action='/ong/signup' method='POST' id='form-container'>
+            <h1>Sign up to start looking for velunteers</h1>
+            <h4 class="title">Login info</h4>
+            <div class="form-row">
+              <div class="form-group col-md-6">
                 <input type="text" class="form-control" id="inputEmail4" placeholder="Username" name="username">
-            </div>
-
-            <div class="form-group col-md-6">
+              </div>
+              <div class="form-group col-md-6">
                 <input type="password" class="form-control" id="inputPassword4" placeholder="Password" name="password">
+              </div>
             </div>
-        </div>
-
-        <br>
-        <h4 class="title">About your NGO</h4>
-
-        <div class="form-row">
-            <div class="form-group col-md-6">
+            <br>
+            <h4 class="title">About your NGO</h4>
+            <div class="form-row">
+              <div class="form-group col-md-6">
                 <input type="text" class="form-control" name="name" placeholder="NGO's Name">
+              </div>
             </div>
-        </div>
-        <div class="form-row">    
-            <div class="form-group col-md-6">
+            <div class="form-row">
+              <div class="form-group col-md-6">
                 <select id="category" class="form-control" name="category">
-                    <option value="">Select one category</option>
-                    <option value="Rights">Advocacy and Human Rights</option>
-                    <option value="Animals">Animals</option>
-                    <option value="Children">Community</option>
-                    <option value="Community">Arts and Culture</option>
-                    <option value="Technology">Technology</option>
-                    <option value="Education">Education</option>
-                    <option value="Health">Health and Medicine</option>
-                    <option value="Crisis">Global crisis</option>
-                    <option value="Environment">Environment</option>
-                    <option value="Disabilities">People with disabilities</option>
-                    <option value="Homeless">Homeless and Housing</option>
-                    <option value="Inmigrants">Inmigrants and Refugees</option>
-                    <option value="Sports">Sports and Recreation</option>
-                    <option value="Legal">Justice and Legal</option>
+                  <option value="">Select one category</option>
+                  <option value="Rights">Advocacy and Human Rights</option>
+                  <option value="Animals">Animals</option>
+                  <option value="Children">Community</option>
+                  <option value="Community">Arts and Culture</option>
+                  <option value="Technology">Technology</option>
+                  <option value="Education">Education</option>
+                  <option value="Health">Health and Medicine</option>
+                  <option value="Crisis">Global crisis</option>
+                  <option value="Environment">Environment</option>
+                  <option value="Disabilities">People with disabilities</option>
+                  <option value="Homeless">Homeless and Housing</option>
+                  <option value="Inmigrants">Inmigrants and Refugees</option>
+                  <option value="Sports">Sports and Recreation</option>
+                  <option value="Legal">Justice and Legal</option>
                 </select>
+              </div>
             </div>
-        </div>
-        <div class="form-row">    
-                <div class="form-group col-md-6">
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" name="email">
-                </div>
-                <div class="form-group col-md-6">
-                    <input type="text" class="form-control" placeholder="telephone" name="Telephone">
-                </div>
-        </div>
-        <h4 class="title">Select a profile picture</h4>   
-
-        <div class="input-group">
-                <label class="input-group-btn">
-                    <span class="btn btn-primary">
-                        Browse <input class="file-input" type="file" name="profilepic" style="display: none;" multiple required>
-                    </span>
-                </label>
-                <input type="text" class="form-control" readonly>
-        </div>
-
-
-        <h4 class="title">Address</h4>
-        <div class="form-row">
-            <div class="col">
+            <div class="form-row">
+              <div class="form-group col-md-6">
+                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Email" name="email">
+              </div>
+              <div class="form-group col-md-6">
+                <input type="text" class="form-control" placeholder="telephone" name="Telephone">
+              </div>
+            </div>
+            <h4 class="title">Select a profile picture</h4>
+            <div class="input-group">
+              <label class="input-group-btn">
+              <span class="btn btn-primary">
+              Browse <input class="file-input" type="file" name="profilepic" style="display: none;" multiple required>
+              </span>
+              </label>
+              <input type="text" class="form-control" readonly>
+            </div>
+            <h4 class="title">Address</h4>
+            <div class="form-row">
+              <div class="col">
                 <input type="text" class="form-control" id="inputAddress" placeholder="Street" name="street">
                 <input type="text" class="form-control" id="inputCity" name="city" placeholder="City">
-            </div>
-            <div class="col">
+              </div>
+              <div class="col">
                 <input type="text" class="form-control" id="inputState" name="state" placeholder="State">
                 <input type="text" class="form-control" id="inputZip" name="zip" placeholder="Zip number">
+              </div>
             </div>
+            <br>
+            <div class="submit-div">            
+              <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
+            </div>
+            <%- include('../partials/notifications') %>
+          </form>
         </div>
-
-        <br>
-
-        <div class="submit-div">            
-                <button type="submit" class="btn btn-primary btn-lg">Sign in</button>
-        </div>
-        <%- include('../partials/notifications') %>
-    </form> 
-    </div>
-</div>    
+      </div>
