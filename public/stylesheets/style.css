@@ -1,4 +1,6 @@
-
+* {
+  box-sizing: border-box;
+}
 /* Opportunities */
 
 .all-opportunities h1 {
@@ -20,10 +22,13 @@
 #opportunities-warning {
   text-align: center;
 }
+
 .card-opportunity {
+  width: 60%;
   max-width: 900px;
   min-width: 500px;
 }
+
 .card-opportunity .card-img-top {
   margin: 0;
 }
@@ -42,7 +47,6 @@
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start; 
-  width: 50%;
 }
 
 .card-body-info * {
@@ -52,6 +56,7 @@
 /* User Private Profile*/
 
 .main-info, .contact-info {
+  width: 60%;
   max-width: 900px;
   min-width: 500px;
 }
@@ -80,7 +85,6 @@
 }
 
 .user-profile .main-info .main-info-data {
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -95,12 +99,14 @@
 .user-profile .contact-info-2 {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
-.user-profile .contact-info-2 :first-child {
-  margin-right: 200px;
+.contact-info-2 * {
+  flex-basis: 50%;
+  text-align: left;
 }
 
 .user-profile .contact-info .warning {
@@ -118,4 +124,12 @@
 
 .offerbutton.subscribed {
   color: red;
+}
+
+/* Offer Page */
+
+.offer {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
 }
