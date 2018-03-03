@@ -88,7 +88,6 @@
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
   padding: 30px 30px 30px 50px;  
 }
 
@@ -165,7 +164,7 @@
   padding: 20px 40px;
 }
 
-.card-body * {
+.all-users-subscribed .card-body * {
   flex-basis:25%;
 }
 .all-users-subscribed .card-body h3 {

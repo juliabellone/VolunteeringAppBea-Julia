@@ -52,7 +52,8 @@ router.post('/profile/edit', ensureLogin.ensureLoggedIn(), (req, res, next) => {
 
 router.get('/opportunities', ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const userInterests = req.user.interests;
-  Offer.find({ category: { $in: userInterests } }).populate('_ong', 'name').exec(function (err, offers) {
+  const offersRegistered = req.user._offersRegistered
+  Offer.find({ category: { $in: userInterests}, _id: { $nin: offersRegistered } } ).populate('_ong').exec(function (err, offers) {
     if (err) { return next(err) }
     res.render('user/opportunities', { offers })
     console.log(offers);

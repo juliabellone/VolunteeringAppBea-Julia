@@ -51,12 +51,12 @@
 			<img class="card-img-top" src="<%=offer.picture.pic_path %>" alt="offer profile picture">
 			<div class="card-body">
 				<div class="card-body-info"> 
-				<h3 class="card-title"><%= offer.title %></h3>
+				<h3><a href="/offer/<%=offer._id%>"><%= offer.title %></a></h3>
 				<span class="badge badge-pill badge-primary"><%= offer.category %></span>
-				<h4><a href="/ong/<%=offer._ong.id%>"><%= offer._ong.name %></a></h4>
+				<h4><a href="/offer/<%=offer._id%>"><%= offer._ong.name %></a></h4>
 			</div>
-			<a href="/offer/<%= offer._id %>" class="btn btn-primary">Manage opportunity</a>
-			</div>
+			<a href="/offer/<%=offer._id%>" class="btn btn-primary">Learn more</a>
+		</div>
 		</div>
 		<%  }) %>
 	</div>
