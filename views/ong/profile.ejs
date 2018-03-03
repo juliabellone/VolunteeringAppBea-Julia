@@ -13,7 +13,7 @@
   <img class="card-img-top" src="<%= offer.picture.pic_path %>" alt="Card image">
   <div class="card-body">
     <div class="card-body-info">
-      <h3 class="card-title"><%= offer.title %></h3>
+      <h3 class="card-title"><a href="/offer/<%= offer._id%>"><%= offer.title %></a></h3>
       <span class="badge badge-pill badge-primary">
         <%= offer.category %>
       </span>

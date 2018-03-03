@@ -1,109 +1,109 @@
 <div class="container">
 
-<div class="offer card">
-    <div class="photo"><img class="car-img-top"src="<%=offer.picture.pic_path %>"></div>  
-    <div class="offer-title">
-        <div>
-            <h2 class="card-title"><%= offer.title %></h2>
-            <h4><%= offer._ong.name %></h4>
-        </div>
-        <div class="badge">
-            <span class="btn btn-primary btn-round"><%= offer.category %></span>
-        </div>
-    </div>
-    <div class="offer-data">
-        <h3>About</h3>
-        <p><%= offer.about %></p>
-        <h3>When & Where</h3>
-        <span><%= offer.when %></span>
-        <span><%= offer.where %></span>
-        <h3>Requirements</h3>
-        <span><%= offer.requirements %></span>
-    </div>    
-        <div class="button">
-        <% if (role == 'user') { %>
-            <% if (userStatus === true) { %>
-                <button class="offerbutton subscribed btn btn-lg btn-danger">Unsusbcribe from this offer</button>
-            <% } else { %>
-                <button class="offerbutton btn btn-lg btn-primary">Join the Cause</button>
-            <% } %>    
-        <% } %>
-        <% if (ongOwner === true) { %>
-                <button class="offerbutton edit btn btn-primary btn-lg">Edit this offer</button>
-        <% } %>
-        </div>
-    </div>
-
-    <% if (ongOwner === true) { %>
-        <div class="all-users-subscribed">
-            <h2>Volunteers subscribed to this offer:</h2>
-        <% if (usersSubscribed.length > 0) { %>
-            <% usersSubscribed.forEach((user) => { %>
-                    <div class="card">
-                        <div class="card-body">
-                            <img class="volunteer-photo rounded-circle img-fluid" src="<%=user.picture.pic_path %>">
-                            <div class="volunteer-info-1">
-                                <h3><a href="/<%=user._id%>"><%= user.username %></a></h3>
-                                <p>Full Name: <%= user.name %> <%= user.surname %></p>
-                                <p>Email: <%= user.email %></p>
-                                <p>Telephone: <%= user.telephone %></p>
-                            </div>
-                            <div class="volunteer-info-2">
-                                <h5>Address:</h5>
-                                <p><%= user.address.street %></p>
-                                <p><%= user.address.city %></p>
-                                <p><%= user.address.state %></p>
-                                <p><%= user.address.zip %></p>
-                            </div>
-                            <div>
-                                <h5>Availability: </h5>
-                                <div><% user.availability.forEach((availability) =>{ %> 
-                                    <span class="badge badge-pill badge-primary"><%=availability %></span>
-                                <% }) %>
-                                </div>
-                            </div>
-                        </div>    
-                    </div>
-            <% }); %>
-        <% } %>
-        </div>  
-    <% } %>    
-
-  
-  
-  <script>
-  $(document).ready(function(){
-    $('.offerbutton').on('click', (event) => {
-        console.log('click')
-        if ($('.offerbutton').hasClass('btn-danger')) {
-            //hacer peticion POST a 'offerid/unsubscribe'
-            $.ajax({
-                method:  'POST',
-                url:     "/offer/<%= offer._id %>/unsubscribe",
-                success: showFeedback,
-                error:   handleError,
-            });
-        $('.offerbutton').removeClass('btn-danger').addClass('btn-primary').text('Join the Cause');    
-        }
-        else {
-            // hacer peticion post a offerid/subscribe
-            $.ajax({
-                method:  'POST',
-                url:     "/offer/<%= offer._id%>/subscribe",
-            //   success: showFeedback,
-            //   error:   handleError
-            });
-        $('.offerbutton').removeClass('btn-primary').addClass('btn-danger').text('Unsusbcribe from this offer');    
-        }
-        function showFeedback () {
-            alert('You have suscribed to this offer. Thank you!')
-        }
+        <div class="offer card">
+            <div class="photo"><img class="car-img-top"src="<%=offer.picture.pic_path %>"></div>  
+            <div class="offer-title">
+                <div>
+                    <h2 class="card-title"><%= offer.title %></h2>
+                    <h4><%= offer._ong.name %></h4>
+                </div>
+                <div class="badge">
+                    <span class="btn btn-primary btn-round"><%= offer.category %></span>
+                </div>
+            </div>
+            <div class="offer-data">
+                <h3>About</h3>
+                <p><%= offer.about %></p>
+                <h3>When & Where</h3>
+                <span><%= offer.when %></span>
+                <span><%= offer.where %></span>
+                <h3>Requirements</h3>
+                <span><%= offer.requirements %></span>
+            </div>    
+                <div class="button">
+                <% if (role == 'user') { %>
+                    <% if (userStatus === true) { %>
+                        <button class="offerbutton subscribed btn btn-lg btn-danger">Unsusbcribe from this offer</button>
+                    <% } else { %>
+                        <button class="offerbutton btn btn-lg btn-primary">Join the Cause</button>
+                    <% } %>    
+                <% } %>
+                <% if (ongOwner === true) { %>
+                        <button class="offerbutton edit btn btn-primary btn-lg">Edit this offer</button>
+                <% } %>
+                </div>
+            </div>
         
-        function handleError (err) {
-            console.log('Oh no! Error:');
-            console.log(err);
-            alert('We are sorry, there was a mistake')
-        }   
-    });
-});
-</script>
+            <% if (ongOwner === true) { %>
+                <div class="all-users-subscribed">
+                    <h2>Volunteers subscribed to this offer:</h2>
+                <% if (usersSubscribed.length > 0) { %>
+                    <% usersSubscribed.forEach((user) => { %>
+                            <div class="card">
+                                <div class="card-body">
+                                    <img class="volunteer-photo rounded-circle img-fluid" src="<%=user.picture.pic_path %>">
+                                    <div class="volunteer-info-1">
+                                        <h3><a href="/<%=user._id%>"><%= user.username %></a></h3>
+                                        <p>Full Name: <%= user.name %> <%= user.surname %></p>
+                                        <p>Email: <%= user.email %></p>
+                                        <p>Telephone: <%= user.telephone %></p>
+                                    </div>
+                                    <div class="volunteer-info-2">
+                                        <h5>Address:</h5>
+                                        <p><%= user.address.street %></p>
+                                        <p><%= user.address.city %></p>
+                                        <p><%= user.address.state %></p>
+                                        <p><%= user.address.zip %></p>
+                                    </div>
+                                    <div>
+                                        <h5>Availability: </h5>
+                                        <div><% user.availability.forEach((availability) =>{ %> 
+                                            <span class="badge badge-pill badge-primary"><%=availability %></span>
+                                        <% }) %>
+                                        </div>
+                                    </div>
+                                </div>    
+                            </div>
+                    <% }); %>
+                <% } %>
+                </div>  
+            <% } %>    
+        
+          
+          
+          <script>
+          $(document).ready(function(){
+            $('.offerbutton').on('click', (event) => {
+                console.log('click')
+                if ($('.offerbutton').hasClass('btn-danger')) {
+                    //hacer peticion POST a 'offerid/unsubscribe'
+                    $.ajax({
+                        method:  'POST',
+                        url:     "/offer/<%= offer._id %>/unsubscribe",
+                        success: showFeedback,
+                        error:   handleError,
+                    });
+                $('.offerbutton').removeClass('btn-danger').addClass('btn-primary').text('Join the Cause');    
+                }
+                else {
+                    // hacer peticion post a offerid/subscribe
+                    $.ajax({
+                        method:  'POST',
+                        url:     "/offer/<%= offer._id%>/subscribe",
+                    //   success: showFeedback,
+                    //   error:   handleError
+                    });
+                $('.offerbutton').removeClass('btn-primary').addClass('btn-danger').text('Unsusbcribe from this offer');    
+                }
+                function showFeedback () {
+                    alert('You have suscribed to this offer. Thank you!')
+                }
+                
+                function handleError (err) {
+                    console.log('Oh no! Error:');
+                    console.log(err);
+                    alert('We are sorry, there was a mistake')
+                }   
+            });
+        });
+        </script>
