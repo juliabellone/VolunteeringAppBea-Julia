@@ -1,5 +1,6 @@
-<div class="offer">
+<div class="offer card">
     <div class="photo"><img src="<%=offer.picture.pic_path %>"></div>  
+
     <div class="offer-data">
         <span class="offer-data-title"><%= offer.title %></span>
         <span class="offer-data-category"><%= offer.category %></span>
@@ -21,8 +22,8 @@
         <span><%= userStatus %></span>
         
     </div>
-    <div class="all-users-subscribed">
     <% if (ongOwner === true) { %>
+        <div class="all-users-subscribed">
         <% if (usersSubscribed.length > 0) { %>
             <% usersSubscribed.forEach((user) => { %>
                     <div style="border: 1px solid red; width: 80%; height: auto; margin: auto" class="user-subscribed">
@@ -37,15 +38,17 @@
                     </div>
             <% }); %>
         <% } %>
+        </div>
     <% } %>    
-    </div>
   </div>
+  
+  
+  
   <script>
   $(document).ready(function(){
     $('.offerbutton').on('click', (event) => {
         if ($('.offerbutton').hasClass('subscribed')) {
             //hacer peticion POST a 'offerid/unsubscribe'
-            console.log('click unsubscribe')
             $.ajax({
                 method:  'POST',
                 url:     "/offer/<%= offer._id %>/unsubscribe",
@@ -56,7 +59,6 @@
         }
         else {
             // hacer peticion post a offerid/subscribe
-            console.log('click to subscribe')
             $.ajax({
                 method:  'POST',
                 url:     "/offer/<%= offer._id%>/subscribe",

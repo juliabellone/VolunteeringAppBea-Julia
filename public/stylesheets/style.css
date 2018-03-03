@@ -1,18 +1,34 @@
-h1 {
-text-align: center;
+* {
+  box-sizing: border-box;
 }
 /* Opportunities */
+
+.all-opportunities h1 {
+  text-align: center;
+}
+
+.all-opportunities img {
+  object-fit: cover;
+  max-height: 350px;
+}
 
 .all-opportunities {
   display: flex;
   flex-direction: column;
   align-items: center;
+  width: 100%;
+}
+
+#opportunities-warning {
+  text-align: center;
 }
 
 .card-opportunity {
+  width: 60%;
   max-width: 900px;
   min-width: 500px;
 }
+
 .card-opportunity .card-img-top {
   margin: 0;
 }
@@ -31,14 +47,76 @@ text-align: center;
   flex-direction: column;
   justify-content: space-between;
   align-items: flex-start; 
-  width: 50%;
 }
 
-.card-opportunity h3 {
-  margin-top: 0px;
+.card-body-info * {
+  margin: 5px 0px;
 }
 
+/* User Private Profile*/
 
+.main-info, .contact-info {
+  width: 60%;
+  max-width: 900px;
+  min-width: 500px;
+}
+
+.user-profile h1 {
+  text-align: left;
+  /* no funciona */
+}
+
+.user-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap
+}
+
+.user-profile .profile-img {
+  object-fit: cover;
+}
+
+.user-profile .main-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin-bottom: 20px;
+}
+
+.user-profile .main-info .main-info-data {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: 30px 30px 30px 50px;  
+}
+
+.user-profile .contact-info {
+  padding: 50px;
+}
+
+.user-profile .contact-info-2 {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.contact-info-2 * {
+  flex-basis: 50%;
+  text-align: left;
+}
+
+.user-profile .contact-info .warning {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.user-profile .contact-info i {
+  margin-right: 20px;
+}
 /* Por ahora */ 
 .offerbutton {
   color: green;
@@ -46,4 +124,12 @@ text-align: center;
 
 .offerbutton.subscribed {
   color: red;
+}
+
+/* Offer Page */
+
+.offer {
+  width: 80%;
+  display: flex;
+  flex-direction: row;
 }

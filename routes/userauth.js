@@ -19,7 +19,7 @@ router.get('/signup', (req, res, next) => {
 
 router.post('/signup', upload.single('profilepic'), (req, res, next) => {
   // recoger mas datos
-  const { username, password, name, surname, email, birthdate, street, city, state, zip, interests, availability } = req.body;
+  const { username, password, name, surname, telephone, email, birthdate, street, city, state, zip, interests, availability } = req.body;
   console.log(req.body);
   // comprobar que los campos obligatorios no esten vacios
   if (username === '' || password === '') {
@@ -46,6 +46,7 @@ router.post('/signup', upload.single('profilepic'), (req, res, next) => {
       name,
       surname,
       email,
+      telephone,
       birthdate,
       picture: {
         pic_path: `/uploads/profile_pics/${req.file.filename}`,

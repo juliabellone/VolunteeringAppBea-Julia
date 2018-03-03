@@ -1,30 +1,64 @@
+<div class=user-profile>
+	<h1 class="user-profile">Your Profile</h1>
 
-<div class="page-header header-filter" data-parallax="true" style="background-image: url('../img/kit/city.jpg');"></div>
-<div class="main main-raised">
-	<div class="profile-content">
-		<div class="container">
-			<div class="row">
-				<div class="col-md-6 ml-auto mr-auto">
-					<div class="profile">
-						<div class="avatar">
-							<img src="<%= user.picture.pic_path %>" alt="Circle Image" class="img-raised rounded-circle img-fluid">
-						</div>
-						<div class="name">
-							<h3 class="title"><%=user.username %></h3>
-							<% user.interests.forEach((interest) =>{ %> 
-								<span class="badge badge-pill badge-primary"><%=interest %></span>
-							<% }) %>
-						</div>
+		<div class="main-info card">
+			<div class="profile-img">
+				<img height="400" width="400" src="<%= user.picture.pic_path %>" alt="user profile picture" class="img-raised rounded">
+			</div>
+			<div class="main-info-data">
+				<h3><%=user.username %></h3>
+				<div>
+					<h4>Your Interests:</h4>
+					<div><% user.interests.forEach((interest) =>{ %> 
+							<span class="badge badge-pill badge-primary"><%=interest %></span>
+						<% }) %>
 					</div>
-				</div>
+				</div>			
 			</div>
-			<div class="description text-center">
-				<p>
-					An artist of considerable range, Chet Faker &#x2014; the name taken by Melbourne-raised, Brooklyn-based Nick Murphy &#x2014; writes, performs and records all of his own music, giving it a warm, intimate feel with a solid groove structure.
-				</p>
-			</div>
-			<br>
 		</div>
+		<div class="contact-info card">	
+			<div class="warning">
+				<div class="alert-icon">
+					<i class="material-icons">info_outline</i>
+				</div>
+				<p>NGO's will be able to see this info when you apply for an opportunity</p>
+			</div>	
+			<div class="contact-info-2">
+				<div>
+					<h5>Contact info:</h5>
+						<p>Full name: <%=user.name %> <%= user.surname %></p>
+						<p>Telephone: <%=user.telephone %></p>
+						<p>Email: <%=user.email %></p>
+				</div>
+				<div>
+					<h5>Address:</h5>
+						<p><%=user.address.street %></p>
+						<p><%=user.address.state %></p>
+						<p><%=user.address.city %> <%=user.address.zip %></p>
+				</div>		
+			</div>	
+				<h5>Availability:</h5>
+				<div><% user.availability.forEach((availability) =>{ %> 
+					<span class="badge badge-pill badge-primary"><%=availability %></span>
+				<% }) %>
+			</div>	
+		</div>
+	<% if (user._offersRegistered.length > 0) { %>
+	<div class="all-opportunities">
+		<h2>Manage your opportunities</h2>
+		<% user._offersRegistered.forEach((offer) => { %>
+		<div class="card card-opportunity">
+			<img class="card-img-top" src="<%=offer.picture.pic_path %>" alt="offer profile picture">
+			<div class="card-body">
+				<div class="card-body-info"> 
+				<h3 class="card-title"><%= offer.title %></h3>
+				<span class="badge badge-pill badge-primary"><%= offer.category %></span>
+				<h4><a href="/ong/<%=offer._ong.id%>"><%= offer._ong.name %></a></h4>
+			</div>
+			<a href="/offer/<%= offer._id %>" class="btn btn-primary">Manage opportunity</a>
+			</div>
+		</div>
+		<%  }) %>
 	</div>
+	<% } %>
 </div>
-

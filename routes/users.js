@@ -20,13 +20,10 @@ router.get('/profile', ensureLogin.ensureLoggedIn(), (req, res, next) => {
     res.redirect('/ong/profile');
     return;
   }
-  User.findById(userId)
-    .then((user) => {
-      res.render('user/profile', { user });
-    })
-    .catch((err) => {
-      next(err);
-    });
+  User.findById(userId).populate('_offersRegistered').exec(function(err, user) {
+    if(err) {return next(err)};
+    res.render('user/profile', { user });
+  });
 });
 
 router.get('/profile/edit', ensureLogin.ensureLoggedIn(), (req, res, next) => {
