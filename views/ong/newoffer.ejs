@@ -15,27 +15,12 @@
           <label for="where">Where</label>
           <input type='text' class="form-control" placeholder="where" name="where">
         </div>
-        <div class="form-group col-md-6">
-          <label for="when" class="label-control">Select the date</label>
-          <input type="date" class="form-control datetimepicker" value="10/05/2016" name="when">
+        <div class="form-group">
+            <label class="label-control">Datetime Picker</label>
+            <input type="text" id='datetimepicker4' class="datetimepicker"  value="10/05/2016"/>
         </div>
       </div>
     </div>
-    <script type="text/javascript">
-      $('.datetimepicker').datetimepicker({
-        icons: {
-          time: "fa fa-clock-o",
-          date: "fa fa-calendar",
-          up: "fa fa-chevron-up",
-          down: "fa fa-chevron-down",
-          previous: 'fa fa-chevron-left',
-          next: 'fa fa-chevron-right',
-          today: 'fa fa-screenshot',
-          clear: 'fa fa-trash',
-          close: 'fa fa-remove'
-        }
-      });
-    </script>
     <br>
     <label for="category">Cause's category</label>
     <select id="category" class="form-control" name="category" required>
@@ -69,3 +54,27 @@
   </div>
 </form>
 
+<script type="text/javascript">
+  $(document).ready(function(){
+      $(function() {              
+         // Bootstrap DateTimePicker v4
+         $('#datetimepicker4').datetimepicker({
+               format: 'DD/MM/YYYY'
+         });
+      }); 
+
+      $('.datetimepicker').datetimepicker({
+          icons: {
+              time: "fa fa-clock-o",
+              date: "fa fa-calendar",
+              up: "fa fa-chevron-up",
+              down: "fa fa-chevron-down",
+              previous: 'fa fa-chevron-left',
+              next: 'fa fa-chevron-right',
+              today: 'fa fa-screenshot',
+              clear: 'fa fa-trash',
+              close: 'fa fa-remove'
+          }
+      });
+  });
+</script>

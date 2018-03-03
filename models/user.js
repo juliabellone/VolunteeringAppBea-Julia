@@ -11,7 +11,6 @@ const userSchema = new Schema(
       pic_path: { type: String },
       pic_name: { type: String },
     },
-    birthdate: { type: Date },
     name: { type: String },
     surname: { type: String },
     address: {
