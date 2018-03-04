@@ -1,38 +1,53 @@
-<div class="profile-page">
-  <h2>
-    <%= ong.username %>
-  </h2>
-  <div class="page-header header-filter" data-parallax="true" style="background-image: url('<%=ong.picture.pic_path %>');"></div>
+<div class=user-profile>
+    <h1 class="user-profile">Your Profile</h1>
+  
+      <div class="main-info card">
+        <div class="profile-img">
+          <img src="<%= ong.picture.pic_path %>" alt="ong profile picture" class="img-raised rounded">
+        </div>
+        <div class="card-body">
+          <div class="main-info-data">
+            <h3><%=ong.name %></h3>
+            <div>
+                <span class="badge badge-pill badge-primary"><%=ong.category %></span>
+            </div>			
+          </div>
+        </div>	
+      </div>
+      <div class="contact-info card">	
+        <div class="card-body">	
+          <div class="contact-info-2">
+            <div>
+              <h5>Contact info:</h5>
+                <p>Telephone: <%=ong.telephone %></p>
+                <p>Email: <%=ong.email %></p>
+            </div>
+            <div>
+              <h5>Address:</h5>
+                <p><%=ong.address.street %></p>
+                <p><%=ong.address.state %></p>
+                <p><%=ong.address.city %> <%=ong.address.zip %></p>
+            </div>		
+          </div>	
+        </div>	
+      </div>
+    <% if (ong._offersPublished.length > 0) { %>
+    <div class="all-opportunities">
+      <h2>Manage your Offers</h2>
+      <% ong._offersPublished.forEach((offer) => { %>
+      <div class="card card-opportunity">
+        <img class="card-img-top" src="<%=offer.picture.pic_path %>" alt="offer profile picture">
+        <div class="card-body">
+          <div class="card-body-info"> 
+          <h3><a href="/offer/<%=offer._id%>"><%= offer.title %></a></h3>
+          <span class="badge badge-pill badge-primary"><%= offer.category %></span>
+          <h4><a href="/offer/<%=offer._id%>"><%= offer._ong.name %></a></h4>
+        </div>
+        <a href="/offer/<%=offer._id%>" class="btn btn-primary">Manage Offer</a>
+      </div>
+      </div>
+      <%  }) %>
+    </div>
+    <% } %>
   </div>
-  <br>  
-</div>
-
-<% ong._offersPublished.forEach((offer) => { %>
-<div class="all-opportunities">
-<div class="card card-opportunity" style="width: 60%;">
-  <img class="card-img-top" src="<%= offer.picture.pic_path %>" alt="Card image">
-  <div class="card-body">
-    <div class="card-body-info">
-      <h3 class="card-title"><a href="/offer/<%= offer._id%>"><%= offer.title %></a></h3>
-      <span class="badge badge-pill badge-primary">
-        <%= offer.category %>
-      </span>
-      <h4><%= offer._ong.name %></h4>
-    </div>
-    <div>
-      <i class="material-icons">today</i>
-      <h4 class="text"><%= offer.when %></h4>
-    </div>
-    <div>
-      <i class="material-icons">location_on</i>
-      <h5 class="text"><%= offer.where %></h5>
-    </div>
-      <br>
-  </div>
-</div>
-</div>
-<% }) %>
-
-<button type="submit" class="btn btn-primary">
-  <a href="newoffer">Create a New Offer</a>
-</button>
+  

@@ -275,3 +275,7 @@ div.signup {
   margin-left: -250px;
   display: none;
 }
+
+.useroffer-subscribe, .useroffer-unsubscribe  {
+  text-align: center;
+}
