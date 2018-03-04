@@ -6,6 +6,11 @@ body {
   background-color: white;
 }
 
+.material-icons.md-48 { 
+  font-size: 100px;
+  margin-top: 60px;  
+}
+
 /* HOME */ 
 
 .navbar.home {

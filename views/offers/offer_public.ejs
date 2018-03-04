@@ -5,7 +5,7 @@
             <div class="offer-title">
                 <div>
                     <h2 class="card-title"><%= offer.title %></h2>
-                    <h4><%= offer._ong.name %></h4>
+                    <h3><a href="/ong/<%=offer._ong.id%>"><%= offer._ong.name %></a></h3>
                 </div>
                 <div class="badge">
                     <span class="btn btn-primary btn-round"><%= offer.category %></span>
@@ -69,11 +69,15 @@
                 </div>  
             <% } %>    
         <div class="card useroffer-subscribe">
-            <div class="card-body"><h3>Thank you for subscribing to this offer</h3>
+            <div class="card-body">
+                <h3>Thank you for subscribing to this offer</h3>
+                <i class="material-icons md-48">favorite</i>
             </div>
         </div>
         <div class="card useroffer-unsubscribe">
-            <div class="card-body"><h3>Shame on you!</h3>
+            <div class="card-body">
+                <h3>Shame on you!</h3>
+                <i class="material-icons md-48">arrow_downward</i>
         </div>
         </div>
         
