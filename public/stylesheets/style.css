@@ -264,3 +264,14 @@ div.signup {
   align-self: center;
   margin-right: 45px;
 }
+
+.useroffer-subscribe, .useroffer-unsubscribe {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  height: 350px;
+  width: 500px;
+  margin-top: -175px;
+  margin-left: -250px;
+  display: none;
+}

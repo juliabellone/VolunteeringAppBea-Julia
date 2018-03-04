@@ -68,9 +68,15 @@
                 <% } %>
                 </div>  
             <% } %>    
+        <div class="card useroffer-subscribe">
+            <div class="card-body"><h4>Thank you for subscribing to this offer</h4>
+            </div>
+        </div>
+        <div class="card useroffer-unsubscribe">
+            <div class="card-body"><h4>Shame on you!</h4>
+        </div>
+        </div>
         
-          
-          
           <script>
           $(document).ready(function(){
             $('.offerbutton').on('click', (event) => {
@@ -80,7 +86,7 @@
                     $.ajax({
                         method:  'POST',
                         url:     "/offer/<%= offer._id %>/unsubscribe",
-                        success: showFeedback,
+                        success: showFeedbackUnsubscribe(),
                         error:   handleError,
                     });
                 $('.offerbutton').removeClass('btn-danger').addClass('btn-primary').text('Join the Cause');    
@@ -90,19 +96,23 @@
                     $.ajax({
                         method:  'POST',
                         url:     "/offer/<%= offer._id%>/subscribe",
-                    //   success: showFeedback,
-                    //   error:   handleError
+                        success: showFeedbackSubscribe(),
+                        error:   handleError
                     });
                 $('.offerbutton').removeClass('btn-primary').addClass('btn-danger').text('Unsusbcribe from this offer');    
                 }
-                function showFeedback () {
-                    alert('You have suscribed to this offer. Thank you!')
+
+                function showFeedbackSubscribe () {
+                    $('.useroffer-subscribe').fadeIn(800);
+                    $('.useroffer-subscribe').delay(1400).fadeOut(800);
                 }
-                
+                function showFeedbackUnsubscribe () {
+                    $('.useroffer-unsubscribe').fadeIn(800);
+                    $('.useroffer-unsubscribe').delay(1400).fadeOut(800);
+                }
                 function handleError (err) {
                     console.log('Oh no! Error:');
                     console.log(err);
-                    alert('We are sorry, there was a mistake')
                 }   
             });
         });
