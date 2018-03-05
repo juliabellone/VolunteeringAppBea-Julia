@@ -15,7 +15,6 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const multer = require('multer');
 const moment = require('moment');
-moment().format('MMMM Do YYYY, h:mm a');
 
 const index = require('./routes/index');
 const users = require('./routes/users');

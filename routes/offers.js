@@ -2,6 +2,8 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const moment = require('moment');
+
 
 
 const User = require('../models/user');
@@ -46,6 +48,7 @@ router.get('/:offerId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
   Offer.findById(offerId).populate('_ong', 'name').exec(function (err, offer) {
     if (err) { return next(err); }
     else {
+      let myDate = moment(offer.when).format("MMMM Do YYYY, h:mm a");
       User.find({ _offersRegistered: offerId }).exec(function (err, usersSubscribed) {
         if (err) { return next(err) }
         else {
@@ -55,14 +58,15 @@ router.get('/:offerId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
                 userStatus = true;
               }
             }
-            res.render('offers/offer_public', { offer, role, userStatus, ongOwner, usersSubscribed });
+            res.render('offers/offer_public', { myDate, offer, role, userStatus, ongOwner, usersSubscribed });
             return;
           }  
           if (role == 'ong') {
             if (offer._ong._id == userId) {
               ongOwner = true;
             }
-            res.render('offers/offer_public', { offer, role, userStatus, ongOwner, usersSubscribed, layout: 'layouts/ongLayout' });
+
+            res.render('offers/offer_public', { myDate, offer, role, userStatus, ongOwner, usersSubscribed, layout: 'layouts/ongLayout' });
             console.log(usersSubscribed)
             return;
           }
