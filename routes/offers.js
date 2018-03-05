@@ -35,6 +35,35 @@ router.post('/:offerId/unsubscribe', ensureLogin.ensureLoggedIn(), (req, res, ne
   });
 });
       
+// router.get('/:offerId/edit',ensureLogin.ensureLoggedIn(), (req, res, next) => {
+//   const offerId = req.params.offerId;
+//   if (offer._ong._id == userId) {
+//     Offer.findById(offerId).exec(function (err, offer) {
+//       if (err) {
+//         return next(err); 
+//       } else {
+//         res.render('offers/edit', {offer})   
+//       }
+//     }
+
+//   } else {
+//     res.redirect('/:offerId')
+//   }
+// });  
+
+router.get('/:offerId/edit',ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  const offerId = req.params.offerId;
+  const userId = req.user.id;
+
+    Offer.findById(offerId).populate('_ong').exec(function (err, offer) {
+      if (err) {return next(err)}; 
+      if (offer._ong._id == userId) {
+        res.render('offers/edit', {offer})
+        } else {
+        res.redirect('/:offerId')
+        }   
+    });
+});  
 
 router.get('/:offerId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
 

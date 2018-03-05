@@ -13,8 +13,8 @@ const offerSchema = new Schema(
     title: { type: String },
     category: { type: String },
     about: { type: String },
-    when: { type: Date },
     where: { type: String },
+    when: { type: Date },
     requirements: { type: String },
   },
   {

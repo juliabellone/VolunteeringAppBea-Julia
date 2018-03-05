@@ -3,11 +3,11 @@
        <form enctype='multipart/form-data' action = '/ong/newoffer' method = 'POST' id = 'form-container'>
           <h1>Create new offer</h1>
           <div class="form-group col-md-12">
-            <input type="text" class="form-control" placeholder="Cause's name" name="title" required>
+            <input type="text" class="form-control" placeholder="<%=offer.title%>" name="title" required>
           </div>
           <div class="form-group">
               <div class="form-group col-md-12">  
-                <select id="category" class="form-control" name="category" placeholder="Select a category" required>
+                <select id="category" class="form-control" name="category" placeholder="<%=offer.category%>" required>
                     <option value="">Select one category</option>
                     <option value="Rights">Advocacy and Human Rights</option>
                     <option value="Animals">Animals</option>
@@ -32,38 +32,27 @@
           </div>
           <br>
           <div class="form-group col-md-12">  
-          <label for="picture">Select a picture for your offer</label>
-          <div class="input-group">
-              <label class="input-group-btn">
-              <span class="btn btn-primary">
-              Browse <input class="file-input" type="file" name="offerpic" style="display: none;" multiple required>
-              </span>
-              </label>
-              <input type="text" class="form-control" readonly>
-          </div>
-          </div>
-          <div class="form-group col-md-12">  
           <br>
              <div class="form-group">
                    <label for="where">Where</label>
-                   <input type='text' class="form-control" name="where">
+                   <input type='text' class="form-control" name="where" placeholder="<%=offer.where%>">
              </div>
           <br>
           </div>
           <div class="form-group col-md-12">  
           <div class="form-group">
              <label for="about">Explain the volunteering offer</label>
-             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="about"></textarea>
+             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="about" placeholder="<%=offer.about%>"></textarea>
           </div>
           </div>
           <div class="form-group col-md-12">  
           <div class="form-group">
              <label for="requirements">Requirements</label>
-             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="requirements"></textarea>
+             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="requirements" placeholder="<%=offer.requirements%>"></textarea>
           </div>
           </div>
           <div class="submit-div">            
-              <button type="submit" class="btn btn-primary btn-lg">Publish offer</button>
+              <button type="submit" class="btn btn-primary btn-lg">Publish Offer</button>
           </div>          
           <%- include('../partials/notifications') %>
        </form>
