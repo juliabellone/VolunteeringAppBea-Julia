@@ -15,6 +15,7 @@ const session = require('express-session');
 const MongoStore = require('connect-mongo')(session);
 const multer = require('multer');
 const moment = require('moment');
+moment().format('MMMM Do YYYY, h:mm a');
 
 const index = require('./routes/index');
 const users = require('./routes/users');
@@ -51,6 +52,7 @@ app.set('layout extractScripts', true);
 const User = require('./models/user');
 const Ong = require('./models/ong');
 const Offer = require('./models/offer');
+
 
 // uncomment after placing your favicon in /public
 // app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
