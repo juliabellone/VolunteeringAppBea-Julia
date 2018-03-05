@@ -34,42 +34,40 @@ router.post('/:offerId/unsubscribe', ensureLogin.ensureLoggedIn(), (req, res, ne
       if (err) { return next(err); }
   });
 });
-      
+
+// // ONG Owner can edit offer(get)
 // router.get('/:offerId/edit',ensureLogin.ensureLoggedIn(), (req, res, next) => {
 //   const offerId = req.params.offerId;
-//   if (offer._ong._id == userId) {
-//     Offer.findById(offerId).exec(function (err, offer) {
-//       if (err) {
-//         return next(err); 
-//       } else {
-//         res.render('offers/edit', {offer})   
-//       }
-//     }
-
-//   } else {
-//     res.redirect('/:offerId')
-//   }
+//   const userId = req.user.id;
+//     Offer.findById(offerId).populate('_ong').exec(function (err, offer) {
+//       if (err) {return next(err)}; 
+//       if (offer._ong._id == userId) {
+//         res.render('offers/edit', {offer, layout: 'layouts/ongLayout'})
+//         } else {
+//         res.redirect('offer/:offerId')
+//         }   
+//     });
 // });  
 
-router.get('/:offerId/edit',ensureLogin.ensureLoggedIn(), (req, res, next) => {
-  const offerId = req.params.offerId;
-  const userId = req.user.id;
+// // ONG Owner can edit offer(post)
 
-    Offer.findById(offerId).populate('_ong').exec(function (err, offer) {
-      if (err) {return next(err)}; 
-      if (offer._ong._id == userId) {
-        res.render('offers/edit', {offer})
-        } else {
-        res.redirect('/:offerId')
-        }   
-    });
-});  
+// router.post('/:offerId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
+//   const offerId = req.params.offerId;
+//   const userId = req.user.id;
+//   console.log('editando');
+//   const { title, category, when, where, about, requirements } = req.body;
+
+//     Offer.findByIdAndUpdate(offerId, { title:title, category: category, when:when, where:where, about:about, requirements:requirements }).exec(function (err) {
+//       if (err) {return next(err); console.log(err)}; 
+//       res.redirect('offer/:offerId');   
+//     });
+// });  
+
+// ONG Owner can delete offer
 
 router.post('/:offerId/delete',ensureLogin.ensureLoggedIn(), (req, res, next) => {
   const offerId = req.params.offerId;
   const userId = req.user.id;
-  console.log('dentro');
-
     Offer.findById(offerId).populate('_ong').exec(function (err, offer) {
       if (err) {return next(err)}; 
       if (offer._ong._id == userId) {
@@ -77,7 +75,7 @@ router.post('/:offerId/delete',ensureLogin.ensureLoggedIn(), (req, res, next) =>
         offer.remove();
         res.redirect('/ong/profile')
         } else {
-          res.redirect('/:offerId')  
+          res.redirect('offer/:offerId')  
         }   
     });
 }); 

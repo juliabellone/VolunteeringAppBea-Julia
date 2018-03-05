@@ -1,13 +1,13 @@
 <div class="main main-raised signup">
     <div class="container">
-       <form enctype='multipart/form-data' action = '/ong/newoffer' method = 'POST' id = 'form-container'>
+       <form enctype='multipart/form-data' action = '/offer/<%=offer._id%>' method = 'POST' id = 'form-container'>
           <h1>Edit offer</h1>
           <div class="form-group col-md-12">
-            <input type="text" class="form-control" placeholder="<%=offer.title%>" name="title" required>
+            <input type="text" class="form-control" value="<%=offer.title%>" name="title" required>
           </div>
           <div class="form-group">
               <div class="form-group col-md-12">  
-                <select id="category" class="form-control" name="category" placeholder="<%=offer.category%>" required>
+                <select id="category" class="form-control" name="category" value="<%=offer.category%>" required>
                     <option value="">Select one category</option>
                     <option value="Rights">Advocacy and Human Rights</option>
                     <option value="Animals">Animals</option>
@@ -27,7 +27,7 @@
               </div>
               <div class="form-group col-md-12">  
               <label class="label-control">When:</label>
-              <input type="text" id='datetimepicker4' class="datetimepicker"  value="10/05/2016"/>
+              <input type="text" id='datetimepicker4' class="datetimepicker" name="when" value="10/05/2016"/>
               </div>
           </div>
           <br>
@@ -35,20 +35,20 @@
           <br>
              <div class="form-group">
                    <label for="where">Where</label>
-                   <input type='text' class="form-control" name="where" placeholder="<%=offer.where%>">
+                   <input type='text' class="form-control" name="where" value="<%=offer.where%>">
              </div>
           <br>
           </div>
           <div class="form-group col-md-12">  
           <div class="form-group">
              <label for="about">Explain the volunteering offer</label>
-             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="about" placeholder="<%=offer.about%>"></textarea>
+             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="about" value="<%=offer.about%>"></textarea>
           </div>
           </div>
           <div class="form-group col-md-12">  
           <div class="form-group">
              <label for="requirements">Requirements</label>
-             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="requirements" placeholder="<%=offer.requirements%>"></textarea>
+             <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="requirements" value="<%=offer.requirements%>"></textarea>
           </div>
           </div>
           <div class="submit-div">            
