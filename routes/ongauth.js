@@ -47,6 +47,7 @@ router.post('/signup', upload.single('profilepic'), (req, res, next) => {
       birthdate,
       name,
       telephone,
+      email,
       category,
       picture: {
         pic_path: `../uploads/profile_pics/${req.file.filename}`,
