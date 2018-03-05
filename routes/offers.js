@@ -65,6 +65,23 @@ router.get('/:offerId/edit',ensureLogin.ensureLoggedIn(), (req, res, next) => {
     });
 });  
 
+router.post('/:offerId/delete',ensureLogin.ensureLoggedIn(), (req, res, next) => {
+  const offerId = req.params.offerId;
+  const userId = req.user.id;
+  console.log('dentro');
+
+    Offer.findById(offerId).populate('_ong').exec(function (err, offer) {
+      if (err) {return next(err)}; 
+      if (offer._ong._id == userId) {
+        console.log('hola')
+        offer.remove();
+        res.redirect('/ong/profile')
+        } else {
+          res.redirect('/:offerId')  
+        }   
+    });
+}); 
+
 router.get('/:offerId',ensureLogin.ensureLoggedIn(), (req, res, next) => {
 
   const userId = req.user.id;

@@ -30,8 +30,8 @@
                 <% } %>
                 <% if (ongOwner === true) { %>
                         <div class="ong-offer-buttons">
-                            <button class="editoffer btn btn-primary btn-lg">Edit this offer</button>
-                            <button class="deleteoffer btn btn-primary btn-lg btn-danger">Delete this offer</button>
+                            <a href="/offer/<%=offer._id%>/edit"><button class="editoffer btn btn-primary btn-lg">Edit this offer</button></a>
+                            <form style="display:inline" method='POST' action='/offer/<%=offer._id%>/delete' ><button class="deleteoffer btn btn-primary btn-lg btn-danger">Delete this offer</button></form>
                         </div>
                         
                 <% } %>
@@ -39,15 +39,15 @@
             </div>
         
             <% if (ongOwner === true) { %>
-                <div class="all-users-subscribed">
-                    <h2>Volunteers subscribed to this offer:</h2>
                 <% if (usersSubscribed.length > 0) { %>
+                    <div class="all-users-subscribed">
+                        <h2>Volunteers subscribed to this offer:</h2>
                     <% usersSubscribed.forEach((user) => { %>
                             <div class="card">
                                 <div class="card-body">
                                     <img class="volunteer-photo rounded-circle img-fluid" src="<%=user.picture.pic_path %>">
                                     <div class="volunteer-info-1">
-                                        <h3><a href="/<%=user._id%>"><%= user.username %></a></h3>
+                                        <h3><%= user.username %></h3>
                                         <p>Full Name: <%= user.name %> <%= user.surname %></p>
                                         <p>Email: <%= user.email %></p>
                                         <p>Telephone: <%= user.telephone %></p>
@@ -84,8 +84,15 @@
                 <i class="material-icons md-48">arrow_downward</i>
         </div>
         </div>
+        <div class="card useroffer-subscribe">
+                <div class="card-body">
+                    <h3>Are you sure you want to delete this offer?</h3>
+                    <i class="material-icons md-48">favorite</i>
+                </div>
+        </div>
         
           <script>
+
           $(document).ready(function(){
             $('.offerbutton').on('click', (event) => {
                 console.log('click')
